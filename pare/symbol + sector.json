@@ -1,0 +1,3624 @@
+{
+  "results": [
+    {
+      "Ticker symbol": "MMM",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "ABT",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "ABBV",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "ACN",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "ATVI",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "AYI",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "ADBE",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "AMD",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "AAP",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "AES",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "AET",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "AMG",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "AFL",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "A",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "APD",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "AKAM",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "ALK",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "ALB",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "ARE",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "ALXN",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "ALGN",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "ALLE",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "AGN",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "ADS",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "LNT",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "ALL",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "GOOGL",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "GOOG",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "MO",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "AMZN",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "AEE",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "AAL",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "AEP",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "AXP",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "AIG",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "AMT",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "AWK",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "AMP",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "ABC",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "AME",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "AMGN",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "APH",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "APC",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "ADI",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "ANSS",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "ANTM",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "AON",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "AOS",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "APA",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "AIV",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "AAPL",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "AMAT",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "ADM",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "ARNC",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "AJG",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "AIZ",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "T",
+      "GICS Sector": "Telecommunication Services"
+    },
+    {
+      "Ticker symbol": "ADSK",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "ADP",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "AN",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "AZO",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "AVB",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "AVY",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "BHGE",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "BLL",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "BAC",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "BK",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "BCR",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "BAX",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "BBT",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "BDX",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "BRK.B",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "BBY",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "BIIB",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "BLK",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "HRB",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "BA",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "BWA",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "BXP",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "BSX",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "BMY",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "AVGO",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "BF.B",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "CHRW",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "CA",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "COG",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "CPB",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "COF",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "CAH",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "CBOE",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "KMX",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "CCL",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "CAT",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "CBG",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "CBS",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "CELG",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "CNC",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "CNP",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "CTL",
+      "GICS Sector": "Telecommunication Services"
+    },
+    {
+      "Ticker symbol": "CERN",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "CF",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "SCHW",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "CHTR",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "CHK",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "CVX",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "CMG",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "CB",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "CHD",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "CI",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "XEC",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "CINF",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "CTAS",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "CSCO",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "C",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "CFG",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "CTXS",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "CLX",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "CME",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "CMS",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "COH",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "KO",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "CTSH",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "CL",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "CMCSA",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "CMA",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "CAG",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "CXO",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "COP",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "ED",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "STZ",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "COO",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "GLW",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "COST",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "COTY",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "CCI",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "CSRA",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "CSX",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "CMI",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "CVS",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "DHI",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "DHR",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "DRI",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "DVA",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "DE",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "DLPH",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "DAL",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "XRAY",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "DVN",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "DLR",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "DFS",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "DISCA",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "DISCK",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "DISH",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "DG",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "DLTR",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "D",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "DOV",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "DOW",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "DPS",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "DTE",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "DRE",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "DD",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "DUK",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "DXC",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "ETFC",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "EMN",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "ETN",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "EBAY",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "ECL",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "EIX",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "EW",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "EA",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "EMR",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "ETR",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "EVHC",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "EOG",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "EQT",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "EFX",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "EQIX",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "EQR",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "ESS",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "EL",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "ES",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "RE",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "EXC",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "EXPE",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "EXPD",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "ESRX",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "EXR",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "XOM",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "FFIV",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "FB",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "FAST",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "FRT",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "FDX",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "FIS",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "FITB",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "FE",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "FISV",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "FLIR",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "FLS",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "FLR",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "FMC",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "FL",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "F",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "FTV",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "FBHS",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "BEN",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "FCX",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "GPS",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "GRMN",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "IT",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "GD",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "GE",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "GGP",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "GIS",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "GM",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "GPC",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "GILD",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "GPN",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "GS",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "GT",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "GWW",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "HAL",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "HBI",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "HOG",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "HRS",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "HIG",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "HAS",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "HCA",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "HCP",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "HP",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "HSIC",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "HSY",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "HES",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "HPE",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "HLT",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "HOLX",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "HD",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "HON",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "HRL",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "HST",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "HPQ",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "HUM",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "HBAN",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "IDXX",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "INFO",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "ITW",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "ILMN",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "IR",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "INTC",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "ICE",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "IBM",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "INCY",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "IP",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "IPG",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "IFF",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "INTU",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "ISRG",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "IVZ",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "IRM",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "JEC",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "JBHT",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "SJM",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "JNJ",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "JCI",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "JPM",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "JNPR",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "KSU",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "K",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "KEY",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "KMB",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "KIM",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "KMI",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "KLAC",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "KSS",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "KHC",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "KR",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "LB",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "LLL",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "LH",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "LRCX",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "LEG",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "LEN",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "LVLT",
+      "GICS Sector": "Telecommunication Services"
+    },
+    {
+      "Ticker symbol": "LUK",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "LLY",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "LNC",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "LKQ",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "LMT",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "L",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "LOW",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "LYB",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "MTB",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "MAC",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "M",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "MRO",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "MPC",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "MAR",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "MMC",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "MLM",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "MAS",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "MA",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "MAT",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "MKC",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "MCD",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "MCK",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "MDT",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "MRK",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "MET",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "MTD",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "MGM",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "KORS",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "MCHP",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "MU",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "MSFT",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "MAA",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "MHK",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "TAP",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "MDLZ",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "MON",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "MNST",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "MCO",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "MS",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "MOS",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "MSI",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "MYL",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "NDAQ",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "NOV",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "NAVI",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "NTAP",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "NFLX",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "NWL",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "NFX",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "NEM",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "NWSA",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "NWS",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "NEE",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "NLSN",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "NKE",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "NI",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "NBL",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "JWN",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "NSC",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "NTRS",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "NOC",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "NRG",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "NUE",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "NVDA",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "ORLY",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "OXY",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "OMC",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "OKE",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "ORCL",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "PCAR",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "PKG",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "PH",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "PDCO",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "PAYX",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "PYPL",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "PNR",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "PBCT",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "PEP",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "PKI",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "PRGO",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "PFE",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "PCG",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "PM",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "PSX",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "PNW",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "PXD",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "PNC",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "RL",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "PPG",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "PPL",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "PX",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "PCLN",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "PFG",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "PG",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "PGR",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "PLD",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "PRU",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "PEG",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "PSA",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "PHM",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "PVH",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "QRVO",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "PWR",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "QCOM",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "DGX",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "RRC",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "RJF",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "RTN",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "O",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "RHT",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "REG",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "REGN",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "RF",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "RSG",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "RMD",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "RHI",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "ROK",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "COL",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "ROP",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "ROST",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "RCL",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "CRM",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "SCG",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "SLB",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "SNI",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "STX",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "SEE",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "SRE",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "SHW",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "SIG",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "SPG",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "SWKS",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "SLG",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "SNA",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "SO",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "LUV",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "SPGI",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "SWK",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "SPLS",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "SBUX",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "STT",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "SRCL",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "SYK",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "STI",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "SYMC",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "SYF",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "SNPS",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "SYY",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "TROW",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "TGT",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "TEL",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "FTI",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "TSO",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "TXN",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "TXT",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "TMO",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "TIF",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "TWX",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "TJX",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "TMK",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "TSS",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "TSCO",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "TDG",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "TRV",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "TRIP",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "FOXA",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "FOX",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "TSN",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "UDR",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "ULTA",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "USB",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "UA",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "UAA",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "UNP",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "UAL",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "UNH",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "UPS",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "URI",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "UTX",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "UHS",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "UNM",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "VFC",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "VLO",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "VAR",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "VTR",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "VRSN",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "VRSK",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "VZ",
+      "GICS Sector": "Telecommunication Services"
+    },
+    {
+      "Ticker symbol": "VRTX",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "VIAB",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "V",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "VNO",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "VMC",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "WMT",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "WBA",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "DIS",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "WM",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "WAT",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "WEC",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "WFC",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "HCN",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "WDC",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "WU",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "WRK",
+      "GICS Sector": "Materials"
+    },
+    {
+      "Ticker symbol": "WY",
+      "GICS Sector": "Real Estate"
+    },
+    {
+      "Ticker symbol": "WHR",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "WFM",
+      "GICS Sector": "Consumer Staples"
+    },
+    {
+      "Ticker symbol": "WMB",
+      "GICS Sector": "Energy"
+    },
+    {
+      "Ticker symbol": "WLTW",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "WYN",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "WYNN",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "XEL",
+      "GICS Sector": "Utilities"
+    },
+    {
+      "Ticker symbol": "XRX",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "XLNX",
+      "GICS Sector": "Information Technology"
+    },
+    {
+      "Ticker symbol": "XL",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "XYL",
+      "GICS Sector": "Industrials"
+    },
+    {
+      "Ticker symbol": "YUM",
+      "GICS Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker symbol": "ZBH",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker symbol": "ZION",
+      "GICS Sector": "Financials"
+    },
+    {
+      "Ticker symbol": "ZTS",
+      "GICS Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "AOS",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "AAN",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "ABMD",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "ACC",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "ACHC",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "ACIW",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "ACM",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "ACXM",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "AEO",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "AFG",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "AGCO",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "AHL",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "AKRX",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "ALEX",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "Y",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "ATI",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "AMCX",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "WTR",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "ARW",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "ARRS",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "ASB",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "ASH",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "ATO",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "ATR",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "CAR",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "AVT",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "AVP",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "BC",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "BDC",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "BID",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "BIG",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "BIO",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "BIVV",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "BKH",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "BLKB",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "BMS",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "BOH",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "BR",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "BRCD",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "BRO",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "BWLD",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "BXS",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "CAA",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "CAB",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "CABO",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "CAKE",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "CARS",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "CASY",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "CATY",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "CBSH",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "CBT",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "CC",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "CCP",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "CDK",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "CDNS",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "CFR",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "CGNX",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "CHDN",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "CHFC",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "CIEN",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "CLB",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "CLGX",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "CLH",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "CLI",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "CMC",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "CMP",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "CNK",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "CNO",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "COHR",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "CONE",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "CPRT",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "CPT",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "CR",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "CREE",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "CRI",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "CRL",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "CRS",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "CRUS",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "CNX",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "CSL",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "CTB",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "CTLT",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "CUZ",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "CVG",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "CVLT",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "CXW",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "CW",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "CBRL",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "CY",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "DAN",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "DBD",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "DCI",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "DCT",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "DDD",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "DDS",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "DECK",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "DEI",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "DF",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "DKS",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "DLX",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "DNB",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "DNKN",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "DNOW",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "DO",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "DPZ",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "DRE",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "DRQ",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "DST",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "DV",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "DY",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "EAT",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "EDR",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "EGN",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "EME",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "ENDP",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "ENR",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "ENS",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "EPC",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "EPR",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "ESL",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "ESV",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "EV",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "EWBC",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "EXP",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "FAF",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "FCN",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "FDS",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "FHN",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "FICO",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "FII",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "FLO",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "FR",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "FNB",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "FSLR",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "FTNT",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "FTR",
+      "GICS Economic Sector": "Telecommunication Services"
+    },
+    {
+      "Ticker Symbol": "FULT",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "GATX",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "GEF",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "GEO",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "GGG",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "GHC",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "GME",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "GMED",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "GNTX",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "GNW",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "GPOR",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "GVA",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "GWR",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "GXP",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "HAIN",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "HBHC",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "HE",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "HELE",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "HFC",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "HII",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "HIW",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "HLS",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "HNI",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "HOMB",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "HPT",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "HR",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "HRC",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "HSNI",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "HUBB",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "HYH",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "IBOC",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "IDA",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "IDCC",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "IDTI",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "IEX",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "INCR",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "INGR",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "INT",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "IPGP",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "ISCA",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "ITT",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "JACK",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "JBGS",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "JBL",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "JHG",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "JBLU",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "JCOM",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "JKHY",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "JLL",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "JW.A",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "KBH",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "KBR",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "KEX",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "KEYS",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "KLXI",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "KMPR",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "KMT",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "KN",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "KNX",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "KRC",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "LAMR",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "LANC",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "LDOS",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "LECO",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "LFUS",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "LHO",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "LII",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "LIVN",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "LM",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "LNCE",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "LOGM",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "LPNT",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "LPT",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "LPX",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "LSI",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "LSTR",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "LW",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "LYV",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "MAN",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "MANH",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "MASI",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "MBFI",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "MCY",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "MD",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "MDP",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "MDRX",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "MDSO",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "MDU",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "MIK",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "MKTX",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "MLHR",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "MMS",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "MOH",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "MPW",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "MPWR",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "MSA",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "MSCC",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "MSCI",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "MSM",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "MTDR",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "MTX",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "MUSA",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "NATI",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "NBR",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "NCR",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "NDSN",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "NEU",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "NFG",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "NJR",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "NNN",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "NSR",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "NTCT",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "NUS",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "NUVA",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "NVR",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "NWE",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "NYCB",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "NYT",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "OA",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "ODFL",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "ODP",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "OFC",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "OGE",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "OGS",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "OHI",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "OII",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "OIS",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "OLN",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "OI",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "OMI",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "ORI",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "OSK",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "OZRK",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "PACW",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "PBF",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "PAY",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "PB",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "PBH",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "PBI",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "PCH",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "PII",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "PKG",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "PLT",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "PNM",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "POL",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "POOL",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "POST",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "PRI",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "PRXL",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "PTC",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "PTEN",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "PZZA",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "QCP",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "QEP",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "R",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "RBC",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "RDC",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "RE",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "RGA",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "RGLD",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "RMD",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "RNR",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "ROL",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "RPM",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "RS",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "RYN",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "SABR",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "SAIC",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "SAM",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "SBH",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "SBNY",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "SCI",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "SEIC",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "SF",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "SFM",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "SIVB",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "SKT",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "SKX",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "SLAB",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "SLGN",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "SLM",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "SM",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "SMG",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "SNH",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "SNV",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "SNX",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "SON",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "SPN",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "STE",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "STLD",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "SWN",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "SWX",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "SXT",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "SYNA",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "TCB",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "TCBI",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "TCO",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "TDC",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "TDS",
+      "GICS Economic Sector": "Telecommunication Services"
+    },
+    {
+      "Ticker Symbol": "TDY",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "TECD",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "TECH",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "TER",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "TEX",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "TFX",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "TGNA",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "THC",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "THG",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "THO",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "THS",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "TKR",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "TOL",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "TPH",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "TPX",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "TR",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "TRMB",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "TRMK",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "TRN",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "TTC",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "TTWO",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "TUP",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "TXRH",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "TYL",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "UBSI",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "UE",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "UFS",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "UGI",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "ULTI",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "UMBF",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "UMPQ",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "UNFI",
+      "GICS Economic Sector": "Consumer Staples"
+    },
+    {
+      "Ticker Symbol": "UTHR",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "UNIT",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "URBN",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "VLY",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "VMI",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "VVV",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "WOOF",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "VVC",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "VSM",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "VSAT",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "VSH",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "WRB",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "WAB",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "WAFD",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "WBMD",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "WBS",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "WCG",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "WEN",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "WERN",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "WEX",
+      "GICS Economic Sector": "Information Technology"
+    },
+    {
+      "Ticker Symbol": "WGL",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "WOR",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "WPG",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "WPX",
+      "GICS Economic Sector": "Energy"
+    },
+    {
+      "Ticker Symbol": "WR",
+      "GICS Economic Sector": "Utilities"
+    },
+    {
+      "Ticker Symbol": "WRI",
+      "GICS Economic Sector": "Real Estate"
+    },
+    {
+      "Ticker Symbol": "WSM",
+      "GICS Economic Sector": "Consumer Discretionary"
+    },
+    {
+      "Ticker Symbol": "WSO",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "WST",
+      "GICS Economic Sector": "Health Care"
+    },
+    {
+      "Ticker Symbol": "WTFC",
+      "GICS Economic Sector": "Financials"
+    },
+    {
+      "Ticker Symbol": "WWD",
+      "GICS Economic Sector": "Industrials"
+    },
+    {
+      "Ticker Symbol": "X",
+      "GICS Economic Sector": "Materials"
+    },
+    {
+      "Ticker Symbol": "ZBRA",
+      "GICS Economic Sector": "Information Technology"
+    }
+  ]
+}

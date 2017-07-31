@@ -1,25 +1,32 @@
 //
-//  ViewController.swift
+//  DiscoverViewController.swift
 //  pare
 //
-//  Created by Ehi Airewele  on 7/27/17.
+//  Created by Ehi Airewele  on 7/28/17.
 //  Copyright © 2017 Ehi Airewele . All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class DiscoverViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+        
+        
+        
+        
+        
+        
+        
+        
+        
 }
-
