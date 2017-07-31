@@ -505,10 +505,24 @@ struct NetworkRequest {
     //                    let ema = json["Technical Analysis: EMA"]
     //                }
     
+    
     static func filterSectors(symbol: String, completion: @escaping ([String: String]) -> Void) {
         var similarDictionary : [String: String] = [:]
         var marketCapDes = ""
         var thisMarketCapDes = ""
+        
+        var consumerDiscretionary: [stockWSector] = []
+        var consumerStaples: [stockWSector] = []
+        var energy: [stockWSector] = []
+        var financials: [stockWSector] = []
+        var healthCare: [stockWSector] = []
+        var industrials: [stockWSector] = []
+        var informationTechnology: [stockWSector] = []
+        var materials: [stockWSector] = []
+        var realEstate: [stockWSector] = []
+        var telecommunicationServices: [stockWSector] = []
+        var utilites: [stockWSector] = []
+        
         
         guard let jsonURL = Bundle.main.url(forResource: "symbol + sector", withExtension: "json") else {
             return
@@ -519,8 +533,45 @@ struct NetworkRequest {
             let sectorData = JSON(data: jsonData)
             let allStockData = sectorData["results"].arrayValue
             
-            
-            let consumerDiscretionary = allStockData.filter{stockWSector(["results"]["GICS Sector"].stringValue == "Consumer Discretionary")}
+            for stock in allStockData {
+                let thisSymbol = stock["Symbol ticker"].stringValue
+                let thisSector = stock["GICS Sector"].stringValue
+                
+                if (thisSector == "Consumer Discretionary") {
+                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
+                    consumerDiscretionary.append(filter)
+                } else if (thisSector == "Energy") {
+                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
+                    energy.append(filter)
+                } else if (thisSector == "Consumer Staples") {
+                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
+                    consumerStaples.append(filter)
+                } else if (thisSector == "Financials") {
+                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
+                    financials.append(filter)
+                } else if (thisSector == "Health Care") {
+                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
+                    healthCare.append(filter)
+                } else if (thisSector == "Industrials") {
+                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
+                    industrials.append(filter)
+                } else if (thisSector == "Information Technology") {
+                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
+                    informationTechnology.append(filter)
+                } else if (thisSector == "Materials") {
+                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
+                    materials.append(filter)
+                } else if (thisSector == "Real Estate") {
+                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
+                    realEstate.append(filter)
+                } else if (thisSector == "Telecommunications Services") {
+                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
+                    telecommunicationServices.append(filter)
+                } else if (thisSector == "Utilities") {
+                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
+                    utilites.append(filter)
+                }
+            }
             
             
             
@@ -581,17 +632,7 @@ struct NetworkRequest {
             //    }
         }
         
-        //        var consumerDiscretionary: [String: String] = [:]
-        //        var consumerStaples: [String: String] = [:]
-        //        var energy: [String: String] = [:]
-        //        var financials: [String: String] = [:]
-        //        var healthCare: [String: String] = [:]
-        //        var industrials: [String: String] = [:]
-        //        var informationTechnology: [String: String] = [:]
-        //        var materials: [String: String] = [:]
-        //        var realEstate: [String: String] = [:]
-        //        var telecommunicationServices: [String: String] = [:]
-        //        var utilites: [String: String] = [:]
+        
         
         
         
