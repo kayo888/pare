@@ -48,10 +48,6 @@ struct WatchlistStock {
     let sector: String
 }
 
-struct stockWSector {
-    let symbol: String
-    let sector: String
-}
 
 
 //graph - 174w 158h

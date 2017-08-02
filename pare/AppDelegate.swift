@@ -7,16 +7,29 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+   
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        return true
+        FirebaseApp.configure()
+        
+        Auth.auth().signInAnonymously() { (user, error) in
+            let isAnonymous = user!.isAnonymous
+            let uid = user!.uid
+            let userDict = ["uid": uid,
+                            "stock1": "AAPL", "stock2": "MSFT", "stock3": "TSLA"]
+            let ref = Database.database().reference().child("users").child((user?.uid)!)
+            ref.updateChildValues(userDict)
+        }
+        
+        
+    return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -43,4 +56,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
 

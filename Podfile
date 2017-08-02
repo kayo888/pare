@@ -9,6 +9,11 @@ target 'pare' do
 pod 'AlamofireSwiftyJSON'
 pod ‘Kingfisher’
 pod ‘Charts’
+pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'FirebaseUI/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
 
   target 'pareTests' do
     inherit! :search_paths

@@ -504,140 +504,219 @@ struct NetworkRequest {
     //
     //                    let ema = json["Technical Analysis: EMA"]
     //                }
+    //        var consumerDiscretionary: [Stock] = []
+    //        var consumerStaples: [Stock] = []
+    //        var energy: [Stock] = []
+    //        var financials: [Stock] = []
+    //        var healthCare: [Stock] = []
+    //        var industrials: [Stock] = []
+    //        var informationTechnology: [Stock] = []
+    //        var materials: [Stock] = []
+    //        var realEstate: [Stock] = []
+    //        var telecommunicationServices: [Stock] = []
+    //        var utilites: [Stock] = []
     
     
-    static func filterSectors(symbol: String, completion: @escaping ([String: String]) -> Void) {
-        var similarDictionary : [String: String] = [:]
-        var marketCapDes = ""
-        var thisMarketCapDes = ""
+    static func filterSectors(symbol: String, completion: @escaping ([Stock]) -> Void) {
         
-        var consumerDiscretionary: [stockWSector] = []
-        var consumerStaples: [stockWSector] = []
-        var energy: [stockWSector] = []
-        var financials: [stockWSector] = []
-        var healthCare: [stockWSector] = []
-        var industrials: [stockWSector] = []
-        var informationTechnology: [stockWSector] = []
-        var materials: [stockWSector] = []
-        var realEstate: [stockWSector] = []
-        var telecommunicationServices: [stockWSector] = []
-        var utilites: [stockWSector] = []
-        
+        var allStocks: [Stock] = []
+        var recommendArray : [Stock] = []
+        var finalArray : [Stock] = []
         
         guard let jsonURL = Bundle.main.url(forResource: "symbol + sector", withExtension: "json") else {
             return
         }
         
-        DispatchQueue.global(qos: .userInitiated).sync {
+//        DispatchQueue.global(qos: .userInitiated).sync {
             let jsonData = try! Data(contentsOf: jsonURL)
             let sectorData = JSON(data: jsonData)
             let allStockData = sectorData["results"].arrayValue
             
             for stock in allStockData {
                 let thisSymbol = stock["Symbol ticker"].stringValue
-                let thisSector = stock["GICS Sector"].stringValue
                 
-                if (thisSector == "Consumer Discretionary") {
-                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
-                    consumerDiscretionary.append(filter)
-                } else if (thisSector == "Energy") {
-                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
-                    energy.append(filter)
-                } else if (thisSector == "Consumer Staples") {
-                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
-                    consumerStaples.append(filter)
-                } else if (thisSector == "Financials") {
-                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
-                    financials.append(filter)
-                } else if (thisSector == "Health Care") {
-                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
-                    healthCare.append(filter)
-                } else if (thisSector == "Industrials") {
-                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
-                    industrials.append(filter)
-                } else if (thisSector == "Information Technology") {
-                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
-                    informationTechnology.append(filter)
-                } else if (thisSector == "Materials") {
-                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
-                    materials.append(filter)
-                } else if (thisSector == "Real Estate") {
-                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
-                    realEstate.append(filter)
-                } else if (thisSector == "Telecommunications Services") {
-                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
-                    telecommunicationServices.append(filter)
-                } else if (thisSector == "Utilities") {
-                    let filter = stockWSector(symbol: thisSymbol, sector: thisSector)
-                    utilites.append(filter)
+                instantiateStock(symbol: thisSymbol, completion: { (Stock) in
+                    allStocks.append(Stock)
+                })
+            }
+//    }
+    
+            allStocks = allStocks.sorted{ ($0.peRatio > $1.peRatio) }
+        var currStock: Stock? = nil
+        
+            var marketCapDes = ""
+            var marketCap = 0
+            instantiateStock(symbol: symbol) { (Stock) in
+                marketCap = Stock.marketCap
+                currStock = Stock
+                if (marketCap >= 10000000000) {
+                    marketCapDes = "large cap"
+                } else if (marketCap >= 2000000000 && marketCap < 10000000000) {
+                    marketCapDes = "medium cap"
+                } else {
+                    marketCapDes = "small cap"
                 }
             }
             
-            
-            
-            
-            //        getMinuteData(symbol: symbol) { (price) in
-            //
-            //            quote(symbol: symbol, completion: { (_, _, previousClose, _, marketCap, peRatio, _, _) in
-            //                if (marketCap >= 10000000000) {
-            //                    marketCapDes = "large cap"
-            //                } else if (marketCap >= 2000000000 && marketCap < 10000000000) {
-            //                    marketCapDes = "medium cap"
-            //                } else {
-            //                    marketCapDes = "small cap"
-            //                }
-            //
-            //                guard let jsonURL = Bundle.main.url(forResource: "symbol + sector", withExtension: "json") else {
-            //                    return
-            //                }
-            //
-            //                DispatchQueue.global(qos: .userInitiated).sync {
-            //                    let jsonData = try! Data(contentsOf: jsonURL)
-            //                    let sectorData = JSON(data: jsonData)
-            //                    let allStockData = sectorData["results"].arrayValue
-            //
-            //                    for stocks in allStockData {
-            //                        let thisSymbol = stocks["Symbol ticker"].stringValue
-            //                        let thisSector = stocks["GICS Sector"].stringValue
-            //
-            ////                        let symbolSector = allStockData.filter{symbol == thisSymbol}
-            //
-            //                        if (symbol != thisSymbol) {
-            //                            getMinuteData(symbol: thisSymbol, completion: { (thisPrice) in
-            //
-            //                                quote(symbol: thisSymbol, completion: { (_, _, thisPreviousClose, _, thisMarketCap, thisPeRatio, _, _) in
-            //                                    if (thisMarketCap >= 10000000000) {
-            //                                        thisMarketCapDes = "large cap"
-            //                                    } else if (thisMarketCap >= 2000000000 && marketCap < 10000000000) {
-            //                                        thisMarketCapDes = "medium cap"
-            //                                    } else {
-            //                                        thisMarketCapDes = "small cap"
-            //                                    }
-            //
-            //                                    if (abs(price - thisPrice) <= 15) {
-            //                                        if (marketCapDes == thisMarketCapDes) {
-            //                                            if (abs(previousClose - thisPreviousClose) <= 10) {
-            //
-            //                                            }
-            //                                        }
-            //                                    }
-            //                                })
-            //                            })
-            //                        })
-            //                    }
-            //                }
-            //
-            //            }
-            //        }
-            //    }
+            let ratio = currStock!.peRatio
+            let highRange = ratio + 1 ... ratio + 10
+            let lowRange = ratio - 10 ..< ratio
+            for (i, stock) in allStocks.enumerated() {
+                if (stock.symbol == symbol) {
+                    let index = allStocks[i]
+                    
+                    if (highRange ~= index.peRatio) {
+                        recommendArray.append(index)
+                    } else if (lowRange ~= index.peRatio) {
+                        recommendArray.append(index)
+                        
+                    }
+                    
+                }
+            }
+
+        var thisMarketCapDes = ""
+        for recommended in recommendArray {
+            if (recommended.marketCap >= 10000000000) {
+                thisMarketCapDes = "large cap"
+            } else if (recommended.marketCap >= 2000000000 && recommended.marketCap < 10000000000) {
+                thisMarketCapDes = "medium cap"
+            } else {
+                thisMarketCapDes = "small cap"
+            }
+            if (marketCapDes == thisMarketCapDes) {
+                finalArray.append(recommended)
+            }
         }
-        
-        
-        
-        
-        
-        
-        
-        
+        completion(finalArray)
+    }
 }
+
+
+
+
+
+
+
+
+//            for stock in allStockData {
+//                let thisSymbol = stock["Symbol ticker"].stringValue
+//                let thisSector = stock["GICS Sector"].stringValue
+//
+//                if (thisSector == "Consumer Discretionary") {
+//                    instantiateStock(symbol: thisSymbol, completion: { (consumerDiscretionaryStock) in
+//                        consumerDiscretionary.append(consumerDiscretionaryStock)
+//                    })
+//                } else if (thisSector == "Energy") {
+//                    instantiateStock(symbol: thisSymbol, completion: { (energyStock) in
+//                        energy.append(energyStock)
+//                    })
+//                } else if (thisSector == "Consumer Staples") {
+//                    instantiateStock(symbol: thisSymbol, completion: { (consumerStapleStock) in
+//                        consumerStaples.append(consumerStapleStock)
+//                    })
+//                } else if (thisSector == "Financials") {
+//                    instantiateStock(symbol: thisSymbol, completion: { (financialsStock) in
+//                        financials.append(financialsStock)
+//                    })
+//                } else if (thisSector == "Health Care") {
+//                    instantiateStock(symbol: thisSymbol, completion: { (healthCareStock) in
+//                        healthCare.append(healthCareStock)
+//                    })
+//                } else if (thisSector == "Industrials") {
+//                    instantiateStock(symbol: thisSymbol, completion: { (industrialsStock) in
+//                        industrials.append(industrialsStock)
+//                    })
+//                } else if (thisSector == "Information Technology") {
+//                    instantiateStock(symbol: thisSymbol, completion: { (informationTechStock) in
+//                        informationTechnology.append(informationTechStock)
+//                    })
+//                } else if (thisSector == "Materials") {
+//                    instantiateStock(symbol: thisSymbol, completion: { (materialStock) in
+//                        materials.append(materialStock)
+//                    })
+//                } else if (thisSector == "Real Estate") {
+//                    instantiateStock(symbol: thisSymbol, completion: { (realEstateStock) in
+//                        realEstate.append(realEstateStock)
+//                    })
+//                } else if (thisSector == "Telecommunications Services") {
+//                    instantiateStock(symbol: thisSymbol, completion: { (telecommStock) in
+//                        telecommunicationServices.append(telecommStock)
+//                    })
+//                } else if (thisSector == "Utilities") {
+//                    instantiateStock(symbol: thisSymbol, completion: { (utilitiesStock) in
+//                        utilites.append(utilitiesStock)
+//                    })
+//                }
+//            }
+
+
+
+
+
+
+
+//            let allStocks: [String: [Stock]] = ["Consumer Discretionary": consumerDiscretionary, "Energy": energy, "Consumer Staples": consumerStaples, "Financials": financials, "Health Care": healthCare, "Industrials": industrials, "Information Technology": informationTechnology, "Materials": materials, "Real Estate": realEstate, "Telecommunications Services": telecommunicationServices, "Utilities": utilites]
+
+
+
+
+
+
+
+//        getMinuteData(symbol: symbol) { (price) in
+//
+//            quote(symbol: symbol, completion: { (_, _, previousClose, _, marketCap, peRatio, _, _) in
+//                if (marketCap >= 10000000000) {
+//                    marketCapDes = "large cap"
+//                } else if (marketCap >= 2000000000 && marketCap < 10000000000) {
+//                    marketCapDes = "medium cap"
+//                } else {
+//                    marketCapDes = "small cap"
+//                }
+//
+//                guard let jsonURL = Bundle.main.url(forResource: "symbol + sector", withExtension: "json") else {
+//                    return
+//                }
+//
+//                DispatchQueue.global(qos: .userInitiated).sync {
+//                    let jsonData = try! Data(contentsOf: jsonURL)
+//                    let sectorData = JSON(data: jsonData)
+//                    let allStockData = sectorData["results"].arrayValue
+//
+//                    for stocks in allStockData {
+//                        let thisSymbol = stocks["Symbol ticker"].stringValue
+//                        let thisSector = stocks["GICS Sector"].stringValue
+//
+////                        let symbolSector = allStockData.filter{symbol == thisSymbol}
+//
+//                        if (symbol != thisSymbol) {
+//                            getMinuteData(symbol: thisSymbol, completion: { (thisPrice) in
+//
+//                                quote(symbol: thisSymbol, completion: { (_, _, thisPreviousClose, _, thisMarketCap, thisPeRatio, _, _) in
+//                                    if (thisMarketCap >= 10000000000) {
+//                                        thisMarketCapDes = "large cap"
+//                                    } else if (thisMarketCap >= 2000000000 && marketCap < 10000000000) {
+//                                        thisMarketCapDes = "medium cap"
+//                                    } else {
+//                                        thisMarketCapDes = "small cap"
+//                                    }
+//
+//                                    if (abs(price - thisPrice) <= 15) {
+//                                        if (marketCapDes == thisMarketCapDes) {
+//                                            if (abs(previousClose - thisPreviousClose) <= 10) {
+//
+//                                            }
+//                                        }
+//                                    }
+//                                })
+//                            })
+//                        })
+//                    }
+//                }
+//
+//            }
+//        }
+//    }
+
 

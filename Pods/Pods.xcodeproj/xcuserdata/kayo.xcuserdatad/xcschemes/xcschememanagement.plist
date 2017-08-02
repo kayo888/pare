@@ -19,6 +19,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FirebaseUI-FirebaseAuthUI.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GTMSessionFetcher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Kingfisher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,12 +67,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2F0C0F810568D3E82219429D9D870F04</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3380590F973AFAFA30255D504B7DEDAC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3B4967AAA2B7891B88EFFA359C77AFB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>598ED85BB97FE801D895433AF5B7945A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,17 +102,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C68748E71A3DDB40B0AAF4BC0A8F9030</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>F307B842FF76B2DE6C55DB67C0885325</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F82F2CB9E5032ECA95FE45FC2CC731B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
