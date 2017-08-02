@@ -11,10 +11,10 @@ import Charts
 
 class StockViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var symbolLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var stockLogo: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var symbolLabel: UILabel!
+    @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var lineChartView: LineChartView!
     
     

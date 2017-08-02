@@ -8,13 +8,19 @@
 
 import UIKit
 import Firebase
+import FirebaseAuthUI
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseAuth
 
 class DiscoverViewController: UIViewController {
-    let currentUser = Auth.auth().currentUser!
+    //let currentUser = Auth.auth().currentUser!
     
+    @IBOutlet weak var newsCollectionView: UICollectionView!
+    @IBOutlet weak var topRecCollectionView: UICollectionView!
+    @IBOutlet weak var basedOnCollectionView: UICollectionView!
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        super.viewDidLoad()  
         // Do any additional setup after loading the view.
     }
     

@@ -80,9 +80,11 @@ struct NetworkRequest {
                     let json = JSON(value)
                     let name = json["companyName"].stringValue
                     completion(name)
+                    print(name)
                 }
             case .failure(let error):
-                print(error)
+                print(symbol)
+                print("name")
             }
         }
         
@@ -118,7 +120,7 @@ struct NetworkRequest {
                     }
                 }
             case .failure(let error):
-                print(error)
+                print("image")
                 
             }
         }
@@ -212,7 +214,7 @@ struct NetworkRequest {
                     completion(close)
                 }
             case .failure(let error):
-                print(error)
+                print("minute")
                 
             }
         }
@@ -240,43 +242,42 @@ struct NetworkRequest {
         
     }
     
-    static func getAverages (symbol: String, completion: @escaping ([String: Double]) -> Void) {
-        let stockDataEndpoint = "\(Constants.IEX.IEXBase)\(symbol)\(Constants.IEXParameters.chartOneDay)"
-        
-        print(stockDataEndpoint)
-        let time = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        formatter.timeZone = TimeZone(abbreviation: "EST")
-        let resultTime = formatter.string(from: time)
-        
-        let dayMinute = stringToTime(string: resultTime)
-        var averages: [String:Double] = [:]
-        
-        Alamofire.request(stockDataEndpoint).validate().responseJSON() { response in
-            switch response.result {
-            case .success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    let allTimeData = json.arrayValue
-                    
-                    for data in allTimeData {
-                        let time = data["minute"].stringValue
-                        let average = data["average"].doubleValue
-                        
-                        averages[time] = average
-                        
-                    }
-                    completion(averages)
-                }
-            case .failure(let error):
-                print(error)
-            }
-            
-            
-        }
-        
-    }
+//    static func getAverages (symbol: String, completion: @escaping ([String: Double]) -> Void) {
+//        let stockDataEndpoint = "\(Constants.IEX.IEXBase)\(symbol)\(Constants.IEXParameters.chartOneDay)"
+//        
+//        let time = Date()
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "HH:mm"
+//        formatter.timeZone = TimeZone(abbreviation: "EST")
+//        let resultTime = formatter.string(from: time)
+//        
+//        let dayMinute = stringToTime(string: resultTime)
+//        var averages: [String:Double] = [:]
+//        
+//        Alamofire.request(stockDataEndpoint).validate().responseJSON() { response in
+//            switch response.result {
+//            case .success:
+//                if let value = response.result.value {
+//                    let json = JSON(value)
+//                    let allTimeData = json.arrayValue
+//                    
+//                    for data in allTimeData {
+//                        let time = data["minute"].stringValue
+//                        let average = data["average"].doubleValue
+//                        
+//                        averages[time] = average
+//                        
+//                    }
+//                    completion(averages)
+//                }
+//            case .failure(let error):
+//                print(error)
+//            }
+//            
+//            
+//        }
+//        
+//    }
     
     static func getMonthAverages(symbol: String, completion: @escaping ([String: Double]) -> Void) {
         let stockDataEndpoint = "\(Constants.IEX.IEXBase)\(symbol)\(Constants.IEXParameters.chartOneMonth)"
@@ -300,7 +301,7 @@ struct NetworkRequest {
                     
                 }
             case .failure(let error):
-                print(error)
+                print("averages")
             }
         }
     }
@@ -373,7 +374,7 @@ struct NetworkRequest {
                     }
                 }
             case .failure(let error):
-                print(error)
+                print("news")
             }
             
             
@@ -413,7 +414,6 @@ struct NetworkRequest {
                         for data in allSymbolsData {
                             if (symbol == data["Ticker symbol"].stringValue) {
                                 sector = data["GICS Sector"].stringValue
-                                print(sector)
                                 break
                             }
                         }
@@ -421,7 +421,7 @@ struct NetworkRequest {
                     completion(sector, description, site, ceo)
                 }
             case .failure(let error):
-                print(error)
+                print("company")
                 
             }
             
@@ -460,7 +460,7 @@ struct NetworkRequest {
                     completion(primaryExchange, calculationPrice, previousClose, avgTotalVolume, marketCap, peRatio, week52Low, week52High)
                 }
             case .failure(let error):
-                print(error)
+                print("quote")
             }
         }
     }
@@ -487,7 +487,7 @@ struct NetworkRequest {
                     completion(profitMargin, peRatioLow, peRatioHigh)
                 }
             case .failure(let error):
-                print(error)
+                print("stats")
             }
         }
     }
@@ -527,37 +527,36 @@ struct NetworkRequest {
             return
         }
         
-//        DispatchQueue.global(qos: .userInitiated).sync {
-            let jsonData = try! Data(contentsOf: jsonURL)
-            let sectorData = JSON(data: jsonData)
-            let allStockData = sectorData["results"].arrayValue
+        //        DispatchQueue.global(qos: .userInitiated).sync {
+        let jsonData = try! Data(contentsOf: jsonURL)
+        let sectorData = JSON(data: jsonData)
+        let allStockData = sectorData["results"].arrayValue
+        
+        for stock in allStockData {
+            let thisSymbol = stock["Ticker symbol"].stringValue
             
-            for stock in allStockData {
-                let thisSymbol = stock["Symbol ticker"].stringValue
-                
-                instantiateStock(symbol: thisSymbol, completion: { (Stock) in
-                    allStocks.append(Stock)
-                })
-            }
-//    }
-    
-            allStocks = allStocks.sorted{ ($0.peRatio > $1.peRatio) }
+            instantiateStock(symbol: thisSymbol, completion: { (Stock) in
+                allStocks.append(Stock)
+            })
+        }
+        //    }
+        
+        allStocks = allStocks.sorted{ ($0.peRatio > $1.peRatio) }
         var currStock: Stock? = nil
         
-            var marketCapDes = ""
-            var marketCap = 0
-            instantiateStock(symbol: symbol) { (Stock) in
-                marketCap = Stock.marketCap
-                currStock = Stock
-                if (marketCap >= 10000000000) {
-                    marketCapDes = "large cap"
-                } else if (marketCap >= 2000000000 && marketCap < 10000000000) {
-                    marketCapDes = "medium cap"
-                } else {
-                    marketCapDes = "small cap"
-                }
+        var marketCapDes = ""
+        var marketCap = 0
+        instantiateStock(symbol: symbol) { (Stock) in
+            marketCap = Stock.marketCap
+            currStock = Stock
+            if (marketCap >= 10000000000) {
+                marketCapDes = "large cap"
+            } else if (marketCap >= 2000000000 && marketCap < 10000000000) {
+                marketCapDes = "medium cap"
+            } else {
+                marketCapDes = "small cap"
             }
-            
+            //
             let ratio = currStock!.peRatio
             let highRange = ratio + 1 ... ratio + 10
             let lowRange = ratio - 10 ..< ratio
@@ -574,22 +573,30 @@ struct NetworkRequest {
                     
                 }
             }
-
-        var thisMarketCapDes = ""
-        for recommended in recommendArray {
-            if (recommended.marketCap >= 10000000000) {
-                thisMarketCapDes = "large cap"
-            } else if (recommended.marketCap >= 2000000000 && recommended.marketCap < 10000000000) {
-                thisMarketCapDes = "medium cap"
-            } else {
-                thisMarketCapDes = "small cap"
+            
+            var thisMarketCapDes = ""
+            for recommended in recommendArray {
+                if (recommended.marketCap >= 10000000000) {
+                    thisMarketCapDes = "large cap"
+                } else if (recommended.marketCap >= 2000000000 && recommended.marketCap < 10000000000) {
+                    thisMarketCapDes = "medium cap"
+                } else {
+                    thisMarketCapDes = "small cap"
+                }
+                if (marketCapDes == thisMarketCapDes) {
+                    finalArray.append(recommended)
+                }
             }
-            if (marketCapDes == thisMarketCapDes) {
-                finalArray.append(recommended)
-            }
+            completion(finalArray)
         }
-        completion(finalArray)
-    }
+
+            
+            
+            
+            
+            
+        }
+        
 }
 
 

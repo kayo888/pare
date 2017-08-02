@@ -10,12 +10,17 @@ import UIKit
 import Charts
 import SwiftyJSON
 import Alamofire
+import Firebase
+import FirebaseAuthUI
+import FirebaseDatabase
+import FirebaseAuth
 
-class StockViewController: UIViewController, UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
-    
+class StockViewController: UIViewController {
+
+    @IBOutlet weak var searchButton: UIBarButtonItem!
+    @IBOutlet weak var firstSecondSegmented: UISegmentedControl!
     @IBOutlet weak var stockView: UICollectionView!
     var stock: Stock?
-    var searchController : UISearchController!
     
     var gainersArray: [Stock] = []
     var losersArray: [Stock] = []
@@ -38,6 +43,19 @@ class StockViewController: UIViewController, UISearchResultsUpdating, UISearchCo
     
     func updateTime(symbol: String? = nil) {
         
+        guard let authUI = FUIAuth.defaultAuthUI()
+            else{return}
+        
+            Auth.auth().signInAnonymously() { (user, error) in
+                let isAnonymous = user!.isAnonymous
+                let uid = user!.uid
+                let userDict = ["uid": uid,
+                                "stock1": "AAPL", "stock2": "MSFT", "stock3": "TSLA"]
+                let ref = Database.database().reference().child("users").child((user?.uid)!)
+                ref.updateChildValues(userDict)
+        }
+    
+
         let gainers: [String] = getGainerSymbols()!
         let losers: [String] = getLoserSymbols()!
         
@@ -74,33 +92,8 @@ class StockViewController: UIViewController, UISearchResultsUpdating, UISearchCo
         super.viewDidLoad()
         
         updateTime()
-        configureSearchController()
     }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        
-    }
-    
-    func configureSearchController() {
-        searchController = UISearchController(searchResultsController: nil)
-        self.searchController.searchResultsUpdater = self
-        self.searchController.dimsBackgroundDuringPresentation = false
-        
-        searchController.searchBar.placeholder = "Search..."
-        self.searchController.delegate = self
-        searchController.searchBar.sizeToFit()
-        
-        self.searchController = UISearchController(searchResultsController:  nil)
-        
-        self.searchController.searchBar.delegate = self
-        
-        self.searchController.hidesNavigationBarDuringPresentation = false
-        
-        self.navigationItem.titleView = searchController.searchBar
-        
-        self.definesPresentationContext = true
-    }
-    
+
     
     
     func getGainerSymbols () -> [String]? {
@@ -180,7 +173,16 @@ class StockViewController: UIViewController, UISearchResultsUpdating, UISearchCo
         if let identifier = segue.identifier {
             if identifier == "ShowIndividualStock" {
                 let indexPath = stockView.indexPathsForSelectedItems?.first
-                
+//                
+//                Auth.auth().signInAnonymously() { (user, error) in
+//                    let isAnonymous = user!.isAnonymous
+//                    let uid = user!.uid
+//                    let userDict = ["uid": uid,
+//                                    "stock1": "AAPL", "stock2": "MSFT", "stock3": "TSLA"]
+//                    let ref = Database.database().reference().child("users").child((user?.uid)!)
+//                    ref.updateChildValues(userDict)
+//                }
+
                                 
                 //                let stock = Stock[indexPath!.item]
                 let individualStockViewController = segue.destination as! IndividualStockViewController
@@ -205,7 +207,7 @@ extension StockViewController: UICollectionViewDataSource {
         let watchListStock = moversArray[indexPath.item]
         cell.nameLabel.text = "(\(watchListStock.symbol))\(watchListStock.companyName)"
         cell.priceLabel.text = "$\(watchListStock.price)"
-        cell.stockLogo.image = watchListStock.logo
+        cell.logoImage.image = watchListStock.logo
         
         //        NetworkRequest.getAverages(symbol: watchListStock.symbol) { (dict: [String : Double]) in
         //            let timesArray = Array(dict.keys)

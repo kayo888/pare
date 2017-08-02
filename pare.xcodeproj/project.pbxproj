@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		111BEC7929A544DFD305AE63 /* Pods_pareUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12736E03E287A6957D13D00 /* Pods_pareUITests.framework */; };
-		6D2CC88C1F30EA480074A307 /* GoogleService-Info-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D2CC88B1F30EA480074A307 /* GoogleService-Info-2.plist */; };
+		6D2CC88C1F30EA480074A307 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D2CC88B1F30EA480074A307 /* GoogleService-Info.plist */; };
 		6D2CC8961F314AA70074A307 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2CC8951F314AA70074A307 /* User.swift */; };
 		6D2CC8981F3151410074A307 /* IndividualStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2CC8971F3151410074A307 /* IndividualStockViewController.swift */; };
 		6D2CC89A1F31518E0074A307 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2CC8991F31518D0074A307 /* NewsViewController.swift */; };
@@ -20,8 +20,6 @@
 		6D7778C81F2AC69D0050BED2 /* pareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7778C71F2AC69D0050BED2 /* pareTests.swift */; };
 		6D7778D31F2AC69D0050BED2 /* pareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7778D21F2AC69D0050BED2 /* pareUITests.swift */; };
 		6D7778E11F2ACF040050BED2 /* StockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7778E01F2ACF040050BED2 /* StockViewController.swift */; };
-		6D7778E31F2AD4680050BED2 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7778E21F2AD4680050BED2 /* CustomSearchBar.swift */; };
-		6D7778E51F2ADB090050BED2 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7778E41F2ADB090050BED2 /* CustomSearchController.swift */; };
 		6D7778E71F2BAE7A0050BED2 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7778E61F2BAE7A0050BED2 /* Stock.swift */; };
 		6D7778E91F2BAF870050BED2 /* StockViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7778E81F2BAF870050BED2 /* StockViewCell.swift */; };
 		6D7778EB1F2BB6240050BED2 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7778EA1F2BB6240050BED2 /* NetworkRequest.swift */; };
@@ -54,7 +52,7 @@
 		35682D43931915346A8BF801 /* Pods-pareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pareTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-pareTests/Pods-pareTests.release.xcconfig"; sourceTree = "<group>"; };
 		3C27B166884897499F0F3FC2 /* Pods_pare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		542EEC1471D98753616A5FF7 /* Pods-pareUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pareUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pareUITests/Pods-pareUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		6D2CC88B1F30EA480074A307 /* GoogleService-Info-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-2.plist"; sourceTree = "<group>"; };
+		6D2CC88B1F30EA480074A307 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D2CC8951F314AA70074A307 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6D2CC8971F3151410074A307 /* IndividualStockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualStockViewController.swift; sourceTree = "<group>"; };
 		6D2CC8991F31518D0074A307 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
@@ -72,8 +70,6 @@
 		6D7778D21F2AC69D0050BED2 /* pareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pareUITests.swift; sourceTree = "<group>"; };
 		6D7778D41F2AC69D0050BED2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D7778E01F2ACF040050BED2 /* StockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StockViewController.swift; path = ../StockViewController.swift; sourceTree = "<group>"; };
-		6D7778E21F2AD4680050BED2 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
-		6D7778E41F2ADB090050BED2 /* CustomSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
 		6D7778E61F2BAE7A0050BED2 /* Stock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		6D7778E81F2BAF870050BED2 /* StockViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockViewCell.swift; sourceTree = "<group>"; };
 		6D7778EA1F2BB6240050BED2 /* NetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
@@ -161,8 +157,6 @@
 				6D2CC89B1F3152BB0074A307 /* NewsViewCell.swift */,
 				6D7778B61F2AC69C0050BED2 /* Main.storyboard */,
 				6D7778E81F2BAF870050BED2 /* StockViewCell.swift */,
-				6D7778E21F2AD4680050BED2 /* CustomSearchBar.swift */,
-				6D7778E41F2ADB090050BED2 /* CustomSearchController.swift */,
 				6D7778E01F2ACF040050BED2 /* StockViewController.swift */,
 				6D7778EE1F2BD8110050BED2 /* DiscoverViewController.swift */,
 				6D7778F01F2BD87C0050BED2 /* NewsItem.swift */,
@@ -174,7 +168,7 @@
 				6D7778B91F2AC69C0050BED2 /* Assets.xcassets */,
 				6D7778BB1F2AC69C0050BED2 /* LaunchScreen.storyboard */,
 				6D7778BE1F2AC69C0050BED2 /* Info.plist */,
-				6D2CC88B1F30EA480074A307 /* GoogleService-Info-2.plist */,
+				6D2CC88B1F30EA480074A307 /* GoogleService-Info.plist */,
 			);
 			path = pare;
 			sourceTree = "<group>";
@@ -324,7 +318,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D2CC88C1F30EA480074A307 /* GoogleService-Info-2.plist in Resources */,
+				6D2CC88C1F30EA480074A307 /* GoogleService-Info.plist in Resources */,
 				6D7778BD1F2AC69C0050BED2 /* LaunchScreen.storyboard in Resources */,
 				6D7778F51F2C19720050BED2 /* symbol + sector.json in Resources */,
 				6D7778BA1F2AC69C0050BED2 /* Assets.xcassets in Resources */,
@@ -494,7 +488,6 @@
 				6D7778EF1F2BD8110050BED2 /* DiscoverViewController.swift in Sources */,
 				6D7778F11F2BD87C0050BED2 /* NewsItem.swift in Sources */,
 				6D7778EB1F2BB6240050BED2 /* NetworkRequest.swift in Sources */,
-				6D7778E51F2ADB090050BED2 /* CustomSearchController.swift in Sources */,
 				6D2CC89C1F3152BB0074A307 /* NewsViewCell.swift in Sources */,
 				6D7778B31F2AC69C0050BED2 /* AppDelegate.swift in Sources */,
 				6D7778E11F2ACF040050BED2 /* StockViewController.swift in Sources */,
@@ -502,7 +495,6 @@
 				6D2CC8981F3151410074A307 /* IndividualStockViewController.swift in Sources */,
 				6D7778E91F2BAF870050BED2 /* StockViewCell.swift in Sources */,
 				6D7778E71F2BAE7A0050BED2 /* Stock.swift in Sources */,
-				6D7778E31F2AD4680050BED2 /* CustomSearchBar.swift in Sources */,
 				6D7778ED1F2BB6940050BED2 /* Constants.swift in Sources */,
 				6D2CC8961F314AA70074A307 /* User.swift in Sources */,
 			);
