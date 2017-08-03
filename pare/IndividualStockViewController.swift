@@ -21,8 +21,9 @@ class IndividualStockViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var followButton: UIButton!
-        
+    
     let positiveGreen = UIColor(red: 62.0/255.0, green: 189.0/255.0, blue: 153.0/255.0, alpha: 1.0)
+    let negativeRed = UIColor(red: 250/255.0, green: 92/255.0, blue: 120/255.0, alpha: 1.0)
     
     var yVals1: [ChartDataEntry] = []
     var months = [String]()
@@ -40,7 +41,7 @@ class IndividualStockViewController: UIViewController {
             }
             
             NetworkRequest.getNews(symbol: stock.symbol) { (newsItems: [NewsItem]) in
-
+                
                 self.newsArray = newsItems
                 print(self.newsArray)
                 
@@ -62,7 +63,12 @@ class IndividualStockViewController: UIViewController {
     func setChart(dataPoints: [String], values: [Double]) {
         yVals1 = insertChartDataEntry(values)
         let lineChartDataSet1 = LineChartDataSet(values: yVals1, label: "")
-        lineChartDataSet1.setColor(positiveGreen)
+        
+        if (stock?.isPositive)! {
+            lineChartDataSet1.setColor(positiveGreen)
+        } else {
+            lineChartDataSet1.setColor(negativeRed)
+        }
         
         var lineChartDataSets: [LineChartDataSet] = []
         lineChartDataSets.append(lineChartDataSet1)
@@ -122,19 +128,19 @@ class IndividualStockViewController: UIViewController {
         }
     }
     
-        func getNews () -> Void {
-            let symbol = stock?.symbol
-            if let symbol = symbol {
-                NetworkRequest.getNews(symbol: symbol) { (newsItems: [NewsItem]) in
-    
-                    self.newsArray = newsItems
-    
-                }
-            } else {
-                print("symbol is nil")
+    func getNews () -> Void {
+        let symbol = stock?.symbol
+        if let symbol = symbol {
+            NetworkRequest.getNews(symbol: symbol) { (newsItems: [NewsItem]) in
+                
+                self.newsArray = newsItems
+                
             }
-    
+        } else {
+            print("symbol is nil")
         }
+        
+    }
     
     
     

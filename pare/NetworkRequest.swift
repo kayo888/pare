@@ -24,20 +24,15 @@ struct NetworkRequest {
         return formatter.string(from: date)
     }
     
-    static func instantiateStock(symbol: String, completion: @escaping (Stock) -> Void) {
+    static func instantiateStock(symbol: String, completion: @escaping (Stock?) -> Void) {
         let thisSymbol = symbol
         getStockName(symbol: thisSymbol, completion: { (name) in
-            
             getStockLogo(symbol: thisSymbol) { (logo) in
-                
                 getMinuteData(symbol: thisSymbol) { (price) in
-                    
-                    allCompany(symbol: thisSymbol, completion: { (sector, description, site, ceo) in
-                        
+                    allCompany(symbol: thisSymbol, completion: { (description, site, ceo) in
                         quote(symbol: thisSymbol, completion: { (primaryExchange, calculationPrice, previousClose, avgTotalVolume, marketCap, peRatio, week52Low, week52High) in
                             
                             stats(symbol: thisSymbol, completion: { (profitMargin, peRatioLow, peRatioHigh) in
-                                
                                 var isPositive = true
                                 let change = price - previousClose
                                 var changePercent = 0.0
@@ -52,7 +47,7 @@ struct NetworkRequest {
                                     changePercent = (change / previousClose) * 100.00
                                 }
                                 
-                                let object = Stock(symbol: thisSymbol, companyName: name, logo: logo, price: price, changePercent: changePercent, change: change, primaryExchange: primaryExchange, calculationPrice: calculationPrice, previousClose: previousClose, avgTotalVolume: avgTotalVolume, marketCap: UInt64(marketCap), peRatio: peRatio, peRatioHigh: peRatioHigh, peRatioLow: peRatioLow, week52High: week52High, week52Low: week52Low, profitMargin: profitMargin, isPositive: isPositive, sector: sector, description: description, website: site, CEO: ceo)
+                                let object = Stock(symbol: thisSymbol, companyName: name, logo: logo, price: price, changePercent: changePercent, change: change, primaryExchange: primaryExchange, calculationPrice: calculationPrice, previousClose: previousClose, avgTotalVolume: avgTotalVolume, marketCap: UInt64(marketCap), peRatio: peRatio, peRatioHigh: peRatioHigh, peRatioLow: peRatioLow, week52High: week52High, week52Low: week52Low, profitMargin: profitMargin, isPositive: isPositive, description: description, website: site, CEO: ceo)
                                 
                                 completion(object)
                             })
@@ -83,8 +78,7 @@ struct NetworkRequest {
                     completion(name)
                 }
             case .failure(let error):
-                print(symbol)
-                print("name")
+                print("name", symbol)
             }
         }
         
@@ -106,7 +100,7 @@ struct NetworkRequest {
                     
                     guard let url = URL(string: logo) else {
                         
-                        print("error")
+                        print("error", symbol)
                         let image = UIImage(named: "notPoop.png")
                         completion(image!)
                         return
@@ -123,7 +117,7 @@ struct NetworkRequest {
                     }
                 }
             case .failure(let error):
-                print("image")
+                print("image", symbol)
                 
             }
         }
@@ -217,7 +211,7 @@ struct NetworkRequest {
                     completion(close)
                 }
             case .failure(let error):
-                print("minute")
+                print("minute", symbol)
                 
             }
         }
@@ -245,42 +239,42 @@ struct NetworkRequest {
         
     }
     
-//    static func getAverages (symbol: String, completion: @escaping ([String: Double]) -> Void) {
-//        let stockDataEndpoint = "\(Constants.IEX.IEXBase)\(symbol)\(Constants.IEXParameters.chartOneDay)"
-//        
-//        let time = Date()
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "HH:mm"
-//        formatter.timeZone = TimeZone(abbreviation: "EST")
-//        let resultTime = formatter.string(from: time)
-//        
-//        let dayMinute = stringToTime(string: resultTime)
-//        var averages: [String:Double] = [:]
-//        
-//        Alamofire.request(stockDataEndpoint).validate().responseJSON() { response in
-//            switch response.result {
-//            case .success:
-//                if let value = response.result.value {
-//                    let json = JSON(value)
-//                    let allTimeData = json.arrayValue
-//                    
-//                    for data in allTimeData {
-//                        let time = data["minute"].stringValue
-//                        let average = data["average"].doubleValue
-//                        
-//                        averages[time] = average
-//                        
-//                    }
-//                    completion(averages)
-//                }
-//            case .failure(let error):
-//                print(error)
-//            }
-//            
-//            
-//        }
-//        
-//    }
+    //    static func getAverages (symbol: String, completion: @escaping ([String: Double]) -> Void) {
+    //        let stockDataEndpoint = "\(Constants.IEX.IEXBase)\(symbol)\(Constants.IEXParameters.chartOneDay)"
+    //
+    //        let time = Date()
+    //        let formatter = DateFormatter()
+    //        formatter.dateFormat = "HH:mm"
+    //        formatter.timeZone = TimeZone(abbreviation: "EST")
+    //        let resultTime = formatter.string(from: time)
+    //
+    //        let dayMinute = stringToTime(string: resultTime)
+    //        var averages: [String:Double] = [:]
+    //
+    //        Alamofire.request(stockDataEndpoint).validate().responseJSON() { response in
+    //            switch response.result {
+    //            case .success:
+    //                if let value = response.result.value {
+    //                    let json = JSON(value)
+    //                    let allTimeData = json.arrayValue
+    //
+    //                    for data in allTimeData {
+    //                        let time = data["minute"].stringValue
+    //                        let average = data["average"].doubleValue
+    //
+    //                        averages[time] = average
+    //
+    //                    }
+    //                    completion(averages)
+    //                }
+    //            case .failure(let error):
+    //                print(error)
+    //            }
+    //
+    //
+    //        }
+    //
+    //    }
     
     static func getMonthAverages(symbol: String, completion: @escaping ([String: Double]) -> Void) {
         let stockDataEndpoint = "\(Constants.IEX.IEXBase)\(symbol)\(Constants.IEXParameters.chartOneMonth)"
@@ -377,7 +371,7 @@ struct NetworkRequest {
                     }
                 }
             case .failure(let error):
-                print("news")
+                print("news", symbol)
             }
             
             
@@ -385,112 +379,75 @@ struct NetworkRequest {
         
     }
     
-    static func allCompany (symbol: String, completion: @escaping (String, String, String, String) -> Void) {
+    
+    static func allCompany (symbol: String, completion: @escaping (String, String, String) -> Void) {
         let companyEndpoint = "\(Constants.IEX.IEXBase)\(symbol)\(Constants.IEXParameters.company)"
         
-        var site = ""
-        var description = ""
-        var ceo = ""
-        var sector = ""
         
         Alamofire.request(companyEndpoint).validate().responseJSON() { response in
             switch response.result {
             case .success:
                 if let value = response.result.value {
                     let json = JSON(value)
-                    let allCompanyData = json.arrayValue
+                    let site = json["website"].stringValue
+                    let description = json["description"].stringValue
+                    let ceo = json["CEO"].stringValue
                     
-                    for data in allCompanyData {
-                        site = data["website"].stringValue
-                        description = data["description"].stringValue
-                        ceo = data["CEO"].stringValue
-                    }
-                    guard let jsonURL = Bundle.main.url(forResource: "symbol + sector", withExtension: "json") else {
-                        print("Can't find!")
-                        return
-                    }
-                    DispatchQueue.global(qos: .userInitiated).sync {
-                        let jsonData = try! Data(contentsOf: jsonURL)
-                        let symbolSectorData = JSON(data: jsonData)
-                        let allSymbolsData = symbolSectorData["results"].arrayValue
-                        
-                        for data in allSymbolsData {
-                            if (symbol == data["Ticker symbol"].stringValue) {
-                                sector = data["GICS Sector"].stringValue
-                                break
-                            }
-                        }
-                    }
-                    completion(sector, description, site, ceo)
+                    completion(description, site, ceo)
+                    
                 }
             case .failure(let error):
                 print("company")
-                
             }
             
         }
     }
     
+    
+    
+    
     static func quote (symbol: String, completion: @escaping (String, String, Double, Int, Int, Double, Double, Double) -> Void) {
         let quoteEndpoint = "\(Constants.IEX.IEXBase)\(symbol)\(Constants.IEXParameters.quote)"
         
-        var primaryExchange = ""
-        var calculationPrice = ""
-        var previousClose = 0.0
-        var avgTotalVolume = 0
-        var marketCap = 0
-        var peRatio = 0.0
-        var week52High = 0.0
-        var week52Low = 0.0
         
         Alamofire.request(quoteEndpoint).validate().responseJSON() { response in
             switch response.result {
             case .success:
                 if let value = response.result.value {
                     let json = JSON(value)
-                    let allCompanyData = json.arrayValue
+                    let primaryExchange = json["primaryExchange"].stringValue
+                    let calculationPrice = json["calculationPrice"].stringValue
+                    let previousClose = json["previousClose"].doubleValue
+                    let peRatio = json["peRatio"].doubleValue
+                    let week52Low = json["week52Low"].doubleValue
+                    let week52High = json["week52High"].doubleValue
+                    let avgTotalVolume = json["avgTotalVolume"].intValue
+                    let marketCap = Int(json["marketCap"].uInt64Value)
                     
-                    for data in allCompanyData {
-                        primaryExchange = data["primaryExchange"].stringValue
-                        calculationPrice = data["calculationPrice"].stringValue
-                        previousClose = data["previousClose"].doubleValue
-                        peRatio = data["peRatio"].doubleValue
-                        week52Low = data["week52Low"].doubleValue
-                        week52High = data["week52High"].doubleValue
-                        avgTotalVolume = data["avgTotalVolume"].intValue
-                        marketCap = Int(data["marketCap"].uInt64Value)
-                    }
                     completion(primaryExchange, calculationPrice, previousClose, avgTotalVolume, marketCap, peRatio, week52Low, week52High)
                 }
             case .failure(let error):
-                print("quote")
+                print("quote", symbol)
             }
         }
     }
     
     static func stats (symbol: String, completion: @escaping (Double, Double, Double) -> Void) {
         let statsEndpoint = "\(Constants.IEX.IEXBase)\(symbol)\(Constants.IEXParameters.stats)"
-        
-        var profitMargin = 0.0
-        var peRatioHigh = 0.0
-        var peRatioLow = 0.0
-        
         Alamofire.request(statsEndpoint).validate().responseJSON() { response in
             switch response.result {
             case .success:
                 if let value = response.result.value {
                     let json = JSON(value)
-                    let allCompanyData = json.arrayValue
                     
-                    for data in allCompanyData {
-                        profitMargin = data["profitMargin"].doubleValue
-                        peRatioLow = data["peRatioLow"].doubleValue
-                        peRatioHigh = data["peRatioHigh"].doubleValue
-                    }
+                    let profitMargin = json["profitMargin"].doubleValue
+                    let peRatioLow = json["peRatioLow"].doubleValue
+                    let peRatioHigh = json["peRatioHigh"].doubleValue
+                    
                     completion(profitMargin, peRatioLow, peRatioHigh)
                 }
             case .failure(let error):
-                print("stats")
+                print("stats", symbol)
             }
         }
     }
@@ -539,7 +496,7 @@ struct NetworkRequest {
             let thisSymbol = stock["Ticker symbol"].stringValue
             
             instantiateStock(symbol: thisSymbol, completion: { (Stock) in
-                allStocks.append(Stock)
+                allStocks.append(Stock!)
             })
         }
         //    }
@@ -550,7 +507,7 @@ struct NetworkRequest {
         var marketCapDes = ""
         var marketCap: UInt64 = 0
         instantiateStock(symbol: symbol) { (Stock) in
-            marketCap = UInt64(Stock.marketCap)
+            marketCap = UInt64((Stock?.marketCap)!)
             currStock = Stock
             if (marketCap >= 10000000000) {
                 marketCapDes = "large cap"
@@ -592,14 +549,14 @@ struct NetworkRequest {
             }
             completion(finalArray)
         }
-
-            
-            
-            
-            
-            
-        }
         
+        
+        
+        
+        
+        
+    }
+    
 }
 
 

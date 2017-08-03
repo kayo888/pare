@@ -85,7 +85,7 @@ class StockViewController: UIViewController {
     
     func getSymbolInfo(symbol: String? = nil, completion: @escaping (Stock) -> Void) {
         NetworkRequest.instantiateStock(symbol: symbol!) { (Stock) in
-            completion(Stock)
+            completion(Stock!)
         }
     }
     

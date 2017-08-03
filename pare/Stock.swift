@@ -29,7 +29,6 @@ struct Stock {
     let profitMargin: Double
     
     let isPositive: Bool
-    let sector: String
     let description: String
     let website: String
     let CEO: String
