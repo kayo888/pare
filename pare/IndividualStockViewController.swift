@@ -122,19 +122,19 @@ class IndividualStockViewController: UIViewController {
         }
     }
     
-    //    func getNews () -> Void {
-    //        let symbol = stock?.symbol
-    //        if let symbol = symbol {
-    //            NetworkRequest.getNews(symbol: symbol) { (newsItems: [NewsItem]) in
-    //
-    //                self.newsArray = newsItems
-    //
-    //            }
-    //        } else {
-    //            print("symbol is nil")
-    //        }
-    //
-    //    }
+        func getNews () -> Void {
+            let symbol = stock?.symbol
+            if let symbol = symbol {
+                NetworkRequest.getNews(symbol: symbol) { (newsItems: [NewsItem]) in
+    
+                    self.newsArray = newsItems
+    
+                }
+            } else {
+                print("symbol is nil")
+            }
+    
+        }
     
     
     

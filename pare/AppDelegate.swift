@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import FirebaseAuthUI
 import FirebaseAuth
 import FirebaseDatabase
 

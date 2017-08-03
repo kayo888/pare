@@ -25,17 +25,18 @@ struct NetworkRequest {
     }
     
     static func instantiateStock(symbol: String, completion: @escaping (Stock) -> Void) {
-        getStockName(symbol: symbol, completion: { (name) in
+        let thisSymbol = symbol
+        getStockName(symbol: thisSymbol, completion: { (name) in
             
-            getStockLogo(symbol: symbol) { (logo) in
+            getStockLogo(symbol: thisSymbol) { (logo) in
                 
-                getMinuteData(symbol: symbol) { (price) in
+                getMinuteData(symbol: thisSymbol) { (price) in
                     
-                    allCompany(symbol: symbol, completion: { (sector, description, site, ceo) in
+                    allCompany(symbol: thisSymbol, completion: { (sector, description, site, ceo) in
                         
-                        quote(symbol: symbol, completion: { (primaryExchange, calculationPrice, previousClose, avgTotalVolume, marketCap, peRatio, week52Low, week52High) in
+                        quote(symbol: thisSymbol, completion: { (primaryExchange, calculationPrice, previousClose, avgTotalVolume, marketCap, peRatio, week52Low, week52High) in
                             
-                            stats(symbol: symbol, completion: { (profitMargin, peRatioLow, peRatioHigh) in
+                            stats(symbol: thisSymbol, completion: { (profitMargin, peRatioLow, peRatioHigh) in
                                 
                                 var isPositive = true
                                 let change = price - previousClose
@@ -51,7 +52,7 @@ struct NetworkRequest {
                                     changePercent = (change / previousClose) * 100.00
                                 }
                                 
-                                let object = Stock(symbol: symbol, companyName: name, logo: logo, price: price, changePercent: changePercent, change: change, primaryExchange: primaryExchange, calculationPrice: calculationPrice, previousClose: previousClose, avgTotalVolume: avgTotalVolume, marketCap: marketCap, peRatio: peRatio, peRatioHigh: peRatioHigh, peRatioLow: peRatioLow, week52High: week52High, week52Low: week52Low, profitMargin: profitMargin, isPositive: isPositive, sector: sector, description: description, website: site, CEO: ceo)
+                                let object = Stock(symbol: thisSymbol, companyName: name, logo: logo, price: price, changePercent: changePercent, change: change, primaryExchange: primaryExchange, calculationPrice: calculationPrice, previousClose: previousClose, avgTotalVolume: avgTotalVolume, marketCap: UInt64(marketCap), peRatio: peRatio, peRatioHigh: peRatioHigh, peRatioLow: peRatioLow, week52High: week52High, week52Low: week52Low, profitMargin: profitMargin, isPositive: isPositive, sector: sector, description: description, website: site, CEO: ceo)
                                 
                                 completion(object)
                             })
@@ -80,7 +81,6 @@ struct NetworkRequest {
                     let json = JSON(value)
                     let name = json["companyName"].stringValue
                     completion(name)
-                    print(name)
                 }
             case .failure(let error):
                 print(symbol)
@@ -107,15 +107,18 @@ struct NetworkRequest {
                     guard let url = URL(string: logo) else {
                         
                         print("error")
-                        let image = UIImage(named: "notPoop.jpg")
+                        let image = UIImage(named: "notPoop.png")
                         completion(image!)
                         return
                     }
                     
-                    let data = try? Data(contentsOf: url)
+                    let data = try! Data(contentsOf: url)
                     DispatchQueue.main.async {
-                        
-                        let image: UIImage = UIImage(data: (data)!)!
+                        guard let image = UIImage(data: (data)) else {
+                            let image = UIImage(named: "notPoop.png")
+                            completion(image!)
+                            return
+                        }
                         completion(image)
                     }
                 }
@@ -455,7 +458,7 @@ struct NetworkRequest {
                         week52Low = data["week52Low"].doubleValue
                         week52High = data["week52High"].doubleValue
                         avgTotalVolume = data["avgTotalVolume"].intValue
-                        marketCap = data["marketCap"].intValue
+                        marketCap = Int(data["marketCap"].uInt64Value)
                     }
                     completion(primaryExchange, calculationPrice, previousClose, avgTotalVolume, marketCap, peRatio, week52Low, week52High)
                 }
@@ -545,9 +548,9 @@ struct NetworkRequest {
         var currStock: Stock? = nil
         
         var marketCapDes = ""
-        var marketCap = 0
+        var marketCap: UInt64 = 0
         instantiateStock(symbol: symbol) { (Stock) in
-            marketCap = Stock.marketCap
+            marketCap = UInt64(Stock.marketCap)
             currStock = Stock
             if (marketCap >= 10000000000) {
                 marketCapDes = "large cap"

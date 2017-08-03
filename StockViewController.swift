@@ -11,9 +11,9 @@ import Charts
 import SwiftyJSON
 import Alamofire
 import Firebase
-import FirebaseAuthUI
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseAuthUI
 
 class StockViewController: UIViewController {
 
@@ -21,6 +21,8 @@ class StockViewController: UIViewController {
     @IBOutlet weak var firstSecondSegmented: UISegmentedControl!
     @IBOutlet weak var stockView: UICollectionView!
     var stock: Stock?
+    let positiveGreen = UIColor(red: 62.0/255.0, green: 189.0/255.0, blue: 153.0/255.0, alpha: 1.0)
+    let negativeRed = UIColor(red: 250/255.0, green: 92/255.0, blue: 120/255.0, alpha: 1.0)
     
     var gainersArray: [Stock] = []
     var losersArray: [Stock] = []
@@ -205,9 +207,15 @@ extension StockViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WatchlistStockViewCell", for: indexPath) as! StockViewCell
         
         let watchListStock = moversArray[indexPath.item]
-        cell.nameLabel.text = "(\(watchListStock.symbol))\(watchListStock.companyName)"
-        cell.priceLabel.text = "$\(watchListStock.price)"
+        cell.nameLabel.text = watchListStock.companyName
+        if (watchListStock.isPositive) {
+            cell.priceLabel.text = "$\(watchListStock.price)"
+            cell.priceLabel.textColor = positiveGreen
+        } else {
+            cell.priceLabel.textColor = negativeRed
+        }
         cell.logoImage.image = watchListStock.logo
+        cell.symbolLabel.text = watchListStock.symbol
         
         //        NetworkRequest.getAverages(symbol: watchListStock.symbol) { (dict: [String : Double]) in
         //            let timesArray = Array(dict.keys)

@@ -20,7 +20,7 @@ struct Stock {
     let calculationPrice: String
     let previousClose: Double
     let avgTotalVolume: Int
-    let marketCap: Int
+    let marketCap: UInt64
     let peRatio: Double
     let peRatioHigh: Double
     let peRatioLow: Double

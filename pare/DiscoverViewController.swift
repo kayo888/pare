@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import FirebaseAuthUI
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseAuth
@@ -20,7 +19,7 @@ class DiscoverViewController: UIViewController {
     @IBOutlet weak var topRecCollectionView: UICollectionView!
     @IBOutlet weak var basedOnCollectionView: UICollectionView!
     override func viewDidLoad() {
-        super.viewDidLoad()  
+        super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
@@ -28,22 +27,21 @@ class DiscoverViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-        
+    
     override func viewDidAppear(_ animated: Bool) {
         
-        NetworkRequest.filterSectors(symbol: "AAPL") { (test: [Stock]) in
-            print(test)
-        }
+                NetworkRequest.filterSectors(symbol: "AAPL") { (test: [Stock]) in
+                    print(test)
+                }
     }
-    
 }
-//extension DiscoverViewController: UICollectionViewDataSource{
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        <#code#>
-//    }
-//}
-//
-//extension DiscoverViewController: UICollectionViewDelegate{}
+    //extension DiscoverViewController: UICollectionViewDataSource{
+    //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    //        <#code#>
+    //    }
+    //    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    //        <#code#>
+    //    }
+    //}
+    //
+    //extension DiscoverViewController: UICollectionViewDelegate{}

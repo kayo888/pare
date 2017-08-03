@@ -1,6 +1,0 @@
-framework module Pods_pareTests {
-  umbrella header "Pods-pareTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
