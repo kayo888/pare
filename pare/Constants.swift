@@ -49,7 +49,7 @@ struct Constants {
         static let oneYear = "/chart/1y"
         static let yearToDate = "/chart/ytd"
         static let company = "/company"
-        static let marketNews = "/market/news/last/10"
+        static let marketNews = "/market/news/last/12"
         static let stockNews = "/news/last/6"
         static let logo = "/logo"
         static let quote = "/quote"

@@ -387,6 +387,35 @@ struct NetworkRequest {
                 print("news", symbol)
             }
             
+        }
+        
+    }
+    
+    static func getMarketNews(completion: @escaping ([NewsItem]) -> Void) {
+        var newsItems = [NewsItem]()
+        let newsEndpoint = "\(Constants.IEX.IEXBase)\(Constants.IEXParameters.marketNews)"
+        
+        Alamofire.request(newsEndpoint).validate().responseJSON() { response in
+            switch response.result {
+            case .success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    
+                    let allNewsData = json.arrayValue
+                    
+                    for data in allNewsData {
+                        let headline = data["headline"].stringValue
+                        let source = data["source"].stringValue
+                        let url = data["url"].url
+                        let news = NewsItem(headline: headline, source: source, url: url!)
+                        newsItems.append(news)
+                        
+                        completion(newsItems)
+                    }
+                }
+            case .failure(let error):
+                print("news")
+            }
             
         }
         
@@ -534,7 +563,7 @@ struct NetworkRequest {
             //                let stock = allStockData[i]
             let dispatchGroup = DispatchGroup()
             var recommendArray : [String] = []
-
+            
             for stock in allStockData {
                 dispatchGroup.enter()
                 let thisSymbol = stock["Ticker symbol"].stringValue
@@ -549,12 +578,12 @@ struct NetworkRequest {
                         thisMarketCapDes = "small cap"
                     }
                     var count = 0
-                    if (abs(thisPeRatio - symbolPeRatio) <= 10) && (marketCapDes == thisMarketCapDes) {
-                            recommendArray.append(thisSymbol)
-//                            instantiateStock(symbol: thisSymbol, completion: { (recommend :Stock?) in
-//                                recommendArray.append(recommend!)
-//                                dispatchGroup.leave()
-//                            })
+                    if (abs(thisPeRatio - symbolPeRatio) <= 5) && (marketCapDes == thisMarketCapDes) {
+                        recommendArray.append(thisSymbol)
+                        //                            instantiateStock(symbol: thisSymbol, completion: { (recommend :Stock?) in
+                        //                                recommendArray.append(recommend!)
+                        //                                dispatchGroup.leave()
+                        //                            })
                         dispatchGroup.leave()
                     } else {
                         dispatchGroup.leave()
@@ -568,7 +597,7 @@ struct NetworkRequest {
             }
         }
         
-
+        
         //        }
         //        }
         

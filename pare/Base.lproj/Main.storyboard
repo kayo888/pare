@@ -203,6 +203,9 @@
                                 <rect key="frame" x="327" y="92" width="37" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Follow"/>
+                                <connections>
+                                    <action selector="followButtonTapped:" destination="0dE-Po-TLt" eventType="touchUpInside" id="al3-va-b1v"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e43-SK-IJ1">
                                 <rect key="frame" x="0.0" y="148" width="375" height="4"/>
@@ -434,6 +437,9 @@
                                             <constraint firstItem="xhO-ib-3O3" firstAttribute="top" secondItem="HTh-4Y-EKz" secondAttribute="top" constant="80" id="vhb-bD-V8b"/>
                                             <constraint firstItem="ory-xK-5Ny" firstAttribute="top" secondItem="HTh-4Y-EKz" secondAttribute="top" id="x7R-gk-Eu0"/>
                                         </constraints>
+                                        <connections>
+                                            <segue destination="vzL-1n-tjY" kind="show" id="xe2-Tk-73Z"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="xcC-dc-oL2">
@@ -500,6 +506,9 @@
                                             <constraint firstItem="Qoc-co-DFu" firstAttribute="top" secondItem="hXr-Jg-Ssn" secondAttribute="bottom" constant="5.5" id="udW-xx-e7L"/>
                                             <constraint firstAttribute="bottom" secondItem="hXr-Jg-Ssn" secondAttribute="bottom" constant="20" id="xtd-n1-ReD"/>
                                         </constraints>
+                                        <connections>
+                                            <segue destination="0dE-Po-TLt" kind="show" id="X3i-lq-oEW"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Rx0-ax-KR4">
@@ -563,6 +572,9 @@
                                             <constraint firstAttribute="trailing" secondItem="0qc-3S-roQ" secondAttribute="trailing" id="otY-Rm-0fK"/>
                                             <constraint firstAttribute="trailing" secondItem="67M-yk-9uH" secondAttribute="trailing" id="rqs-gt-aqk"/>
                                         </constraints>
+                                        <connections>
+                                            <segue destination="0dE-Po-TLt" kind="show" id="ujz-Ct-XWq"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vQO-sO-r6G">
@@ -694,4 +706,8 @@
         <image name="Very-Basic-Binoculars-icon" width="25" height="21"/>
         <image name="radar-512" width="39" height="39"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="xe2-Tk-73Z"/>
+        <segue reference="ujz-Ct-XWq"/>
+    </inferredMetricsTieBreakers>
 </document>

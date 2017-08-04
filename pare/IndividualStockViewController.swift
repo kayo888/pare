@@ -50,7 +50,13 @@ class IndividualStockViewController: UIViewController {
             }
             
         }
+        followButton.layer.borderColor = UIColor.lightGray.cgColor
+        followButton.layer.borderWidth = 1
+        followButton.layer.cornerRadius = 6
+        followButton.clipsToBounds = true
         
+        followButton.setTitle("Follow", for: .normal)
+        followButton.setTitle("Following", for: .selected)
         
     }
     
@@ -138,10 +144,10 @@ class IndividualStockViewController: UIViewController {
         } else {
             print("symbol is nil")
         }
-        
     }
     
-    
+    @IBAction func followButtonTapped(_ sender: Any) {
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
@@ -163,7 +169,6 @@ class IndividualStockViewController: UIViewController {
 
 
 extension IndividualStockViewController: UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return newsArray.count
