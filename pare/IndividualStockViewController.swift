@@ -43,7 +43,6 @@ class IndividualStockViewController: UIViewController {
             NetworkRequest.getNews(symbol: stock.symbol) { (newsItems: [NewsItem]) in
                 
                 self.newsArray = newsItems
-                print(self.newsArray)
                 
                 DispatchQueue.main.async {
                     self.newsCollectionView.reloadData()

@@ -30,52 +30,52 @@ struct NetworkRequest {
         dispatchgroup.enter()
         var object:Stock?
         getStockName(symbol: thisSymbol, completion: { (name) in
-
+            
             getStockLogo(symbol: thisSymbol) { (logo) in
-                    allCompany(symbol: thisSymbol, completion: { (description, site, ceo) in
-                        quote(symbol: thisSymbol, completion: { (primaryExchange, calculationPrice, previousClose, avgTotalVolume, marketCap, peRatio, week52Low, week52High) in
-                            
-                            stats(symbol: thisSymbol, completion: { (profitMargin, peRatioLow, peRatioHigh) in
-                                getMinuteData(symbol: thisSymbol) { (price) in
-                                    
-                                    var isPositive = true
-                                    let change = price - previousClose
-                                    var changePercent = 0.0
-                                    
-                                    if (change < 0) {
-                                        isPositive = false
-                                    }
-                                    
-                                    if (change == 0) {
-                                        changePercent = 0.0
-                                    } else {
-                                        changePercent = (change / previousClose) * 100.00
-                                    }
-                                    
-                                    object = Stock(symbol: thisSymbol, companyName: name, logo: logo, price: price, changePercent: changePercent, change: change, primaryExchange: primaryExchange, calculationPrice: calculationPrice, previousClose: previousClose, avgTotalVolume: avgTotalVolume, marketCap: UInt64(marketCap), peRatio: peRatio, peRatioHigh: peRatioHigh, peRatioLow: peRatioLow, week52High: week52High, week52Low: week52Low, profitMargin: profitMargin, isPositive: isPositive, description: description, website: site, CEO: ceo)
-                                    completion(object)
-//                                dispatchgroup.leave()
+                allCompany(symbol: thisSymbol, completion: { (description, site, ceo) in
+                    quote(symbol: thisSymbol, completion: { (primaryExchange, calculationPrice, previousClose, avgTotalVolume, marketCap, peRatio, week52Low, week52High) in
+                        
+                        stats(symbol: thisSymbol, completion: { (profitMargin, peRatioLow, peRatioHigh) in
+                            getMinuteData(symbol: thisSymbol) { (price) in
+                                
+                                var isPositive = true
+                                let change = price - previousClose
+                                var changePercent = 0.0
+                                
+                                if (change < 0) {
+                                    isPositive = false
+                                }
+                                
+                                if (change == 0) {
+                                    changePercent = 0.0
+                                } else {
+                                    changePercent = (change / previousClose) * 100.00
+                                }
+                                
+                                object = Stock(symbol: thisSymbol, companyName: name, logo: logo, price: price, changePercent: changePercent, change: change, primaryExchange: primaryExchange, calculationPrice: calculationPrice, previousClose: previousClose, avgTotalVolume: avgTotalVolume, marketCap: UInt64(marketCap), peRatio: peRatio, peRatioHigh: peRatioHigh, peRatioLow: peRatioLow, week52High: week52High, week52Low: week52Low, profitMargin: profitMargin, isPositive: isPositive, description: description, website: site, CEO: ceo)
+                                completion(object)
+                                //                                dispatchgroup.leave()
                             }
-//                            dispatchgroup.leave()
+                            //                            dispatchgroup.leave()
                         })
-//                        dispatchgroup.leave()
-
+                        //                        dispatchgroup.leave()
+                        
                         
                     })
-//                    dispatchgroup.leave()
-
+                    //                    dispatchgroup.leave()
+                    
                 })
-//                dispatchgroup.leave()
-
+                //                dispatchgroup.leave()
+                
             }
-//            dispatchgroup.leave()
-
+            //            dispatchgroup.leave()
+            
         })
         
-//        dispatchgroup.notify(queue: .main) {
-//            completion(object)
-
-//        }
+        //        dispatchgroup.notify(queue: .main) {
+        //            completion(object)
+        
+        //        }
         
     }
     
@@ -396,7 +396,7 @@ struct NetworkRequest {
     static func allCompany (symbol: String, completion: @escaping (String, String, String) -> Void) {
         let companyEndpoint = "\(Constants.IEX.IEXBase)\(symbol)\(Constants.IEXParameters.company)"
         
-//        var json: JSON
+        //        var json: JSON
         var site: String = ""
         var description: String = ""
         var ceo: String = ""
@@ -428,7 +428,7 @@ struct NetworkRequest {
     
     
     
-    static func quote (symbol: String, completion: @escaping (String, String, Double, Int, Int, Double, Double, Double) -> Void) {
+    static func quote (symbol: String, completion: @escaping (String, String, Double, Int, UInt64, Double, Double, Double) -> Void) {
         let quoteEndpoint = "\(Constants.IEX.IEXBase)\(symbol)\(Constants.IEXParameters.quote)"
         
         
@@ -446,7 +446,7 @@ struct NetworkRequest {
                     let avgTotalVolume = json["avgTotalVolume"].intValue
                     let marketCap = Int(json["marketCap"].uInt64Value)
                     
-                    completion(primaryExchange, calculationPrice, previousClose, avgTotalVolume, marketCap, peRatio, week52Low, week52High)
+                    completion(primaryExchange, calculationPrice, previousClose, avgTotalVolume, UInt64(marketCap), peRatio, week52Low, week52High)
                 }
             case .failure(let error):
                 print("quote", symbol)
@@ -499,215 +499,298 @@ struct NetworkRequest {
     //        var utilites: [Stock] = []
     
     
-    static func filterSectors(symbol: String, completion: @escaping ([Stock]) -> Void) {
+    static func filterSectors(symbol: String, completion: @escaping ([String]) -> Void) {
         
-        var allStocks: [Stock] = []
-        var recommendArray : [Stock] = []
-        var finalArray : [Stock] = []
+        var symbolMarketCap: UInt64 = 0
+        var symbolPeRatio = 0.0
+        var marketCapDes = ""
+        var thisMarketCap: UInt64 = 0
+        var thisPeRatio = 0.0
+        var thisMarketCapDes = ""
         
-        guard let jsonURL = Bundle.main.url(forResource: "symbol + sector", withExtension: "json") else {
-            return
-        }
-        
-        //        DispatchQueue.global(qos: .userInitiated).sync {
-        let jsonData = try! Data(contentsOf: jsonURL)
-        let sectorData = JSON(data: jsonData)
-        let allStockData = sectorData["results"].arrayValue
-        let dispatchGroup = DispatchGroup()
-        
-        for stock in allStockData {
-            let thisSymbol = stock["Ticker symbol"].stringValue
-            dispatchGroup.enter()
-            instantiateStock(symbol: thisSymbol, completion: { (Stock) in
-                allStocks.append(Stock!)
-                dispatchGroup.leave()
-            })
-        }
-        //    }
-        dispatchGroup.notify(queue: .main) {
-            allStocks = allStocks.sorted{ ($0.peRatio > $1.peRatio) }
-            var currStock: Stock? = nil
+        //        DispatchQueue.main.sync {
+        instantiateStock(symbol: symbol) { (symbolStock :Stock?) in
+            //            dispatchGroup.enter()
+            symbolMarketCap = (symbolStock?.marketCap)!
+            symbolPeRatio = (symbolStock?.peRatio)!
+            if (symbolMarketCap >= 10000000000) {
+                marketCapDes = "large cap"
+            } else if (symbolMarketCap >= 2000000000 && symbolMarketCap < 10000000000) {
+                marketCapDes = "medium cap"
+            } else {
+                marketCapDes = "small cap"
+            }
+            
+            guard let jsonURL = Bundle.main.url(forResource: "symbol + sector", withExtension: "json") else {
+                return
+            }
+            //        DispatchQueue.global(qos: .userInitiated).sync {
+            let jsonData = try! Data(contentsOf: jsonURL)
+            let sectorData = JSON(data: jsonData)
+            let allStockData = sectorData["results"].arrayValue
+            
+            //            dispatchGroup.enter()
+            //            DispatchQueue.concurrentPerform(iterations: allStockData.count) { (i) in
+            //                let stock = allStockData[i]
+            let dispatchGroup = DispatchGroup()
+            var recommendArray : [String] = []
 
-            var marketCapDes = ""
-            var marketCap: UInt64 = 0
-            instantiateStock(symbol: symbol) { (Stock) in
-                marketCap = UInt64((Stock?.marketCap)!)
-                currStock = Stock
-                if (marketCap >= 10000000000) {
-                    marketCapDes = "large cap"
-                } else if (marketCap >= 2000000000 && marketCap < 10000000000) {
-                    marketCapDes = "medium cap"
-                } else {
-                    marketCapDes = "small cap"
-                }
-                //
-                let ratio = currStock!.peRatio
-                let highRange = ratio + 1 ... ratio + 10
-                let lowRange = ratio - 10 ..< ratio
-                for (i, stock) in allStocks.enumerated() {
-                    if (stock.symbol == symbol) {
-                        let index = allStocks[i]
-                        
-                        if (highRange ~= index.peRatio) {
-                            recommendArray.append(index)
-                        } else if (lowRange ~= index.peRatio) {
-                            recommendArray.append(index)
-                            
-                        }
-                        
-                    }
-                }
-                
-                var thisMarketCapDes = ""
-                for recommended in recommendArray {
-                    if (recommended.marketCap >= 10000000000) {
+            for stock in allStockData {
+                dispatchGroup.enter()
+                let thisSymbol = stock["Ticker symbol"].stringValue
+                quote(symbol: thisSymbol, completion: { (_, _, _, _, marketCap, peRatio, _, _) in
+                    thisMarketCap = UInt64(marketCap)
+                    thisPeRatio = peRatio
+                    if (thisMarketCap >= 10000000000) {
                         thisMarketCapDes = "large cap"
-                    } else if (recommended.marketCap >= 2000000000 && recommended.marketCap < 10000000000) {
+                    } else if (thisMarketCap >= 2000000000 && marketCap < 10000000000) {
                         thisMarketCapDes = "medium cap"
                     } else {
                         thisMarketCapDes = "small cap"
                     }
-                    if (marketCapDes == thisMarketCapDes) {
-                        finalArray.append(recommended)
+                    var count = 0
+                    if (abs(thisPeRatio - symbolPeRatio) <= 10) && (marketCapDes == thisMarketCapDes) {
+                            recommendArray.append(thisSymbol)
+//                            instantiateStock(symbol: thisSymbol, completion: { (recommend :Stock?) in
+//                                recommendArray.append(recommend!)
+//                                dispatchGroup.leave()
+//                            })
+                        dispatchGroup.leave()
+                    } else {
+                        dispatchGroup.leave()
                     }
-                }
-                completion(finalArray)
+                })
+                
             }
             
-            
+            dispatchGroup.notify(queue: .main) {
+                completion(recommendArray)
+            }
         }
         
-        
+
+        //        }
+        //        }
         
     }
     
+    
+    
+    //                let highRange = ratio + 1 ... ratio + 10
+    //                let lowRange = ratio - 10 ..< ratio
+    //                for (i, stock) in allStocks.enumerated() {
+    //                    if (stock.symbol == symbol) {
+    //                        let index = allStocks[i]
+    //
+    //                        if (highRange ~= index.peRatio) {
+    //                            recommendArray.append(index)
+    //                        } else if (lowRange ~= index.peRatio) {
+    //                            recommendArray.append(index)
+    //
+    //                        }
+    //
+    //                    }
+    //                }
+    //
+    //            })
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //            instantiateStock(symbol: thisSymbol, completion: { (Stock) in
+    //                allStocks.append(Stock!)
+    //                dispatchGroup.leave()
+    //            })
+    //        }
+    //        //    }
+    //        dispatchGroup.notify(queue: .main) {
+    //            allStocks = allStocks.sorted{ ($0.peRatio > $1.peRatio) }
+    //            var currStock: Stock? = nil
+    //
+    //            var marketCapDes = ""
+    //            var marketCap: UInt64 = 0
+    //            instantiateStock(symbol: symbol) { (Stock) in
+    //                marketCap = UInt64((Stock?.marketCap)!)
+    //                currStock = Stock
+    //                if (marketCap >= 10000000000) {
+    //                    marketCapDes = "large cap"
+    //                } else if (marketCap >= 2000000000 && marketCap < 10000000000) {
+    //                    marketCapDes = "medium cap"
+    //                } else {
+    //                    marketCapDes = "small cap"
+    //                }
+    //                //
+    //                let ratio = currStock!.peRatio
+    //                let highRange = ratio + 1 ... ratio + 10
+    //                let lowRange = ratio - 10 ..< ratio
+    //                for (i, stock) in allStocks.enumerated() {
+    //                    if (stock.symbol == symbol) {
+    //                        let index = allStocks[i]
+    //
+    //                        if (highRange ~= index.peRatio) {
+    //                            recommendArray.append(index)
+    //                        } else if (lowRange ~= index.peRatio) {
+    //                            recommendArray.append(index)
+    //
+    //                        }
+    //
+    //                    }
+    //                }
+    //
+    //                var thisMarketCapDes = ""
+    //                for recommended in recommendArray {
+    //                    if (recommended.marketCap >= 10000000000) {
+    //                        thisMarketCapDes = "large cap"
+    //                    } else if (recommended.marketCap >= 2000000000 && recommended.marketCap < 10000000000) {
+    //                        thisMarketCapDes = "medium cap"
+    //                    } else {
+    //                        thisMarketCapDes = "small cap"
+    //                    }
+    //                    if (marketCapDes == thisMarketCapDes) {
+    //                        finalArray.append(recommended)
+    //                    }
+    //                }
+    //                completion(finalArray)
+    //            }
+    //
+    //
+    //        }
+    //
+    //
+    //
+    //    }
+    //
+    //}
+    
+    
+    
+    
+    
+    
+    
+    
+    //            for stock in allStockData {
+    //                let thisSymbol = stock["Symbol ticker"].stringValue
+    //                let thisSector = stock["GICS Sector"].stringValue
+    //
+    //                if (thisSector == "Consumer Discretionary") {
+    //                    instantiateStock(symbol: thisSymbol, completion: { (consumerDiscretionaryStock) in
+    //                        consumerDiscretionary.append(consumerDiscretionaryStock)
+    //                    })
+    //                } else if (thisSector == "Energy") {
+    //                    instantiateStock(symbol: thisSymbol, completion: { (energyStock) in
+    //                        energy.append(energyStock)
+    //                    })
+    //                } else if (thisSector == "Consumer Staples") {
+    //                    instantiateStock(symbol: thisSymbol, completion: { (consumerStapleStock) in
+    //                        consumerStaples.append(consumerStapleStock)
+    //                    })
+    //                } else if (thisSector == "Financials") {
+    //                    instantiateStock(symbol: thisSymbol, completion: { (financialsStock) in
+    //                        financials.append(financialsStock)
+    //                    })
+    //                } else if (thisSector == "Health Care") {
+    //                    instantiateStock(symbol: thisSymbol, completion: { (healthCareStock) in
+    //                        healthCare.append(healthCareStock)
+    //                    })
+    //                } else if (thisSector == "Industrials") {
+    //                    instantiateStock(symbol: thisSymbol, completion: { (industrialsStock) in
+    //                        industrials.append(industrialsStock)
+    //                    })
+    //                } else if (thisSector == "Information Technology") {
+    //                    instantiateStock(symbol: thisSymbol, completion: { (informationTechStock) in
+    //                        informationTechnology.append(informationTechStock)
+    //                    })
+    //                } else if (thisSector == "Materials") {
+    //                    instantiateStock(symbol: thisSymbol, completion: { (materialStock) in
+    //                        materials.append(materialStock)
+    //                    })
+    //                } else if (thisSector == "Real Estate") {
+    //                    instantiateStock(symbol: thisSymbol, completion: { (realEstateStock) in
+    //                        realEstate.append(realEstateStock)
+    //                    })
+    //                } else if (thisSector == "Telecommunications Services") {
+    //                    instantiateStock(symbol: thisSymbol, completion: { (telecommStock) in
+    //                        telecommunicationServices.append(telecommStock)
+    //                    })
+    //                } else if (thisSector == "Utilities") {
+    //                    instantiateStock(symbol: thisSymbol, completion: { (utilitiesStock) in
+    //                        utilites.append(utilitiesStock)
+    //                    })
+    //                }
+    //            }
+    
+    
+    
+    
+    
+    
+    
+    //            let allStocks: [String: [Stock]] = ["Consumer Discretionary": consumerDiscretionary, "Energy": energy, "Consumer Staples": consumerStaples, "Financials": financials, "Health Care": healthCare, "Industrials": industrials, "Information Technology": informationTechnology, "Materials": materials, "Real Estate": realEstate, "Telecommunications Services": telecommunicationServices, "Utilities": utilites]
+    
+    
+    
+    
+    
+    
+    
+    //        getMinuteData(symbol: symbol) { (price) in
+    //
+    //            quote(symbol: symbol, completion: { (_, _, previousClose, _, marketCap, peRatio, _, _) in
+    //                if (marketCap >= 10000000000) {
+    //                    marketCapDes = "large cap"
+    //                } else if (marketCap >= 2000000000 && marketCap < 10000000000) {
+    //                    marketCapDes = "medium cap"
+    //                } else {
+    //                    marketCapDes = "small cap"
+    //                }
+    //
+    //                guard let jsonURL = Bundle.main.url(forResource: "symbol + sector", withExtension: "json") else {
+    //                    return
+    //                }
+    //
+    //                DispatchQueue.global(qos: .userInitiated).sync {
+    //                    let jsonData = try! Data(contentsOf: jsonURL)
+    //                    let sectorData = JSON(data: jsonData)
+    //                    let allStockData = sectorData["results"].arrayValue
+    //
+    //                    for stocks in allStockData {
+    //                        let thisSymbol = stocks["Symbol ticker"].stringValue
+    //                        let thisSector = stocks["GICS Sector"].stringValue
+    //
+    ////                        let symbolSector = allStockData.filter{symbol == thisSymbol}
+    //
+    //                        if (symbol != thisSymbol) {
+    //                            getMinuteData(symbol: thisSymbol, completion: { (thisPrice) in
+    //
+    //                                quote(symbol: thisSymbol, completion: { (_, _, thisPreviousClose, _, thisMarketCap, thisPeRatio, _, _) in
+    //                                    if (thisMarketCap >= 10000000000) {
+    //                                        thisMarketCapDes = "large cap"
+    //                                    } else if (thisMarketCap >= 2000000000 && marketCap < 10000000000) {
+    //                                        thisMarketCapDes = "medium cap"
+    //                                    } else {
+    //                                        thisMarketCapDes = "small cap"
+    //                                    }
+    //
+    //                                    if (abs(price - thisPrice) <= 15) {
+    //                                        if (marketCapDes == thisMarketCapDes) {
+    //                                            if (abs(previousClose - thisPreviousClose) <= 10) {
+    //
+    //                                            }
+    //                                        }
+    //                                    }
+    //                                })
+    //                            })
+    //                        })
+    //                    }
+    //                }
+    //
+    //            }
+    //        }
+    //    }
+    
+    
 }
-
-
-
-
-
-
-
-
-//            for stock in allStockData {
-//                let thisSymbol = stock["Symbol ticker"].stringValue
-//                let thisSector = stock["GICS Sector"].stringValue
-//
-//                if (thisSector == "Consumer Discretionary") {
-//                    instantiateStock(symbol: thisSymbol, completion: { (consumerDiscretionaryStock) in
-//                        consumerDiscretionary.append(consumerDiscretionaryStock)
-//                    })
-//                } else if (thisSector == "Energy") {
-//                    instantiateStock(symbol: thisSymbol, completion: { (energyStock) in
-//                        energy.append(energyStock)
-//                    })
-//                } else if (thisSector == "Consumer Staples") {
-//                    instantiateStock(symbol: thisSymbol, completion: { (consumerStapleStock) in
-//                        consumerStaples.append(consumerStapleStock)
-//                    })
-//                } else if (thisSector == "Financials") {
-//                    instantiateStock(symbol: thisSymbol, completion: { (financialsStock) in
-//                        financials.append(financialsStock)
-//                    })
-//                } else if (thisSector == "Health Care") {
-//                    instantiateStock(symbol: thisSymbol, completion: { (healthCareStock) in
-//                        healthCare.append(healthCareStock)
-//                    })
-//                } else if (thisSector == "Industrials") {
-//                    instantiateStock(symbol: thisSymbol, completion: { (industrialsStock) in
-//                        industrials.append(industrialsStock)
-//                    })
-//                } else if (thisSector == "Information Technology") {
-//                    instantiateStock(symbol: thisSymbol, completion: { (informationTechStock) in
-//                        informationTechnology.append(informationTechStock)
-//                    })
-//                } else if (thisSector == "Materials") {
-//                    instantiateStock(symbol: thisSymbol, completion: { (materialStock) in
-//                        materials.append(materialStock)
-//                    })
-//                } else if (thisSector == "Real Estate") {
-//                    instantiateStock(symbol: thisSymbol, completion: { (realEstateStock) in
-//                        realEstate.append(realEstateStock)
-//                    })
-//                } else if (thisSector == "Telecommunications Services") {
-//                    instantiateStock(symbol: thisSymbol, completion: { (telecommStock) in
-//                        telecommunicationServices.append(telecommStock)
-//                    })
-//                } else if (thisSector == "Utilities") {
-//                    instantiateStock(symbol: thisSymbol, completion: { (utilitiesStock) in
-//                        utilites.append(utilitiesStock)
-//                    })
-//                }
-//            }
-
-
-
-
-
-
-
-//            let allStocks: [String: [Stock]] = ["Consumer Discretionary": consumerDiscretionary, "Energy": energy, "Consumer Staples": consumerStaples, "Financials": financials, "Health Care": healthCare, "Industrials": industrials, "Information Technology": informationTechnology, "Materials": materials, "Real Estate": realEstate, "Telecommunications Services": telecommunicationServices, "Utilities": utilites]
-
-
-
-
-
-
-
-//        getMinuteData(symbol: symbol) { (price) in
-//
-//            quote(symbol: symbol, completion: { (_, _, previousClose, _, marketCap, peRatio, _, _) in
-//                if (marketCap >= 10000000000) {
-//                    marketCapDes = "large cap"
-//                } else if (marketCap >= 2000000000 && marketCap < 10000000000) {
-//                    marketCapDes = "medium cap"
-//                } else {
-//                    marketCapDes = "small cap"
-//                }
-//
-//                guard let jsonURL = Bundle.main.url(forResource: "symbol + sector", withExtension: "json") else {
-//                    return
-//                }
-//
-//                DispatchQueue.global(qos: .userInitiated).sync {
-//                    let jsonData = try! Data(contentsOf: jsonURL)
-//                    let sectorData = JSON(data: jsonData)
-//                    let allStockData = sectorData["results"].arrayValue
-//
-//                    for stocks in allStockData {
-//                        let thisSymbol = stocks["Symbol ticker"].stringValue
-//                        let thisSector = stocks["GICS Sector"].stringValue
-//
-////                        let symbolSector = allStockData.filter{symbol == thisSymbol}
-//
-//                        if (symbol != thisSymbol) {
-//                            getMinuteData(symbol: thisSymbol, completion: { (thisPrice) in
-//
-//                                quote(symbol: thisSymbol, completion: { (_, _, thisPreviousClose, _, thisMarketCap, thisPeRatio, _, _) in
-//                                    if (thisMarketCap >= 10000000000) {
-//                                        thisMarketCapDes = "large cap"
-//                                    } else if (thisMarketCap >= 2000000000 && marketCap < 10000000000) {
-//                                        thisMarketCapDes = "medium cap"
-//                                    } else {
-//                                        thisMarketCapDes = "small cap"
-//                                    }
-//
-//                                    if (abs(price - thisPrice) <= 15) {
-//                                        if (marketCapDes == thisMarketCapDes) {
-//                                            if (abs(previousClose - thisPreviousClose) <= 10) {
-//
-//                                            }
-//                                        }
-//                                    }
-//                                })
-//                            })
-//                        })
-//                    }
-//                }
-//
-//            }
-//        }
-//    }
-
-

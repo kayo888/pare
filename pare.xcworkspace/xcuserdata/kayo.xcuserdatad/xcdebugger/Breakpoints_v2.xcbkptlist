@@ -13,70 +13,6 @@
             timestampString = "523513210.206206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "520"
-            endingLineNumber = "520"
-            landmarkName = "filterSectors(symbol:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static pare.NetworkRequest.filterSectors (symbol : Swift.String, completion : (Swift.Array&lt;pare.Stock&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "pare"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kayo/Desktop/pare/pare/NetworkRequest.swift"
-                  timestampString = "523494143.470966"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "518"
-                  endingLineNumber = "518"
-                  offsetFromSymbolStart = "2412">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static pare.NetworkRequest.(filterSectors (symbol : Swift.String, completion : (Swift.Array&lt;pare.Stock&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "pare"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kayo/Desktop/pare/pare/NetworkRequest.swift"
-                  timestampString = "523494143.474223"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "502"
-                  endingLineNumber = "502"
-                  offsetFromSymbolStart = "400">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "pare/NetworkRequest.swift"
-            timestampString = "523513210.206206"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
-            landmarkName = "filterSectors(symbol:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "pare/NetworkRequest.swift"
-            timestampString = "523513210.206206"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "438"
             endingLineNumber = "438"
             landmarkName = "quote(symbol:completion:)"
@@ -97,78 +33,6 @@
             endingLineNumber = "458"
             landmarkName = "stats(symbol:completion:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            condition = "thisSymbol == nil"
-            continueAfterRunningActions = "No"
-            filePath = "pare/NetworkRequest.swift"
-            timestampString = "523513210.206206"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "506"
-            endingLineNumber = "506"
-            landmarkName = "filterSectors(symbol:completion:)"
-            landmarkType = "7">
-            <Actions>
-               <BreakpointActionProxy
-                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
-                  <ActionContent
-                     consoleCommand = "po stock">
-                  </ActionContent>
-               </BreakpointActionProxy>
-            </Actions>
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static pare.NetworkRequest.filterSectors (symbol : Swift.String, completion : (Swift.Array&lt;pare.Stock&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "pare"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kayo/Desktop/pare/pare/NetworkRequest.swift"
-                  timestampString = "523497320.339782"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "484"
-                  endingLineNumber = "484"
-                  offsetFromSymbolStart = "304">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static pare.NetworkRequest.(filterSectors (symbol : Swift.String, completion : (Swift.Array&lt;pare.Stock&gt;) -&gt; ()) -&gt; ()).(closure #2)"
-                  moduleName = "pare"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kayo/Desktop/pare/pare/NetworkRequest.swift"
-                  timestampString = "523497320.343796"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "484"
-                  endingLineNumber = "484"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static pare.NetworkRequest.(filterSectors (symbol : Swift.String, completion : (Swift.Array&lt;pare.Stock&gt;) -&gt; ()) -&gt; ()).(closure #2).(closure #2)"
-                  moduleName = "pare"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kayo/Desktop/pare/pare/NetworkRequest.swift"
-                  timestampString = "523497320.348446"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "484"
-                  endingLineNumber = "484"
-                  offsetFromSymbolStart = "592">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -228,81 +92,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pare/NetworkRequest.swift"
-            timestampString = "523513210.206206"
+            timestampString = "523576686.434397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "528"
-            endingLineNumber = "528"
-            landmarkName = "filterSectors(symbol:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static pare.NetworkRequest.(filterSectors (symbol : Swift.String, completion : (Swift.Array&lt;pare.Stock&gt;) -&gt; ()) -&gt; ()).(closure #2)"
-                  moduleName = "pare"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kayo/Desktop/pare/pare/NetworkRequest.swift"
-                  timestampString = "523513915.215572"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "528"
-                  endingLineNumber = "528"
-                  offsetFromSymbolStart = "72">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static pare.NetworkRequest.(filterSectors (symbol : Swift.String, completion : (Swift.Array&lt;pare.Stock&gt;) -&gt; ()) -&gt; ()).(closure #2).(closure #1)"
-                  moduleName = "pare"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kayo/Desktop/pare/pare/NetworkRequest.swift"
-                  timestampString = "523513915.219093"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "528"
-                  endingLineNumber = "528"
-                  offsetFromSymbolStart = "768">
-               </Location>
-            </Locations>
+            startingLineNumber = "610"
+            endingLineNumber = "610"
+            landmarkName = "NetworkRequest"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pare/NetworkRequest.swift"
-            timestampString = "523513210.206206"
+            timestampString = "523576686.434397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "522"
-            endingLineNumber = "522"
-            landmarkName = "filterSectors(symbol:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "pare/NetworkRequest.swift"
-            timestampString = "523513210.206206"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "536"
-            endingLineNumber = "536"
-            landmarkName = "filterSectors(symbol:completion:)"
-            landmarkType = "7">
+            startingLineNumber = "618"
+            endingLineNumber = "618"
+            landmarkName = "NetworkRequest"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -324,17 +140,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pare/DiscoverViewController.swift"
-            timestampString = "523513435.35499"
+            timestampString = "523576204.898136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pare/NetworkRequest.swift"
+            timestampString = "523574671.144094"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "523"
+            endingLineNumber = "523"
+            landmarkName = "filterSectors(symbol:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pare/DiscoverViewController.swift"
+            timestampString = "523576487.007808"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "viewDidAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pare/NetworkRequest.swift"
+            timestampString = "523576686.434397"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "609"
+            endingLineNumber = "609"
+            landmarkName = "NetworkRequest"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -35,25 +35,31 @@ class DiscoverViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        //NetworkRequest.filterSectors(symbol: "AAPL") { (test: [Stock]) in
-        
-        
-        
-        guard let jsonURL = Bundle.main.url(forResource: "symbol + sector", withExtension: "json") else {
-            return
+        var recommended: [Stock] = []
+        NetworkRequest.filterSectors(symbol: "AAPL") { (tests: [String]) in
+            for test in tests {
+                NetworkRequest.instantiateStock(symbol: test, completion: { (recommend: Stock?) in
+                    recommended.append(recommend!)
+                    print(recommended)
+                })
+            }
+            
+            
         }
+        //        guard let jsonURL = Bundle.main.url(forResource: "symbol + sector", withExtension: "json") else {
+        //            return
+        //        }
+        //
+        //        //        DispatchQueue.global(qos: .userInitiated).sync {
+        //        let jsonData = try! Data(contentsOf: jsonURL)
+        //        let sectorData = JSON(data: jsonData)
+        //        let allStockData = sectorData["results"].arrayValue
+        //        let dispatchGroup = DispatchGroup()
+        //
         
-        //        DispatchQueue.global(qos: .userInitiated).sync {
-        let jsonData = try! Data(contentsOf: jsonURL)
-        let sectorData = JSON(data: jsonData)
-        let allStockData = sectorData["results"].arrayValue
-        let dispatchGroup = DispatchGroup()
-        
-        
-    /**
-        
-     HELLO EHI!
+        /**
+         
+         HELLO EHI!
          THIS IS ABID.
          THIS IS HOW WE TAKE OVER THE WORLD
          FSOCIETY
@@ -67,8 +73,8 @@ class DiscoverViewController: UIViewController {
          
          
          let thisSECOTR = stock["EICS"].stringValue
-
-         SWITCH CASE OR IF STATMENTS FOR SECTORS 
+         
+         SWITCH CASE OR IF STATMENTS FOR SECTORS
          
          HAVE AN ARRAY FOR EACH SECTOR
          
@@ -85,7 +91,7 @@ class DiscoverViewController: UIViewController {
          BUT DONT MAKE LIKE ONE FOR LOOP FOR ALL OF THEM
          
          INSTANTIATE STOCK FOR EACH
-ADD TO BG ARRAY OF ALL STOCK
+         ADD TO BG ARRAY OF ALL STOCK
          //WHILE (ALLSTOCK ARRAYCOUN != SECTORARRAY.COUNT) {
          
          }
@@ -96,37 +102,38 @@ ADD TO BG ARRAY OF ALL STOCK
          
          
          let thisSymbol = stock["Ticker symbol"].stringValue
-
+         
+         
+         */
         
-        */
-        
-        var symbols = [Stock]()
-//        let dispatchGroup = DispatchGroup()
-        for stock in allStockData {
-            dispatchGroup.enter()
-            let thisSymbol = stock["Ticker symbol"].stringValue
-            /*dispatchGroup.enter()
-             //            instantiateStock(symbol: thisSymbol, completion: { (Stock) in
-             allStocks.append(Stock!)
-             dispatchGroup.leave()
-             })*/
-
-            NetworkRequest.instantiateStock(symbol: thisSymbol, completion: { (price) in
-//                print(price)
-//                sts = price.0
-                symbols.append(price!)
-                print(symbols.count)
-                dispatchGroup.leave()
-            })
-        }
-        dispatchGroup.notify(queue: .main) {
-            print("The symbols count is : ", symbols.count)
-        }
-        
+        //        var symbols = [Stock]()
+        ////        let dispatchGroup = DispatchGroup()
+        //        for stock in allStockData {
+        //            dispatchGroup.enter()
+        //            let thisSymbol = stock["Ticker symbol"].stringValue
+        //            /*dispatchGroup.enter()
+        //             //            instantiateStock(symbol: thisSymbol, completion: { (Stock) in
+        //             allStocks.append(Stock!)
+        //             dispatchGroup.leave()
+        //             })*/
+        //
+        //            NetworkRequest.instantiateStock(symbol: thisSymbol, completion: { (price) in
+        ////                print(price)
+        ////                sts = price.0
+        //                symbols.append(price!)
+        //                print(symbols.count)
+        //                dispatchGroup.leave()
+        //            })
+        //        }
+        //        dispatchGroup.notify(queue: .main) {
+        //            print("The symbols count is : ", symbols.count)
+        //        }
+        //
+        //    }
+        //   print(test)
+        //}
+        //}
     }
-    //   print(test)
-    //}
-    //}
 }
 //extension DiscoverViewController: UICollectionViewDataSource{
 //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
