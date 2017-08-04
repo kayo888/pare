@@ -87,7 +87,7 @@ class DiscoverViewController: UIViewController {
          INSTANTIATE STOCK FOR EACH
 ADD TO BG ARRAY OF ALL STOCK
          //WHILE (ALLSTOCK ARRAYCOUN != SECTORARRAY.COUNT) {
-         
+         CHANGE FOR GIT
          }
          
          
