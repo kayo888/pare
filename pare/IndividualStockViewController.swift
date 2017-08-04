@@ -175,6 +175,7 @@ extension IndividualStockViewController: UICollectionViewDataSource {
         
         let newsCollection = newsArray[indexPath.item]
         cell.headlineLabel.text = newsCollection.headline
+        cell.newsImage.image = #imageLiteral(resourceName: "Sample Scene.png")
         
         return cell
     }

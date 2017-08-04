@@ -26,43 +26,56 @@ struct NetworkRequest {
     
     static func instantiateStock(symbol: String, completion: @escaping (Stock?) -> Void) {
         let thisSymbol = symbol
+        let dispatchgroup = DispatchGroup()
+        dispatchgroup.enter()
+        var object:Stock?
         getStockName(symbol: thisSymbol, completion: { (name) in
+
             getStockLogo(symbol: thisSymbol) { (logo) in
-                getMinuteData(symbol: thisSymbol) { (price) in
                     allCompany(symbol: thisSymbol, completion: { (description, site, ceo) in
                         quote(symbol: thisSymbol, completion: { (primaryExchange, calculationPrice, previousClose, avgTotalVolume, marketCap, peRatio, week52Low, week52High) in
                             
                             stats(symbol: thisSymbol, completion: { (profitMargin, peRatioLow, peRatioHigh) in
-                                var isPositive = true
-                                let change = price - previousClose
-                                var changePercent = 0.0
-                                
-                                if (change < 0) {
-                                    isPositive = false
-                                }
-                                
-                                if (change == 0) {
-                                    changePercent = 0.0
-                                } else {
-                                    changePercent = (change / previousClose) * 100.00
-                                }
-                                
-                                let object = Stock(symbol: thisSymbol, companyName: name, logo: logo, price: price, changePercent: changePercent, change: change, primaryExchange: primaryExchange, calculationPrice: calculationPrice, previousClose: previousClose, avgTotalVolume: avgTotalVolume, marketCap: UInt64(marketCap), peRatio: peRatio, peRatioHigh: peRatioHigh, peRatioLow: peRatioLow, week52High: week52High, week52Low: week52Low, profitMargin: profitMargin, isPositive: isPositive, description: description, website: site, CEO: ceo)
-                                
-                                completion(object)
-                            })
-                            
-                            
+                                getMinuteData(symbol: thisSymbol) { (price) in
+                                    
+                                    var isPositive = true
+                                    let change = price - previousClose
+                                    var changePercent = 0.0
+                                    
+                                    if (change < 0) {
+                                        isPositive = false
+                                    }
+                                    
+                                    if (change == 0) {
+                                        changePercent = 0.0
+                                    } else {
+                                        changePercent = (change / previousClose) * 100.00
+                                    }
+                                    
+                                    object = Stock(symbol: thisSymbol, companyName: name, logo: logo, price: price, changePercent: changePercent, change: change, primaryExchange: primaryExchange, calculationPrice: calculationPrice, previousClose: previousClose, avgTotalVolume: avgTotalVolume, marketCap: UInt64(marketCap), peRatio: peRatio, peRatioHigh: peRatioHigh, peRatioLow: peRatioLow, week52High: week52High, week52Low: week52Low, profitMargin: profitMargin, isPositive: isPositive, description: description, website: site, CEO: ceo)
+                                    completion(object)
+//                                dispatchgroup.leave()
+                            }
+//                            dispatchgroup.leave()
                         })
-                        
+//                        dispatchgroup.leave()
+
                         
                     })
-                    
-                }
-                
+//                    dispatchgroup.leave()
+
+                })
+//                dispatchgroup.leave()
+
             }
-            
+//            dispatchgroup.leave()
+
         })
+        
+//        dispatchgroup.notify(queue: .main) {
+//            completion(object)
+
+//        }
         
     }
     
@@ -383,23 +396,32 @@ struct NetworkRequest {
     static func allCompany (symbol: String, completion: @escaping (String, String, String) -> Void) {
         let companyEndpoint = "\(Constants.IEX.IEXBase)\(symbol)\(Constants.IEXParameters.company)"
         
+//        var json: JSON
+        var site: String = ""
+        var description: String = ""
+        var ceo: String = ""
+        let group = DispatchGroup()
+        group.enter()
         
         Alamofire.request(companyEndpoint).validate().responseJSON() { response in
             switch response.result {
             case .success:
                 if let value = response.result.value {
                     let json = JSON(value)
-                    let site = json["website"].stringValue
-                    let description = json["description"].stringValue
-                    let ceo = json["CEO"].stringValue
+                    site = json["website"].stringValue
+                    description = json["description"].stringValue
+                    ceo = json["CEO"].stringValue
                     
-                    completion(description, site, ceo)
+                    group.leave()
                     
                 }
             case .failure(let error):
                 print("company")
             }
             
+        }
+        group.notify(queue: .main) {
+            completion(description, site, ceo)
         }
     }
     
@@ -491,67 +513,69 @@ struct NetworkRequest {
         let jsonData = try! Data(contentsOf: jsonURL)
         let sectorData = JSON(data: jsonData)
         let allStockData = sectorData["results"].arrayValue
+        let dispatchGroup = DispatchGroup()
         
         for stock in allStockData {
             let thisSymbol = stock["Ticker symbol"].stringValue
-            
+            dispatchGroup.enter()
             instantiateStock(symbol: thisSymbol, completion: { (Stock) in
                 allStocks.append(Stock!)
+                dispatchGroup.leave()
             })
         }
         //    }
-        
-        allStocks = allStocks.sorted{ ($0.peRatio > $1.peRatio) }
-        var currStock: Stock? = nil
-        
-        var marketCapDes = ""
-        var marketCap: UInt64 = 0
-        instantiateStock(symbol: symbol) { (Stock) in
-            marketCap = UInt64((Stock?.marketCap)!)
-            currStock = Stock
-            if (marketCap >= 10000000000) {
-                marketCapDes = "large cap"
-            } else if (marketCap >= 2000000000 && marketCap < 10000000000) {
-                marketCapDes = "medium cap"
-            } else {
-                marketCapDes = "small cap"
-            }
-            //
-            let ratio = currStock!.peRatio
-            let highRange = ratio + 1 ... ratio + 10
-            let lowRange = ratio - 10 ..< ratio
-            for (i, stock) in allStocks.enumerated() {
-                if (stock.symbol == symbol) {
-                    let index = allStocks[i]
-                    
-                    if (highRange ~= index.peRatio) {
-                        recommendArray.append(index)
-                    } else if (lowRange ~= index.peRatio) {
-                        recommendArray.append(index)
+        dispatchGroup.notify(queue: .main) {
+            allStocks = allStocks.sorted{ ($0.peRatio > $1.peRatio) }
+            var currStock: Stock? = nil
+
+            var marketCapDes = ""
+            var marketCap: UInt64 = 0
+            instantiateStock(symbol: symbol) { (Stock) in
+                marketCap = UInt64((Stock?.marketCap)!)
+                currStock = Stock
+                if (marketCap >= 10000000000) {
+                    marketCapDes = "large cap"
+                } else if (marketCap >= 2000000000 && marketCap < 10000000000) {
+                    marketCapDes = "medium cap"
+                } else {
+                    marketCapDes = "small cap"
+                }
+                //
+                let ratio = currStock!.peRatio
+                let highRange = ratio + 1 ... ratio + 10
+                let lowRange = ratio - 10 ..< ratio
+                for (i, stock) in allStocks.enumerated() {
+                    if (stock.symbol == symbol) {
+                        let index = allStocks[i]
+                        
+                        if (highRange ~= index.peRatio) {
+                            recommendArray.append(index)
+                        } else if (lowRange ~= index.peRatio) {
+                            recommendArray.append(index)
+                            
+                        }
                         
                     }
-                    
                 }
+                
+                var thisMarketCapDes = ""
+                for recommended in recommendArray {
+                    if (recommended.marketCap >= 10000000000) {
+                        thisMarketCapDes = "large cap"
+                    } else if (recommended.marketCap >= 2000000000 && recommended.marketCap < 10000000000) {
+                        thisMarketCapDes = "medium cap"
+                    } else {
+                        thisMarketCapDes = "small cap"
+                    }
+                    if (marketCapDes == thisMarketCapDes) {
+                        finalArray.append(recommended)
+                    }
+                }
+                completion(finalArray)
             }
             
-            var thisMarketCapDes = ""
-            for recommended in recommendArray {
-                if (recommended.marketCap >= 10000000000) {
-                    thisMarketCapDes = "large cap"
-                } else if (recommended.marketCap >= 2000000000 && recommended.marketCap < 10000000000) {
-                    thisMarketCapDes = "medium cap"
-                } else {
-                    thisMarketCapDes = "small cap"
-                }
-                if (marketCapDes == thisMarketCapDes) {
-                    finalArray.append(recommended)
-                }
-            }
-            completion(finalArray)
+            
         }
-        
-        
-        
         
         
         
