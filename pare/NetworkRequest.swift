@@ -29,54 +29,59 @@ struct NetworkRequest {
         let dispatchgroup = DispatchGroup()
         dispatchgroup.enter()
         var object:Stock?
-        getStockName(symbol: thisSymbol, completion: { (name) in
-            
-            getStockLogo(symbol: thisSymbol) { (logo) in
-                allCompany(symbol: thisSymbol, completion: { (description, site, ceo) in
-                    quote(symbol: thisSymbol, completion: { (primaryExchange, calculationPrice, previousClose, avgTotalVolume, marketCap, peRatio, week52Low, week52High) in
-                        
-                        stats(symbol: thisSymbol, completion: { (profitMargin, peRatioLow, peRatioHigh) in
-                            getMinuteData(symbol: thisSymbol) { (price) in
-                                
-                                var isPositive = true
-                                let change = price - previousClose
-                                var changePercent = 0.0
-                                
-                                if (change < 0) {
-                                    isPositive = false
+        
+//        DispatchQueue.global(qos: .userInitiated).async {
+            getStockName(symbol: thisSymbol, completion: { (name) in
+                
+                getStockLogo(symbol: thisSymbol) { (logo) in
+                    allCompany(symbol: thisSymbol, completion: { (description, site, ceo) in
+                        quote(symbol: thisSymbol, completion: { (primaryExchange, calculationPrice, previousClose, avgTotalVolume, marketCap, peRatio, week52Low, week52High) in
+                            
+                            stats(symbol: thisSymbol, completion: { (profitMargin, peRatioLow, peRatioHigh) in
+                                getMinuteData(symbol: thisSymbol) { (price) in
+                                    
+                                    var isPositive = true
+                                    let change = price - previousClose
+                                    var changePercent = 0.0
+                                    
+                                    if (change < 0) {
+                                        isPositive = false
+                                    }
+                                    
+                                    if (change == 0) {
+                                        changePercent = 0.0
+                                    } else {
+                                        changePercent = (change / previousClose) * 100.00
+                                    }
+                                    changePercent = Double(round(100 * changePercent)/100)
+
+                                    
+                                    object = Stock(symbol: thisSymbol, companyName: name, logo: logo, price: price, changePercent: changePercent, change: change, primaryExchange: primaryExchange, calculationPrice: calculationPrice, previousClose: previousClose, avgTotalVolume: avgTotalVolume, marketCap: UInt64(marketCap), peRatio: peRatio, peRatioHigh: peRatioHigh, peRatioLow: peRatioLow, week52High: week52High, week52Low: week52Low, profitMargin: profitMargin, isPositive: isPositive, description: description, website: site, CEO: ceo, isFollowed: false)
+                                    
+                                    completion(object)
+                                                                        //                                dispatchgroup.leave()
                                 }
-                                
-                                if (change == 0) {
-                                    changePercent = 0.0
-                                } else {
-                                    changePercent = (change / previousClose) * 100.00
-                                }
-                                
-                                object = Stock(symbol: thisSymbol, companyName: name, logo: logo, price: price, changePercent: changePercent, change: change, primaryExchange: primaryExchange, calculationPrice: calculationPrice, previousClose: previousClose, avgTotalVolume: avgTotalVolume, marketCap: UInt64(marketCap), peRatio: peRatio, peRatioHigh: peRatioHigh, peRatioLow: peRatioLow, week52High: week52High, week52Low: week52Low, profitMargin: profitMargin, isPositive: isPositive, description: description, website: site, CEO: ceo)
-                                completion(object)
-                                //                                dispatchgroup.leave()
-                            }
-                            //                            dispatchgroup.leave()
+                                //                            dispatchgroup.leave()
+                            })
+                            //                        dispatchgroup.leave()
+                            
+                            
                         })
-                        //                        dispatchgroup.leave()
-                        
+                        //                    dispatchgroup.leave()
                         
                     })
-                    //                    dispatchgroup.leave()
+                    //                dispatchgroup.leave()
                     
-                })
-                //                dispatchgroup.leave()
+                }
+                //            dispatchgroup.leave()
                 
-            }
-            //            dispatchgroup.leave()
+            })
             
-        })
-        
-        //        dispatchgroup.notify(queue: .main) {
-        //            completion(object)
-        
-        //        }
-        
+            //        dispatchgroup.notify(queue: .main) {
+            //            completion(object)
+            
+            //        }
+//        }
     }
     
     static func getStockName(symbol: String, completion: @escaping (String) -> Void) {

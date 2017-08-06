@@ -2,16 +2,16 @@
 //  FollowService.swift
 //  pare
 //
-//  Created by Ehi Airewele  on 8/5/17.
+//  Created by Ehi Airewele  on 8/4/17.
 //  Copyright © 2017 Ehi Airewele . All rights reserved.
 //
 
 import Foundation
 import FirebaseDatabase
 
-struct FollowService {
+struct StockFollowService {
     
-    private static func followUser(_ user: User, forCurrentUserWithSuccess success: @escaping (Bool) -> Void) {
+    private static func followStock(_ user: User, forCurrentUserWithSuccess success: @escaping (Bool) -> Void) {
         let currentUID = User.current.uid
         let followData = ["followers/\(user.uid)/\(currentUID)" : true,
                           "following/\(currentUID)/\(user.uid)" : true]
@@ -27,7 +27,7 @@ struct FollowService {
             success(error == nil)
         }
     }
-    private static func unfollowUser(_ user: User, forCurrentUserWithSuccess success: @escaping (Bool) -> Void) {
+    private static func unfollowStock(_ user: User, forCurrentUserWithSuccess success: @escaping (Bool) -> Void) {
         let currentUID = User.current.uid
         // Use NSNull() object instead of nil because updateChildValues expects type [Hashable : Any]
         // http://stackoverflow.com/questions/38462074/using-updatechildvalues-to-delete-from-firebase
@@ -45,12 +45,12 @@ struct FollowService {
     }
     static func setIsFollowing(_ isFollowing: Bool, fromCurrentUserTo followee: User, success: @escaping (Bool) -> Void) {
         if isFollowing {
-            followUser(followee, forCurrentUserWithSuccess: success)
+            followStock(followee, forCurrentUserWithSuccess: success)
         } else {
-            unfollowUser(followee, forCurrentUserWithSuccess: success)
+            unfollowStock(followee, forCurrentUserWithSuccess: success)
         }
     }
-    static func isUserFollowed(_ user: User, byCurrentUserWithCompletion completion: @escaping (Bool) -> Void) {
+    static func isStockFollowed(_ user: User, byCurrentUserWithCompletion completion: @escaping (Bool) -> Void) {
         let currentUID = User.current.uid
         let ref = Database.database().reference().child("followers").child(user.uid)
         

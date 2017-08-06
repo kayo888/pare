@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewsViewCell: UICollectionViewCell {
+class CollectionViewCell: UICollectionViewCell {
     
     
     @IBOutlet weak var headlineLabel: UILabel!

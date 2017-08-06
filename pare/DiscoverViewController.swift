@@ -19,41 +19,66 @@ import SwiftyJSON
 // why are you here
 //to stop you from making a terrible mistake
 class DiscoverViewController: UIViewController {
-    //let currentUser = Auth.auth().currentUser!
+    let currentUser = Auth.auth().currentUser!
     
-    @IBOutlet weak var newsCollectionView: UICollectionView!
-    @IBOutlet weak var topRecCollectionView: UICollectionView!
-    @IBOutlet weak var basedOnCollectionView: UICollectionView!
+    @IBOutlet weak var collectionView: CollectionView!
+    let collectionViewNews = UICollectionView()
+    let collectionViewTop = UICollectionView()
+    let collectionViewBased = UICollectionView()
+    let newsViewIdentifier = "News"
+    let topViewIdentifier = "Top Recommendations"
+    let basedViewIdentifier = "Based On"
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionViewTop.delegate = self
+        collectionViewTop.dataSource = self
+        
+        collectionViewNews.delegate = self
+        collectionViewNews.dataSource = self
+        
+        collectionViewBased.delegate = self
+        collectionViewBased.dataSource = self
+        
+        self.view.addSubview(collectionViewNews)
+        self.view.addSubview(collectionViewTop)
+        self.view.addSubview(collectionViewBased)
         // Do any additional setup after loading the view.
     }
-    
+    var newsArray = [NewsItem]()
+    var recommended = [Stock]()
+    var following = [String]()
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     func getNews () -> Void {
-        let symbol = stock?.symbol
-        if let symbol = symbol {
-            NetworkRequest.getNews(symbol: symbol) { (newsItems: [NewsItem]) in
-                
+            NetworkRequest.getMarketNews(completion: { (newsItems) in
                 self.newsArray = newsItems
+            })
+        }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "ShowNews" {
                 
+                let indexPath = collectionView.indexPathsForSelectedItems?.first
+                
+                let news = newsArray[indexPath!.item]
+                let newsViewController = segue.destination as! NewsViewController
+                newsViewController.url = news.url
             }
-        } else {
-            print("symbol is nil")
         }
     }
-
     
     override func viewDidAppear(_ animated: Bool) {
-        var recommended: [Stock] = []
         NetworkRequest.filterSectors(symbol: "AAPL") { (tests: [String]) in
             for test in tests {
                 NetworkRequest.instantiateStock(symbol: test, completion: { (recommend: Stock?) in
-                    recommended.append(recommend!)
-                    print(recommended)
+                    self.recommended.append(recommend!)
+                    print(self.recommended)
                 })
             }
             
@@ -66,8 +91,28 @@ extension DiscoverViewController: UICollectionViewDataSource{
         return newsArray.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        if collectionView == self.collectionViewNews {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
+            
+            let newsCollection = newsArray[indexPath.item]
+            cell.headlineLabel.text = newsCollection.headline
+            cell.newsImage.image = #imageLiteral(resourceName: "Sample Scene.png")
+            
+            return cell
+        } else if collectionView == self.collectionViewTop{
+            let cell = collectionView
+        }
+        
+        
+        
     }
 }
 
-extension DiscoverViewController: UICollectionViewDelegate{}
+extension DiscoverViewController: UICollectionViewDelegate{
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowNews", sender: self)
+        
+    }
+
+}

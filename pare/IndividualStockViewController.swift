@@ -14,6 +14,11 @@ class IndividualStockViewController: UIViewController {
     var stock: Stock?
     var newsArray = [NewsItem]()
     
+    
+//    protocol IndividualStockViewController: class {
+//        func didTapFollowButton(_ followButton: UIButton)
+//    }
+    
     @IBOutlet weak var newsCollectionView: UICollectionView!
     @IBOutlet weak var individualStockView: UIView!
     @IBOutlet weak var logo: UIImageView!
@@ -21,6 +26,10 @@ class IndividualStockViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var followButton: UIButton!
+    
+    @IBAction func followButtonTapped(_ sender: Any) {
+        followButton.isSelected = (stock?.isFollowed)!
+    }
     
     let positiveGreen = UIColor(red: 62.0/255.0, green: 189.0/255.0, blue: 153.0/255.0, alpha: 1.0)
     let negativeRed = UIColor(red: 250/255.0, green: 92/255.0, blue: 120/255.0, alpha: 1.0)
@@ -51,9 +60,9 @@ class IndividualStockViewController: UIViewController {
             
         }
         followButton.layer.borderColor = UIColor.lightGray.cgColor
-        followButton.layer.borderWidth = 1
-        followButton.layer.cornerRadius = 6
-        followButton.clipsToBounds = true
+//        followButton.layer.borderWidth = 1
+//        followButton.layer.cornerRadius = 6
+//        followButton.clipsToBounds = true
         
         followButton.setTitle("Follow", for: .normal)
         followButton.setTitle("Following", for: .selected)
@@ -124,7 +133,12 @@ class IndividualStockViewController: UIViewController {
         
         if let stock = stock {
             nameLabel.text = stock.companyName
-            priceLabel.text = "\(stock.price)"
+            if (stock.isPositive) {
+                priceLabel.text = "\(stock.price) (\(stock.changePercent)%)"
+                priceLabel.textColor = positiveGreen
+            } else {
+                priceLabel.textColor = negativeRed
+            }
             logo.image = stock.logo
             
             
@@ -146,8 +160,6 @@ class IndividualStockViewController: UIViewController {
         }
     }
     
-    @IBAction func followButtonTapped(_ sender: Any) {
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {

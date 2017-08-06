@@ -32,6 +32,7 @@ struct Stock {
     let description: String
     let website: String
     let CEO: String
+    var isFollowed = false 
 }
 //change, change% is calculated using calculationPrice from previousClose.
 

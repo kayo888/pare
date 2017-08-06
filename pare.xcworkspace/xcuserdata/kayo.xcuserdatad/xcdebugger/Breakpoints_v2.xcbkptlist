@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pare/NetworkRequest.swift"
-            timestampString = "523513210.206206"
+            timestampString = "523586791.37673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438"
+            startingLineNumber = "472"
+            endingLineNumber = "472"
             landmarkName = "quote(symbol:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pare/NetworkRequest.swift"
-            timestampString = "523513210.206206"
+            timestampString = "523586791.37673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "458"
-            endingLineNumber = "458"
+            startingLineNumber = "492"
+            endingLineNumber = "492"
             landmarkName = "stats(symbol:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -43,11 +43,11 @@
             condition = "url == nil"
             continueAfterRunningActions = "No"
             filePath = "pare/NetworkRequest.swift"
-            timestampString = "523513210.206206"
+            timestampString = "523586791.37673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "getStockLogo(symbol:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -60,11 +60,11 @@
             condition = "image == nil"
             continueAfterRunningActions = "No"
             filePath = "pare/NetworkRequest.swift"
-            timestampString = "523513210.206206"
+            timestampString = "523586791.37673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "getStockLogo(symbol:completion:)"
             landmarkType = "7">
             <Actions>
@@ -96,11 +96,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pare/NetworkRequest.swift"
-            timestampString = "523576686.434397"
+            timestampString = "523586791.37673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "610"
-            endingLineNumber = "610"
+            startingLineNumber = "644"
+            endingLineNumber = "644"
             landmarkName = "NetworkRequest"
             landmarkType = "14">
          </BreakpointContent>
@@ -112,11 +112,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pare/NetworkRequest.swift"
-            timestampString = "523576686.434397"
+            timestampString = "523586791.37673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "618"
-            endingLineNumber = "618"
+            startingLineNumber = "652"
+            endingLineNumber = "652"
             landmarkName = "NetworkRequest"
             landmarkType = "14">
          </BreakpointContent>
@@ -128,11 +128,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pare/NetworkRequest.swift"
-            timestampString = "523513210.206206"
+            timestampString = "523586791.37673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "instantiateStock(symbol:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -144,11 +144,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pare/NetworkRequest.swift"
-            timestampString = "523574671.144094"
+            timestampString = "523586791.37673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "523"
-            endingLineNumber = "523"
+            startingLineNumber = "557"
+            endingLineNumber = "557"
             landmarkName = "filterSectors(symbol:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -160,11 +160,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pare/DiscoverViewController.swift"
-            timestampString = "523576487.007808"
+            timestampString = "523581362.233206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -176,11 +176,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pare/NetworkRequest.swift"
-            timestampString = "523576686.434397"
+            timestampString = "523586791.37673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "609"
-            endingLineNumber = "609"
+            startingLineNumber = "643"
+            endingLineNumber = "643"
             landmarkName = "NetworkRequest"
             landmarkType = "14">
          </BreakpointContent>

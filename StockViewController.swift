@@ -15,11 +15,16 @@ import FirebaseDatabase
 import FirebaseAuth
 import FirebaseAuthUI
 
-class StockViewController: UIViewController {
+typealias FIRUser = FirebaseAuth.User
 
+class StockViewController: UIViewController {
+    
     @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var firstSecondSegmented: UISegmentedControl!
     @IBOutlet weak var stockView: UICollectionView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    
     var stock: Stock?
     let positiveGreen = UIColor(red: 62.0/255.0, green: 189.0/255.0, blue: 153.0/255.0, alpha: 1.0)
     let negativeRed = UIColor(red: 250/255.0, green: 92/255.0, blue: 120/255.0, alpha: 1.0)
@@ -45,57 +50,61 @@ class StockViewController: UIViewController {
     
     func updateTime(symbol: String? = nil) {
         
-        guard let authUI = FUIAuth.defaultAuthUI()
-            else{return}
+//        guard let authUI = FUIAuth.defaultAuthUI()
+//            else{return}
+//        
+//        Auth.auth().signInAnonymously() { (user, error) in
+//            let isAnonymous = user!.isAnonymous
+//            let uid = user!.uid
+//            let userDict = ["uid": uid]
+//            //            "stock1": "AAPL", "stock2": "MSFT", "stock3": "TSLA"
+//            let ref = Database.database().reference().child("users").child((user?.uid)!)
+//            ref.updateChildValues(userDict)
+//        }
         
-            Auth.auth().signInAnonymously() { (user, error) in
-                let isAnonymous = user!.isAnonymous
-                let uid = user!.uid
-                let userDict = ["uid": uid,
-                                "stock1": "AAPL", "stock2": "MSFT", "stock3": "TSLA"]
-                let ref = Database.database().reference().child("users").child((user?.uid)!)
-                ref.updateChildValues(userDict)
-        }
-    
-
         let gainers: [String] = getGainerSymbols()!
         let losers: [String] = getLoserSymbols()!
-        
-        for gainerSymbol in gainers {
-            getSymbolInfo(symbol: gainerSymbol) { (Stock) in
-                self.gainersArray.append(Stock)
-                self.moversArray.append(Stock)
+        DispatchQueue.global(qos: .userInitiated).async {
+            for gainerSymbol in gainers {
+                
+                self.getSymbolInfo(symbol: gainerSymbol) { (Stock) in
+                    self.gainersArray.append(Stock)
+                    self.moversArray.append(Stock)
+                }
+            }
+            
+            for loserSymbol in losers {
+                self.getSymbolInfo(symbol: loserSymbol) { (Stock) in
+                    self.losersArray.append(Stock)
+                    self.moversArray.append(Stock)
+                    DispatchQueue.main.async {
+                        if self.losersArray.count == losers.count {
+                            self.stockView.reloadData()
+                            self.spinner.stopAnimating()
+                        }
+                    }
+                }
+                //only get 9 gainers, losers not 10
             }
             
         }
-        
-        for loserSymbol in losers {
-            getSymbolInfo(symbol: loserSymbol) { (Stock) in
-                self.losersArray.append(Stock)
-                self.moversArray.append(Stock)
-                
-                if self.losersArray.count == losers.count {
-                    self.stockView.reloadData()
-                }
-                
-            }
-            //only get 9 gainers, losers not 10
-        }
     }
-    
     func getSymbolInfo(symbol: String? = nil, completion: @escaping (Stock) -> Void) {
         NetworkRequest.instantiateStock(symbol: symbol!) { (Stock) in
             completion(Stock!)
+            
         }
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        spinner.startAnimating()
         
         updateTime()
     }
-
+    
     
     
     func getGainerSymbols () -> [String]? {
@@ -175,17 +184,17 @@ class StockViewController: UIViewController {
         if let identifier = segue.identifier {
             if identifier == "ShowIndividualStock" {
                 let indexPath = stockView.indexPathsForSelectedItems?.first
-//                
-//                Auth.auth().signInAnonymously() { (user, error) in
-//                    let isAnonymous = user!.isAnonymous
-//                    let uid = user!.uid
-//                    let userDict = ["uid": uid,
-//                                    "stock1": "AAPL", "stock2": "MSFT", "stock3": "TSLA"]
-//                    let ref = Database.database().reference().child("users").child((user?.uid)!)
-//                    ref.updateChildValues(userDict)
-//                }
-
-                                
+                //
+                //                Auth.auth().signInAnonymously() { (user, error) in
+                //                    let isAnonymous = user!.isAnonymous
+                //                    let uid = user!.uid
+                //                    let userDict = ["uid": uid,
+                //                                    "stock1": "AAPL", "stock2": "MSFT", "stock3": "TSLA"]
+                //                    let ref = Database.database().reference().child("users").child((user?.uid)!)
+                //                    ref.updateChildValues(userDict)
+                //                }
+                
+                
                 //                let stock = Stock[indexPath!.item]
                 let individualStockViewController = segue.destination as! IndividualStockViewController
                 individualStockViewController.stock = moversArray[(indexPath?.row)!]
@@ -195,6 +204,7 @@ class StockViewController: UIViewController {
     }
     
 }
+
 
 
 extension StockViewController: UICollectionViewDataSource {
@@ -209,7 +219,7 @@ extension StockViewController: UICollectionViewDataSource {
         let watchListStock = moversArray[indexPath.item]
         cell.nameLabel.text = watchListStock.companyName
         if (watchListStock.isPositive) {
-            cell.priceLabel.text = "$\(watchListStock.price)"
+            cell.priceLabel.text = "$\(watchListStock.price) (\(watchListStock.changePercent)%)"
             cell.priceLabel.textColor = positiveGreen
         } else {
             cell.priceLabel.textColor = negativeRed
@@ -243,3 +253,49 @@ extension StockViewController: UICollectionViewDelegate {
     
     
 }
+extension StockViewController: FUIAuthDelegate {
+    func authUI(_ authUI: FUIAuth, didSignInWith user: FIRUser?, error: Error?) {
+        if let error = error {
+            assertionFailure("Error signing in: \(error.localizedDescription)")
+            return
+        }
+        guard let user = user
+            else {return}
+        
+//        let startingStocks = ["AAPL", "MSFT", "TSLA"]
+        let userRef = Database.database().reference().child("users").child(user.uid)
+        
+        userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let user = User(snapshot: snapshot) {
+                print("Welcome back")
+            } else {
+                guard let firUser = Auth.auth().currentUser else {return}
+                UserService.create(firUser, completion: { (user) in
+                    guard let user = user else {return}
+                    
+                    print("You're already following: AAPL, MSFT and TSLA!")
+                })
+                
+            }
+        })
+        
+        UserService.show(forUID: user.uid) { (user) in
+            if let user = user {
+                User.setCurrent(user)
+                
+                let initialViewController = UIStoryboard.initialViewController(for: .main)
+                self.view.window?.rootViewController = initialViewController
+                self.view.window?.makeKeyAndVisible()
+                
+            }
+        }
+        
+    }
+}
+   
+
+
+
+
+
+
