@@ -699,7 +699,26 @@ struct NetworkRequest {
         }
     }
     
-    
+    static func getSectorStocks (sector: String, completion: @escaping ([String]) -> Void) {
+        guard let jsonURL = Bundle.main.url(forResource: "symbol + sector", withExtension: "json") else {
+        return
+        }
+        let jsonData = try! Data(contentsOf: jsonURL)
+        let sectorData = JSON(data: jsonData)
+        let allStockData = sectorData["results"].arrayValue
+        var sectorStocks = [String]()
+
+        for each in allStockData {
+            let thisSymbol = each["Ticker symbol"].stringValue
+            let thisSector = each["GICS Sector"].stringValue
+            
+            if (thisSector == sector) {
+                sectorStocks.append(thisSymbol)
+            }
+
+        }
+        completion(sectorStocks)
+    }
     
     
     

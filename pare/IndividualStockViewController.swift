@@ -10,26 +10,16 @@
 import UIKit
 import Charts
 
-class IndividualStockViewController: UIViewController {
+class IndividualViewController: UIViewController {
     var stock: Stock?
     var newsArray = [NewsItem]()
     
     
-//    protocol IndividualStockViewController: class {
-//        func didTapFollowButton(_ followButton: UIButton)
-//    }
+    //    protocol IndividualStockViewController: class {
+    //        func didTapFollowButton(_ followButton: UIButton)
+    //    }
     
-    @IBOutlet weak var newsCollectionView: UICollectionView!
-    @IBOutlet weak var individualStockView: UIView!
-    @IBOutlet weak var logo: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var lineChartView: LineChartView!
-    @IBOutlet weak var followButton: UIButton!
-    
-    @IBAction func followButtonTapped(_ sender: Any) {
-        followButton.isSelected = (stock?.isFollowed)!
-    }
+    @IBOutlet weak var individualStockView: UITableView!
     
     let positiveGreen = UIColor(red: 62.0/255.0, green: 189.0/255.0, blue: 153.0/255.0, alpha: 1.0)
     let negativeRed = UIColor(red: 250/255.0, green: 92/255.0, blue: 120/255.0, alpha: 1.0)
@@ -42,30 +32,18 @@ class IndividualStockViewController: UIViewController {
         super.viewDidLoad()
         
         if let stock = stock {
-            NetworkRequest.getMonthAverages(symbol: (stock.symbol)) { (dict: [String : Double]) in
-                self.months = Array(dict.keys)
-                self.values = Array(dict.values)
-                
-                self.setChart(dataPoints: self.months, values: self.values)
-            }
             
             NetworkRequest.getNews(symbol: stock.symbol) { (newsItems: [NewsItem]) in
                 
                 self.newsArray = newsItems
                 
                 DispatchQueue.main.async {
-                    self.newsCollectionView.reloadData()
+                    self.individualStockView.reloadData()
                 }
             }
             
         }
-        followButton.layer.borderColor = UIColor.lightGray.cgColor
-//        followButton.layer.borderWidth = 1
-//        followButton.layer.cornerRadius = 6
-//        followButton.clipsToBounds = true
         
-        followButton.setTitle("Follow", for: .normal)
-        followButton.setTitle("Following", for: .selected)
         
     }
     
@@ -74,77 +52,11 @@ class IndividualStockViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setChart(dataPoints: [String], values: [Double]) {
-        yVals1 = insertChartDataEntry(values)
-        let lineChartDataSet1 = LineChartDataSet(values: yVals1, label: "")
-        
-        if (stock?.isPositive)! {
-            lineChartDataSet1.setColor(positiveGreen)
-        } else {
-            lineChartDataSet1.setColor(negativeRed)
-        }
-        
-        var lineChartDataSets: [LineChartDataSet] = []
-        lineChartDataSets.append(lineChartDataSet1)
-        
-        //let lineChartData = LineChartData(xVals: sessions, dataSets: lineChartDataSets)
-        
-        let lineChartData = LineChartData(dataSets: lineChartDataSets)
-        lineChartView.data = lineChartData
-        
-        lineChartView.chartDescription?.text = ""
-        let limitLine = ChartLimitLine(limit: values.max()!, label: "High") // There's an alternative initializer without the label
-        lineChartView.rightAxis.addLimitLine(limitLine)
-        
-        // Remove rightAxis labels. Comes from class ChartAxisBase.
-        lineChartView.rightAxis.drawLabelsEnabled = false
-        
-        lineChartView.animate(xAxisDuration: 2.5)
-        
-        // Change the position of the x-axis labels
-        lineChartView.xAxis.labelPosition = .bottom
-        
-        // Remove the chart's gray background color
-        lineChartView.drawGridBackgroundEnabled = false
-        
-        let gradientColors = [UIColor.green.cgColor, UIColor.clear.cgColor] as CFArray // Colors of the gradient
-        let colorLocations:[CGFloat] = [1.0, 0.0] // Positioning of the gradient
-        let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations) // Gradient Object
-        //        lineChartDataSet1.fill = Fill.fillWithLinearGradient(gradient!, angle: 90.0) // Set the Gradient
-        //        set.drawFilledEnabled = true // Draw the Gradient
-        
-        
-        lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dataPoints)
-        lineChartView.xAxis.granularity = 1
-    }
     
-    // Helper method
-    func insertChartDataEntry(_ values: [Double]) -> [ChartDataEntry] {
-        var chartDataEntries: [ChartDataEntry] = []
-        for i in 0..<values.count {
-            let yVal = ChartDataEntry(x: Double(i), y: values[i])
-            chartDataEntries.append(yVal)
-        }
-        return chartDataEntries
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let stock = stock {
-            nameLabel.text = stock.companyName
-            if (stock.isPositive) {
-                priceLabel.text = "\(stock.price) (\(stock.changePercent)%)"
-                priceLabel.textColor = positiveGreen
-            } else {
-                priceLabel.textColor = negativeRed
-            }
-            logo.image = stock.logo
-            
-            
-        } else {
-            
-        }
     }
     
     func getNews () -> Void {
@@ -165,22 +77,68 @@ class IndividualStockViewController: UIViewController {
         if let identifier = segue.identifier {
             if identifier == "ShowNews" {
                 
-                let indexPath = newsCollectionView.indexPathsForSelectedItems?.first
+                let indexPath = individualStockView.indexPathForSelectedRow?.first
                 
-                let news = newsArray[indexPath!.item]
+                let news = newsArray[indexPath!]
                 let newsViewController = segue.destination as! NewsViewController
                 newsViewController.url = news.url
-                //newsViewController.url = sender as? URL
             }
         }
     }
 }
 
-
-
-
-
-extension IndividualStockViewController: UICollectionViewDataSource {
+extension IndividualViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "StockAttributesCell", for: indexPath) as! StockAttributesCell
+            cell.nameLabel.text = stock?.companyName
+            cell.priceLabel.text = "\(String(describing: stock?.price)) (\(String(describing: stock?.changePercent))%)"
+            if (stock?.isPositive)! {
+                cell.priceLabel.textColor = positiveGreen
+            } else {
+                cell.priceLabel.textColor = negativeRed
+            }
+            cell.logo.image = stock?.logo
+            cell.followButton.layer.borderColor = UIColor.lightGray.cgColor
+            cell.followButton.setTitle("Follow", for: .normal)
+            cell.followButton.setTitle("Following", for: .selected)
+            
+            return cell
+            
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GraphViewCell", for: indexPath) as! GraphViewCell
+            let dispathgroup = DispatchGroup()
+            dispathgroup.enter()
+            
+            NetworkRequest.getMonthAverages(symbol: (stock?.symbol)!) { (dict: [String : Double]) in
+                self.months = Array(dict.keys)
+                self.values = Array(dict.values)
+                
+                let monthsRevised: [String] = [self.months[0], self.months[3], self.months[7], self.months[11]]
+                
+                cell.setChart(dataPoints: monthsRevised, values: self.values)
+            }
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
+            
+            return cell
+            
+        default:
+            fatalError("Error: unexpected indexPath.")
+        }
+    }
+}
+extension IndividualViewController: UITableViewDelegate {
+    
+    
+}
+extension IndividualViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return newsArray.count
@@ -198,18 +156,11 @@ extension IndividualStockViewController: UICollectionViewDataSource {
     
 }
 
-extension IndividualStockViewController: UICollectionViewDelegate {
+extension IndividualViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        //        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        //        let newsVC = storyboard.instantiateViewController(withIdentifier: "NewsView") as! NewsViewController
-        
-        
-        //        performSegue(withIdentifier: "ShowNews", sender: newsVC.url)
         performSegue(withIdentifier: "ShowNews", sender: self)
         
-        //        self.present(newsVC, animated: true, completion: nil)
     }
     
     

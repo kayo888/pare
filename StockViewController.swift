@@ -183,7 +183,7 @@ class StockViewController: UIViewController {
             if identifier == "ShowIndividualStock" {
                 let indexPath = stockView.indexPathsForSelectedItems?.first
                 
-                let individualStockViewController = segue.destination as! IndividualStockViewController
+                let individualStockViewController = segue.destination as! IndividualViewController
                 let symbol = moversArray[(indexPath?.row)!].symbol
                 
                 NetworkRequest.instantiateStock(symbol: symbol, completion: { (Stock) in

@@ -32,7 +32,8 @@ class DiscoverViewController: UIViewController {
     @IBOutlet weak var sectorsCollectionView: UICollectionView!
     
     let sectors = ["Consumer Discretionary", "Energy", "Consumer Staples", "Financials", "Health Care", "Industrials", "Information Technology", "Materials", "Real Estate", "Telecommunications Services", "Utilities"]
-    let sectorImages = [UIImage(named: "#imageLiteral(resourceName: "Consumer Discretionary")"), UIImage(named: "#imageLiteral(resourceName: "Energy")"), UIImage(named: "#imageLiteral(resourceName: "Consumer Staples")"), UIImage(named: "#imageLiteral(resourceName: "Financials")"), UIImage(named: "#imageLiteral(resourceName: "Health Care")"), UIImage(named: "#imageLiteral(resourceName: "Industrials")"), UIImage(named: "#imageLiteral(resourceName: "Information Tech")"), UIImage(named: "#imageLiteral(resourceName: "Materials")"), UIImage(named: "#imageLiteral(resourceName: "Real Estate")"), UIImage(named: "#imageLiteral(resourceName: "Telecommunications")"), UIImage(named: "#imageLiteral(resourceName: "Utilities")")]
+    
+    let sectorImages = [UIImage(named: "Consumer Discretionary")!, UIImage(named: "Energy")!, UIImage(named: "Consumer Staples"), UIImage(named: "Financials"), UIImage(named: "Health Care"), UIImage(named: "Industrials"), UIImage(named: "Information Technology"), UIImage(named: "Materials"), UIImage(named: "Real Estate"), UIImage(named: "Telecommunications"), UIImage(named: "Utilities")]
     
     
     override func viewDidLoad() {
@@ -76,6 +77,31 @@ class DiscoverViewController: UIViewController {
                 let news = newsArray[indexPath!.item]
                 let newsViewController = segue.destination as! NewsViewController
                 newsViewController.url = news.url
+            } else if identifier == "ShowStock" {
+                let indexPath = basedOnCollectionView.indexPathsForSelectedItems?.first
+                
+                let individualStockViewController = segue.destination as! IndividualViewController
+                let symbol = basedOnArray[(indexPath?.row)!].symbol
+                
+                NetworkRequest.instantiateStock(symbol: symbol, completion: { (Stock) in
+                    individualStockViewController.stock = Stock
+                })
+            } else if identifier == "ShowRecommendedStock" {
+                let indexPath = recommendationsCollectionView.indexPathsForSelectedItems?.first
+                
+                let individualStockViewController = segue.destination as! IndividualViewController
+                let symbol = topRecArray[(indexPath?.row)!].symbol
+                
+                NetworkRequest.instantiateStock(symbol: symbol, completion: { (Stock) in
+                    individualStockViewController.stock = Stock
+                })
+            } else if identifier == "ShowSector" {
+                let indexPath = sectorsCollectionView.indexPathsForSelectedItems?.first
+                
+                let sectorView = segue.destination as! SectorViewController
+                let sector = sectors[(indexPath?.row)!]
+                
+                sectorView.sector = sector
             }
         }
     }
@@ -97,7 +123,7 @@ class DiscoverViewController: UIViewController {
                 })
             }
         }
-
+        
         NetworkRequest.topRecommendations(symbols: following) { (tops: [String]) in
             for top in tops {
                 NetworkRequest.instantiateRecommendedStock(symbol: top, completion: { (topRec: RecommendedStock?) in
@@ -135,7 +161,7 @@ extension DiscoverViewController: UICollectionViewDataSource{
             return cell
         } else if collectionView == self.basedOnCollectionView {
             let cell: DiscoverNewsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BasedOnCell", for: indexPath) as! DiscoverNewsCell
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SectionHeader", for: indexPath) as! HeaderCollectionReusableView
+            //                let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SectionHeader", for: indexPath) as! HeaderCollectionReusableView
             
             let based = basedOnArray[indexPath.item]
             cell.title.text = based.symbol
@@ -150,8 +176,17 @@ extension DiscoverViewController: UICollectionViewDataSource{
             cell.title.text = sector
             let sectorImage = sectorImages[indexPath.item]
             cell.image.image = sectorImage
-        
+            
             return cell
+        } else {
+            let cell: DiscoverNewsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BasedOn2Cell", for: indexPath) as! DiscoverNewsCell
+            
+            let based = basedOnArray[indexPath.item]
+            cell.title.text = based.symbol
+            cell.image.image = based.logo
+            
+            return cell
+
         }
     }
 }
@@ -164,9 +199,36 @@ extension DiscoverViewController: UICollectionViewDelegate{
     }
     
 }
-
-
-
+extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == self.sectorsCollectionView {
+            let size = CGSize(width: 135, height: 135)
+            
+            return size
+        } else {
+            let size = CGSize(width: 140, height: 155)
+            
+            return size
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == self.sectorsCollectionView {
+            return 9
+        } else {
+            return 6
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == self.sectorsCollectionView {
+            return 4
+        } else {
+            
+            return 1.5
+        }
+    }
+    
+    
+}
 
 
 

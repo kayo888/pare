@@ -1,0 +1,17 @@
+//
+//  StockAttributesCell.swift
+//  
+//
+//  Created by Ehi Airewele  on 8/7/17.
+//
+//
+
+import UIKit
+
+class StockAttributesCell: UITableViewCell {
+
+    
+    
+    
+    
+}
