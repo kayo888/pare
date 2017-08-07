@@ -29,6 +29,11 @@ class DiscoverViewController: UIViewController {
     @IBOutlet weak var newsCollectionView: UICollectionView!
     @IBOutlet weak var basedOnCollectionView: UICollectionView!
     @IBOutlet weak var recommendationsCollectionView: UICollectionView!
+    @IBOutlet weak var sectorsCollectionView: UICollectionView!
+    
+    let sectors = ["Consumer Discretionary", "Energy", "Consumer Staples", "Financials", "Health Care", "Industrials", "Information Technology", "Materials", "Real Estate", "Telecommunications Services", "Utilities"]
+    let sectorImages = [UIImage(named: "#imageLiteral(resourceName: "Consumer Discretionary")"), UIImage(named: "#imageLiteral(resourceName: "Energy")"), UIImage(named: "#imageLiteral(resourceName: "Consumer Staples")"), UIImage(named: "#imageLiteral(resourceName: "Financials")"), UIImage(named: "#imageLiteral(resourceName: "Health Care")"), UIImage(named: "#imageLiteral(resourceName: "Industrials")"), UIImage(named: "#imageLiteral(resourceName: "Information Tech")"), UIImage(named: "#imageLiteral(resourceName: "Materials")"), UIImage(named: "#imageLiteral(resourceName: "Real Estate")"), UIImage(named: "#imageLiteral(resourceName: "Telecommunications")"), UIImage(named: "#imageLiteral(resourceName: "Utilities")")]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +112,8 @@ class DiscoverViewController: UIViewController {
 extension DiscoverViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return newsArray.count
+        if collectionView == self.sectorsCollectionView { return 2 }
+        else { return newsArray.count }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -115,30 +121,35 @@ extension DiscoverViewController: UICollectionViewDataSource{
             let cell: DiscoverNewsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewsCell", for: indexPath) as! DiscoverNewsCell
             
             let newsCollection = newsArray[indexPath.item]
-            cell.newsHeadline.text = newsCollection.headline
+            cell.title.text = newsCollection.headline
             //            cell.newsImage.image = newsCollection.url
             
             return cell
         } else if collectionView == self.recommendationsCollectionView {
-            let cell: DiscoverRecCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationsCell", for: indexPath) as! DiscoverRecCell
+            let cell: DiscoverNewsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationsCell", for: indexPath) as! DiscoverNewsCell
             
             let recommendations = topRecArray[indexPath.item]
-            cell.stockName.text = recommendations.symbol
-            cell.stockLogo.image = recommendations.logo
+            cell.title.text = recommendations.symbol
+            cell.image.image = recommendations.logo
             
             return cell
         } else if collectionView == self.basedOnCollectionView {
-            let cell: BasedOnCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BasedOnCell", for: indexPath) as! BasedOnCell
+            let cell: DiscoverNewsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BasedOnCell", for: indexPath) as! DiscoverNewsCell
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SectionHeader", for: indexPath) as! HeaderCollectionReusableView
             
             let based = basedOnArray[indexPath.item]
-            cell.stockName.text = based.symbol
-            cell.stockLogo.image = based.logo
+            cell.title.text = based.symbol
+            cell.image.image = based.logo
             //            header.headerLabel.text = "Because You Follow \()"
             
             return cell
-        } else {
-        
+        } else if collectionView == self.sectorsCollectionView {
+            let cell: DiscoverNewsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorCell", for: indexPath) as! DiscoverNewsCell
+            
+            let sector = sectors[indexPath.item]
+            cell.title.text = sector
+            let sectorImage = sectorImages[indexPath.item]
+            cell.image.image = sectorImage
         
             return cell
         }

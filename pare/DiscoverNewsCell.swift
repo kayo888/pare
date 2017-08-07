@@ -10,6 +10,6 @@ import UIKit
 
 class DiscoverNewsCell: UICollectionViewCell {
     
-    @IBOutlet weak var newsHeadline: UILabel!
-    @IBOutlet weak var newsImage: UIImageView!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var image: UIImageView!
 }

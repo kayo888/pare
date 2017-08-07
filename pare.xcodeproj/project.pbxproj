@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6D1971341F37BB610069CA89 /* DiscoverNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1971331F37BB610069CA89 /* DiscoverNewsCell.swift */; };
-		6D1971361F37BB8E0069CA89 /* DiscoverRecCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1971351F37BB8E0069CA89 /* DiscoverRecCell.swift */; };
-		6D1971381F37BBA60069CA89 /* BasedOnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1971371F37BBA60069CA89 /* BasedOnCell.swift */; };
 		6D2CC88C1F30EA480074A307 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D2CC88B1F30EA480074A307 /* GoogleService-Info.plist */; };
 		6D2CC8961F314AA70074A307 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2CC8951F314AA70074A307 /* User.swift */; };
 		6D2CC8981F3151410074A307 /* IndividualStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2CC8971F3151410074A307 /* IndividualStockViewController.swift */; };
@@ -37,7 +35,6 @@
 		6D98E6EE1F367A5B00359079 /* FollowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D98E6ED1F367A5B00359079 /* FollowService.swift */; };
 		6D98E6F01F367B1200359079 /* StockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D98E6EF1F367B1200359079 /* StockService.swift */; };
 		6D98E6F21F36868F00359079 /* StockAttributesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D98E6F11F36868F00359079 /* StockAttributesCell.swift */; };
-		6D98E6F61F36903C00359079 /* IndividualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D98E6F51F36903C00359079 /* IndividualViewController.swift */; };
 		6DF84C121F33992000F16C74 /* notPoop.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DF84C111F33992000F16C74 /* notPoop.png */; };
 		896EBB2435A9D945ECD71A2F /* Pods_pare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C27B166884897499F0F3FC2 /* Pods_pare.framework */; };
 /* End PBXBuildFile section */
@@ -62,8 +59,6 @@
 /* Begin PBXFileReference section */
 		3C27B166884897499F0F3FC2 /* Pods_pare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D1971331F37BB610069CA89 /* DiscoverNewsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverNewsCell.swift; sourceTree = "<group>"; };
-		6D1971351F37BB8E0069CA89 /* DiscoverRecCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverRecCell.swift; sourceTree = "<group>"; };
-		6D1971371F37BBA60069CA89 /* BasedOnCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasedOnCell.swift; sourceTree = "<group>"; };
 		6D2CC88B1F30EA480074A307 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D2CC8951F314AA70074A307 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6D2CC8971F3151410074A307 /* IndividualStockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualStockViewController.swift; sourceTree = "<group>"; };
@@ -97,7 +92,6 @@
 		6D98E6ED1F367A5B00359079 /* FollowService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowService.swift; sourceTree = "<group>"; };
 		6D98E6EF1F367B1200359079 /* StockService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockService.swift; sourceTree = "<group>"; };
 		6D98E6F11F36868F00359079 /* StockAttributesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockAttributesCell.swift; sourceTree = "<group>"; };
-		6D98E6F51F36903C00359079 /* IndividualViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualViewController.swift; sourceTree = "<group>"; };
 		6DF84C111F33992000F16C74 /* notPoop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notPoop.png; sourceTree = "<group>"; };
 		AB186A1B3E5FB9E58573B3AE /* Pods-pare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pare/Pods-pare.debug.xcconfig"; sourceTree = "<group>"; };
 		B5E2244F37BF1B19AE798982 /* Pods-pare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pare.release.xcconfig"; path = "Pods/Target Support Files/Pods-pare/Pods-pare.release.xcconfig"; sourceTree = "<group>"; };
@@ -169,7 +163,6 @@
 				6D7778B21F2AC69C0050BED2 /* AppDelegate.swift */,
 				6D2CC8991F31518D0074A307 /* NewsViewController.swift */,
 				6D2CC8971F3151410074A307 /* IndividualStockViewController.swift */,
-				6D98E6F51F36903C00359079 /* IndividualViewController.swift */,
 				6D35C6BB1F34190F002F956B /* Sample Scene.png */,
 				6D2CC89B1F3152BB0074A307 /* CollectionViewCell.swift */,
 				6D7778B61F2AC69C0050BED2 /* Main.storyboard */,
@@ -183,8 +176,6 @@
 				6D7778EE1F2BD8110050BED2 /* DiscoverViewController.swift */,
 				6D5EE5E71F37CEAA00551401 /* HeaderCollectionReusableView.swift */,
 				6D1971331F37BB610069CA89 /* DiscoverNewsCell.swift */,
-				6D1971351F37BB8E0069CA89 /* DiscoverRecCell.swift */,
-				6D1971371F37BBA60069CA89 /* BasedOnCell.swift */,
 				6D7778F01F2BD87C0050BED2 /* NewsItem.swift */,
 				6D7778EA1F2BB6240050BED2 /* NetworkRequest.swift */,
 				6D98E6E51F35288000359079 /* StockFollowService.swift */,
@@ -456,13 +447,10 @@
 				6D98E6EC1F35716700359079 /* Storyboard+Utility.swift in Sources */,
 				6D98E6F01F367B1200359079 /* StockService.swift in Sources */,
 				6D2CC8981F3151410074A307 /* IndividualStockViewController.swift in Sources */,
-				6D1971361F37BB8E0069CA89 /* DiscoverRecCell.swift in Sources */,
 				6D7778E91F2BAF870050BED2 /* StockViewCell.swift in Sources */,
 				6D7778E71F2BAE7A0050BED2 /* Stock.swift in Sources */,
 				6D7778ED1F2BB6940050BED2 /* Constants.swift in Sources */,
-				6D98E6F61F36903C00359079 /* IndividualViewController.swift in Sources */,
 				6D2CC8961F314AA70074A307 /* User.swift in Sources */,
-				6D1971381F37BBA60069CA89 /* BasedOnCell.swift in Sources */,
 				6D98E6F21F36868F00359079 /* StockAttributesCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
