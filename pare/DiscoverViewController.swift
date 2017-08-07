@@ -137,6 +137,10 @@ extension DiscoverViewController: UICollectionViewDataSource{
             //            header.headerLabel.text = "Because You Follow \()"
             
             return cell
+        } else {
+        
+        
+            return cell
         }
     }
 }
