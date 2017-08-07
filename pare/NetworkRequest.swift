@@ -23,6 +23,56 @@ struct NetworkRequest {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return formatter.string(from: date)
     }
+    // let price: Double
+    //    let changePercent: Double
+    //    let change: Double
+    //
+    //    let isPositive: Bool
+    //    let sector: String
+    static func instantiateWatchlistStock(symbol: String, completion: @escaping (WatchlistStock) -> Void) {
+        let dispatchgroup = DispatchGroup()
+        
+        dispatchgroup.enter()
+        var object: WatchlistStock?
+        
+        getStockName(symbol: symbol) { (name) in
+            getStockLogo(symbol: symbol, completion: { (logo) in
+                getMinuteData(symbol: symbol, completion: { (price) in
+                    quote(symbol: symbol, completion: { (_, _, previousClose, _, _, _, _, _) in
+                        var isPositive = true
+                        let change = price - previousClose
+                        var changePercent = 0.0
+                        
+                        if (change < 0) {
+                            isPositive = false
+                        }
+                        if (change == 0) {
+                            changePercent = 0.0
+                        } else {
+                            changePercent = (change / previousClose) * 100.00
+                        }
+                        changePercent = Double(round(100 * changePercent)/100)
+                        
+                        object = WatchlistStock(symbol: symbol, companyName: name, logo: logo, price: price, changePercent: changePercent, change: change, isPositive: isPositive)
+                        
+                        completion(object!)
+                    })
+                    
+                })
+                
+            })
+            
+        }
+    }
+    static func instantiateRecommendedStock(symbol: String, completion: @escaping (RecommendedStock) -> Void) {
+        let dispatchgroup = DispatchGroup()
+        
+        dispatchgroup.enter()
+        var object: RecommendedStock?
+            getStockLogo(symbol: symbol, completion: { (logo) in
+                object = RecommendedStock(symbol: symbol, logo: logo)
+        })
+    }
     
     static func instantiateStock(symbol: String, completion: @escaping (Stock?) -> Void) {
         let thisSymbol = symbol
@@ -30,58 +80,58 @@ struct NetworkRequest {
         dispatchgroup.enter()
         var object:Stock?
         
-//        DispatchQueue.global(qos: .userInitiated).async {
-            getStockName(symbol: thisSymbol, completion: { (name) in
-                
-                getStockLogo(symbol: thisSymbol) { (logo) in
-                    allCompany(symbol: thisSymbol, completion: { (description, site, ceo) in
-                        quote(symbol: thisSymbol, completion: { (primaryExchange, calculationPrice, previousClose, avgTotalVolume, marketCap, peRatio, week52Low, week52High) in
-                            
-                            stats(symbol: thisSymbol, completion: { (profitMargin, peRatioLow, peRatioHigh) in
-                                getMinuteData(symbol: thisSymbol) { (price) in
-                                    
-                                    var isPositive = true
-                                    let change = price - previousClose
-                                    var changePercent = 0.0
-                                    
-                                    if (change < 0) {
-                                        isPositive = false
-                                    }
-                                    
-                                    if (change == 0) {
-                                        changePercent = 0.0
-                                    } else {
-                                        changePercent = (change / previousClose) * 100.00
-                                    }
-                                    changePercent = Double(round(100 * changePercent)/100)
-
-                                    
-                                    object = Stock(symbol: thisSymbol, companyName: name, logo: logo, price: price, changePercent: changePercent, change: change, primaryExchange: primaryExchange, calculationPrice: calculationPrice, previousClose: previousClose, avgTotalVolume: avgTotalVolume, marketCap: UInt64(marketCap), peRatio: peRatio, peRatioHigh: peRatioHigh, peRatioLow: peRatioLow, week52High: week52High, week52Low: week52Low, profitMargin: profitMargin, isPositive: isPositive, description: description, website: site, CEO: ceo, isFollowed: false)
-                                    
-                                    completion(object)
-                                                                        //                                dispatchgroup.leave()
+        //        DispatchQueue.global(qos: .userInitiated).async {
+        getStockName(symbol: thisSymbol, completion: { (name) in
+            
+            getStockLogo(symbol: thisSymbol) { (logo) in
+                allCompany(symbol: thisSymbol, completion: { (description, site, ceo) in
+                    quote(symbol: thisSymbol, completion: { (primaryExchange, calculationPrice, previousClose, avgTotalVolume, marketCap, peRatio, week52Low, week52High) in
+                        
+                        stats(symbol: thisSymbol, completion: { (profitMargin, peRatioLow, peRatioHigh) in
+                            getMinuteData(symbol: thisSymbol) { (price) in
+                                
+                                var isPositive = true
+                                let change = price - previousClose
+                                var changePercent = 0.0
+                                
+                                if (change < 0) {
+                                    isPositive = false
                                 }
-                                //                            dispatchgroup.leave()
-                            })
-                            //                        dispatchgroup.leave()
-                            
-                            
+                                
+                                if (change == 0) {
+                                    changePercent = 0.0
+                                } else {
+                                    changePercent = (change / previousClose) * 100.00
+                                }
+                                changePercent = Double(round(100 * changePercent)/100)
+                                
+                                
+                                object = Stock(symbol: thisSymbol, companyName: name, logo: logo, price: price, changePercent: changePercent, change: change, primaryExchange: primaryExchange, calculationPrice: calculationPrice, previousClose: previousClose, avgTotalVolume: avgTotalVolume, marketCap: UInt64(marketCap), peRatio: peRatio, peRatioHigh: peRatioHigh, peRatioLow: peRatioLow, week52High: week52High, week52Low: week52Low, profitMargin: profitMargin, isPositive: isPositive, description: description, website: site, CEO: ceo, isFollowed: false)
+                                
+                                completion(object)
+                                //                                dispatchgroup.leave()
+                            }
+                            //                            dispatchgroup.leave()
                         })
-                        //                    dispatchgroup.leave()
+                        //                        dispatchgroup.leave()
+                        
                         
                     })
-                    //                dispatchgroup.leave()
+                    //                    dispatchgroup.leave()
                     
-                }
-                //            dispatchgroup.leave()
+                })
+                //                dispatchgroup.leave()
                 
-            })
+            }
+            //            dispatchgroup.leave()
             
-            //        dispatchgroup.notify(queue: .main) {
-            //            completion(object)
-            
-            //        }
-//        }
+        })
+        
+        //        dispatchgroup.notify(queue: .main) {
+        //            completion(object)
+        
+        //        }
+        //        }
     }
     
     static func getStockName(symbol: String, completion: @escaping (String) -> Void) {
@@ -520,19 +570,6 @@ struct NetworkRequest {
     //
     //                    let ema = json["Technical Analysis: EMA"]
     //                }
-    //        var consumerDiscretionary: [Stock] = []
-    //        var consumerStaples: [Stock] = []
-    //        var energy: [Stock] = []
-    //        var financials: [Stock] = []
-    //        var healthCare: [Stock] = []
-    //        var industrials: [Stock] = []
-    //        var informationTechnology: [Stock] = []
-    //        var materials: [Stock] = []
-    //        var realEstate: [Stock] = []
-    //        var telecommunicationServices: [Stock] = []
-    //        var utilites: [Stock] = []
-    
-    
     static func filterSectors(symbol: String, completion: @escaping ([String]) -> Void) {
         
         var symbolMarketCap: UInt64 = 0
@@ -542,9 +579,7 @@ struct NetworkRequest {
         var thisPeRatio = 0.0
         var thisMarketCapDes = ""
         
-        //        DispatchQueue.main.sync {
         instantiateStock(symbol: symbol) { (symbolStock :Stock?) in
-            //            dispatchGroup.enter()
             symbolMarketCap = (symbolStock?.marketCap)!
             symbolPeRatio = (symbolStock?.peRatio)!
             if (symbolMarketCap >= 10000000000) {
@@ -558,14 +593,10 @@ struct NetworkRequest {
             guard let jsonURL = Bundle.main.url(forResource: "symbol + sector", withExtension: "json") else {
                 return
             }
-            //        DispatchQueue.global(qos: .userInitiated).sync {
             let jsonData = try! Data(contentsOf: jsonURL)
             let sectorData = JSON(data: jsonData)
             let allStockData = sectorData["results"].arrayValue
             
-            //            dispatchGroup.enter()
-            //            DispatchQueue.concurrentPerform(iterations: allStockData.count) { (i) in
-            //                let stock = allStockData[i]
             let dispatchGroup = DispatchGroup()
             var recommendArray : [String] = []
             
@@ -585,10 +616,6 @@ struct NetworkRequest {
                     var count = 0
                     if (abs(thisPeRatio - symbolPeRatio) <= 5) && (marketCapDes == thisMarketCapDes) {
                         recommendArray.append(thisSymbol)
-                        //                            instantiateStock(symbol: thisSymbol, completion: { (recommend :Stock?) in
-                        //                                recommendArray.append(recommend!)
-                        //                                dispatchGroup.leave()
-                        //                            })
                         dispatchGroup.leave()
                     } else {
                         dispatchGroup.leave()
@@ -601,12 +628,81 @@ struct NetworkRequest {
                 completion(recommendArray)
             }
         }
-        
-        
-        //        }
-        //        }
-        
     }
+    
+    static func topRecommendations(symbols: [String], completion: @escaping ([String]) -> Void) {
+        var sumPE = 0.0
+        var avgPE = 0.0
+        var avgCap: UInt64 = 0
+        var sumCap: UInt64 = 0
+        
+        for symbol in symbols {
+            quote(symbol: symbol, completion: { (_, _, _, _, marketCap, peRatio, _, _) in
+                sumPE = sumPE + peRatio
+                sumCap = sumCap + marketCap
+            })
+        }
+        let count = Double(symbols.count)
+        let Int64Count = UInt64(symbols.count)
+        avgPE = sumPE / count
+        avgCap = sumCap / Int64Count
+        
+        var marketCapDes = ""
+        var thisMarketCap: UInt64 = 0
+        var thisPeRatio = 0.0
+        var thisMarketCapDes = ""
+        
+        if (avgCap >= 10000000000) {
+            marketCapDes = "large cap"
+        } else if (avgCap >= 2000000000 && avgCap < 10000000000) {
+            marketCapDes = "medium cap"
+        } else {
+            marketCapDes = "small cap"
+        }
+        
+        guard let jsonURL = Bundle.main.url(forResource: "symbol + sector", withExtension: "json") else {
+            return
+        }
+        let jsonData = try! Data(contentsOf: jsonURL)
+        let sectorData = JSON(data: jsonData)
+        let allStockData = sectorData["results"].arrayValue
+        
+        let dispatchGroup = DispatchGroup()
+        var recommendArray : [String] = []
+        
+        for stock in allStockData {
+            dispatchGroup.enter()
+            let thisSymbol = stock["Ticker symbol"].stringValue
+            quote(symbol: thisSymbol, completion: { (_, _, _, _, marketCap, peRatio, _, _) in
+                thisMarketCap = UInt64(marketCap)
+                thisPeRatio = peRatio
+                if (thisMarketCap >= 10000000000) {
+                    thisMarketCapDes = "large cap"
+                } else if (thisMarketCap >= 2000000000 && marketCap < 10000000000) {
+                    thisMarketCapDes = "medium cap"
+                } else {
+                    thisMarketCapDes = "small cap"
+                }
+                
+                if (abs(thisPeRatio - avgPE) <= 1) && (marketCapDes == thisMarketCapDes) {
+                    recommendArray.append(thisSymbol)
+                    dispatchGroup.leave()
+                } else {
+                    dispatchGroup.leave()
+                }
+            })
+            
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            completion(recommendArray)
+        }
+    }
+    
+    
+    
+    
+    
     
     
     

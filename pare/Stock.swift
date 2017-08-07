@@ -45,7 +45,11 @@ struct WatchlistStock {
     let change: Double
     
     let isPositive: Bool
-    let sector: String
+}
+
+struct RecommendedStock {
+    let symbol: String
+    let logo: UIImage
 }
 
 

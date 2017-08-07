@@ -29,9 +29,9 @@ class StockViewController: UIViewController {
     let positiveGreen = UIColor(red: 62.0/255.0, green: 189.0/255.0, blue: 153.0/255.0, alpha: 1.0)
     let negativeRed = UIColor(red: 250/255.0, green: 92/255.0, blue: 120/255.0, alpha: 1.0)
     
-    var gainersArray: [Stock] = []
-    var losersArray: [Stock] = []
-    var moversArray: [Stock] = []
+    var gainersArray: [WatchlistStock] = []
+    var losersArray: [WatchlistStock] = []
+    var moversArray: [WatchlistStock] = []
     
     
     var timer = Timer()
@@ -67,16 +67,16 @@ class StockViewController: UIViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             for gainerSymbol in gainers {
                 
-                self.getSymbolInfo(symbol: gainerSymbol) { (Stock) in
-                    self.gainersArray.append(Stock)
-                    self.moversArray.append(Stock)
+                self.getSymbolInfo(symbol: gainerSymbol) { (WatchlistStock) in
+                    self.gainersArray.append(WatchlistStock)
+                    self.moversArray.append(WatchlistStock)
                 }
             }
             
             for loserSymbol in losers {
-                self.getSymbolInfo(symbol: loserSymbol) { (Stock) in
-                    self.losersArray.append(Stock)
-                    self.moversArray.append(Stock)
+                self.getSymbolInfo(symbol: loserSymbol) { (WatchlistStock) in
+                    self.losersArray.append(WatchlistStock)
+                    self.moversArray.append(WatchlistStock)
                     DispatchQueue.main.async {
                         if self.losersArray.count == losers.count {
                             self.stockView.reloadData()
@@ -89,12 +89,10 @@ class StockViewController: UIViewController {
             
         }
     }
-    func getSymbolInfo(symbol: String? = nil, completion: @escaping (Stock) -> Void) {
-        NetworkRequest.instantiateStock(symbol: symbol!) { (Stock) in
-            completion(Stock!)
-            
+    func getSymbolInfo(symbol: String? = nil, completion: @escaping (WatchlistStock) -> Void) {
+        NetworkRequest.instantiateWatchlistStock(symbol: symbol!) { (WatchlistStock) in
+            completion(WatchlistStock)
         }
-        
     }
     
     
@@ -184,21 +182,14 @@ class StockViewController: UIViewController {
         if let identifier = segue.identifier {
             if identifier == "ShowIndividualStock" {
                 let indexPath = stockView.indexPathsForSelectedItems?.first
-                //
-                //                Auth.auth().signInAnonymously() { (user, error) in
-                //                    let isAnonymous = user!.isAnonymous
-                //                    let uid = user!.uid
-                //                    let userDict = ["uid": uid,
-                //                                    "stock1": "AAPL", "stock2": "MSFT", "stock3": "TSLA"]
-                //                    let ref = Database.database().reference().child("users").child((user?.uid)!)
-                //                    ref.updateChildValues(userDict)
-                //                }
                 
-                
-                //                let stock = Stock[indexPath!.item]
                 let individualStockViewController = segue.destination as! IndividualStockViewController
-                individualStockViewController.stock = moversArray[(indexPath?.row)!]
-                //                individualStockViewController.stock = stock
+                let symbol = moversArray[(indexPath?.row)!].symbol
+                
+                NetworkRequest.instantiateStock(symbol: symbol, completion: { (Stock) in
+                    individualStockViewController.stock = Stock
+                })
+                
             }
         }
     }
