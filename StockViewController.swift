@@ -29,9 +29,9 @@ class StockViewController: UIViewController {
     let positiveGreen = UIColor(red: 62.0/255.0, green: 189.0/255.0, blue: 153.0/255.0, alpha: 1.0)
     let negativeRed = UIColor(red: 250/255.0, green: 92/255.0, blue: 120/255.0, alpha: 1.0)
     
-    var gainersArray: [WatchlistStock] = []
-    var losersArray: [WatchlistStock] = []
-    var moversArray: [WatchlistStock] = []
+    var gainersArray: [Stock] = []
+    var losersArray: [Stock] = []
+    var moversArray: [Stock] = []
     
     
     var timer = Timer()
@@ -67,16 +67,16 @@ class StockViewController: UIViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             for gainerSymbol in gainers {
                 
-                self.getSymbolInfo(symbol: gainerSymbol) { (WatchlistStock) in
-                    self.gainersArray.append(WatchlistStock)
-                    self.moversArray.append(WatchlistStock)
+                self.getSymbolInfo(symbol: gainerSymbol) { (Stock) in
+                    self.gainersArray.append(Stock)
+                    self.moversArray.append(Stock)
                 }
             }
             
             for loserSymbol in losers {
-                self.getSymbolInfo(symbol: loserSymbol) { (WatchlistStock) in
-                    self.losersArray.append(WatchlistStock)
-                    self.moversArray.append(WatchlistStock)
+                self.getSymbolInfo(symbol: loserSymbol) { (Stock) in
+                    self.losersArray.append(Stock)
+                    self.moversArray.append(Stock)
                     DispatchQueue.main.async {
                         if self.losersArray.count == losers.count {
                             self.stockView.reloadData()
@@ -89,9 +89,9 @@ class StockViewController: UIViewController {
             
         }
     }
-    func getSymbolInfo(symbol: String? = nil, completion: @escaping (WatchlistStock) -> Void) {
-        NetworkRequest.instantiateWatchlistStock(symbol: symbol!) { (WatchlistStock) in
-            completion(WatchlistStock)
+    func getSymbolInfo(symbol: String? = nil, completion: @escaping (Stock) -> Void) {
+        NetworkRequest.instantiateStock(symbol: symbol!) { (Stock) in
+            completion(Stock!)
         }
     }
     
@@ -184,11 +184,8 @@ class StockViewController: UIViewController {
                 let indexPath = stockView.indexPathsForSelectedItems?.first
                 
                 let individualStockViewController = segue.destination as! IndividualViewController
-                let symbol = moversArray[(indexPath?.row)!].symbol
-                
-                NetworkRequest.instantiateStock(symbol: symbol, completion: { (Stock) in
-                    individualStockViewController.stock = Stock
-                })
+                let stock = moversArray[(indexPath?.row)!]
+                individualStockViewController.stock = stock
                 
             }
         }
@@ -206,8 +203,9 @@ extension StockViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WatchlistStockViewCell", for: indexPath) as! StockViewCell
-        
+
         let watchListStock = moversArray[indexPath.item]
+        cell.stock = watchListStock
         cell.nameLabel.text = watchListStock.companyName
         if (watchListStock.isPositive) {
             cell.priceLabel.text = "$\(watchListStock.price) (\(watchListStock.changePercent)%)"
@@ -218,15 +216,10 @@ extension StockViewController: UICollectionViewDataSource {
         cell.logoImage.image = watchListStock.logo
         cell.symbolLabel.text = watchListStock.symbol
         
-        //        NetworkRequest.getAverages(symbol: watchListStock.symbol) { (dict: [String : Double]) in
-        //            let timesArray = Array(dict.keys)
-        //            let valueArray = Array(dict.values)
-        //
-        //            cell.setChart(dataPoints: timesArray, values: valueArray)
-        //
-        //        }
-        //cell.setChart(dataPoints: timesArray, values: valuesArray)
-        // cell.lineChartView.setNeedsDisplay()
+//        NetworkRequest.getAverages(symbol: (watchListStock.symbol)) { (values: [Double]) in
+//            
+//            cell.setChart(values: values)
+//        }
         
         return cell
         
@@ -237,52 +230,51 @@ extension StockViewController: UICollectionViewDataSource {
 extension StockViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
+        performSegue(withIdentifier: "ShowIndividualStock", sender: self)
     }
     
     
     
 }
-extension StockViewController: FUIAuthDelegate {
-    func authUI(_ authUI: FUIAuth, didSignInWith user: FIRUser?, error: Error?) {
-        if let error = error {
-            assertionFailure("Error signing in: \(error.localizedDescription)")
-            return
-        }
-        guard let user = user
-            else {return}
-        
-//        let startingStocks = ["AAPL", "MSFT", "TSLA"]
-        let userRef = Database.database().reference().child("users").child(user.uid)
-        
-        userRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let user = User(snapshot: snapshot) {
-                print("Welcome back")
-            } else {
-                guard let firUser = Auth.auth().currentUser else {return}
-                UserService.create(firUser, completion: { (user) in
-                    guard let user = user else {return}
-                    
-                    print("You're already following: AAPL, MSFT and TSLA!")
-                })
-                
-            }
-        })
-        
-        UserService.show(forUID: user.uid) { (user) in
-            if let user = user {
-                User.setCurrent(user)
-                
-                let initialViewController = UIStoryboard.initialViewController(for: .main)
-                self.view.window?.rootViewController = initialViewController
-                self.view.window?.makeKeyAndVisible()
-                
-            }
-        }
-        
-    }
-}
+//extension StockViewController: FUIAuthDelegate {
+//    func authUI(_ authUI: FUIAuth, didSignInWith user: FIRUser?, error: Error?) {
+//        if let error = error {
+//            assertionFailure("Error signing in: \(error.localizedDescription)")
+//            return
+//        }
+//        guard let user = user
+//            else {return}
+//        
+////        let startingStocks = ["AAPL", "MSFT", "TSLA"]
+//        let userRef = Database.database().reference().child("users").child(user.uid)
+//        
+//        userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+//            if let user = User(snapshot: snapshot) {
+//                print("Welcome back")
+//            } else {
+//                guard let firUser = Auth.auth().currentUser else {return}
+//                UserService.create(firUser, completion: { (user) in
+//                    guard let user = user else {return}
+//                    
+//                    print("You're already following: AAPL, MSFT and TSLA!")
+//                })
+//                
+//            }
+//        })
+//        
+//        UserService.show(forUID: user.uid) { (user) in
+//            if let user = user {
+//                User.setCurrent(user)
+//                
+//                let initialViewController = UIStoryboard.initialViewController(for: .main)
+//                self.view.window?.rootViewController = initialViewController
+//                self.view.window?.makeKeyAndVisible()
+//                
+//            }
+//        }
+//        
+//    }
+//}
    
 
 

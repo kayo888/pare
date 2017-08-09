@@ -10,14 +10,16 @@
 import UIKit
 import Charts
 
+/*
+ let profitMargin: Double
+ 
+ let description: String
+ let website: String
+ let CEO: String
+ */
 class IndividualViewController: UIViewController {
+    var symbol: String?
     var stock: Stock?
-    var newsArray = [NewsItem]()
-    
-    
-    //    protocol IndividualStockViewController: class {
-    //        func didTapFollowButton(_ followButton: UIButton)
-    //    }
     
     @IBOutlet weak var individualStockView: UITableView!
     
@@ -27,24 +29,33 @@ class IndividualViewController: UIViewController {
     var yVals1: [ChartDataEntry] = []
     var months = [String]()
     var values = [Double]()
+    var stats = [Double]()
+    var info = [String]()
+    var about = ""
+    var newsArray = [NewsItem]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let stock = stock {
-            
-            NetworkRequest.getNews(symbol: stock.symbol) { (newsItems: [NewsItem]) in
-                
-                self.newsArray = newsItems
-                
-                DispatchQueue.main.async {
-                    self.individualStockView.reloadData()
+//        NetworkRequest.instantiateStock(symbol: (symbol)!, completion: { (input) in
+//            self.stock = input
+            if let stock = stock {
+
+                NetworkRequest.getNews(symbol: (stock.symbol)) { (newsItems: [NewsItem]) in
+                    
+                    self.newsArray = newsItems
+                    
+                    DispatchQueue.main.async {
+                        self.individualStockView.reloadData()
+                    }
+                    
                 }
+                NetworkRequest.allCompany(symbol: (stock.symbol), completion: { (description, site, ceo) in
+                    self.about = description
+                })
             }
-            
-        }
-        
-        
+//        })
     }
     
     override func didReceiveMemoryWarning() {
@@ -58,21 +69,6 @@ class IndividualViewController: UIViewController {
         super.viewWillAppear(animated)
         
     }
-    
-    func getNews () -> Void {
-        let symbol = stock?.symbol
-        if let symbol = symbol {
-            NetworkRequest.getNews(symbol: symbol) { (newsItems: [NewsItem]) in
-                
-                self.newsArray = newsItems
-                
-            }
-        } else {
-            print("symbol is nil")
-        }
-    }
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "ShowNews" {
@@ -89,21 +85,42 @@ class IndividualViewController: UIViewController {
 
 extension IndividualViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return 1
+        case 2:
+            return 1
+        case 3:
+            return 2
+        case 4:
+            return 2
+        case 5:
+            return 1
+        default:
+            fatalError("Error: unexpected section.")
+        }
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 6
+        
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "StockAttributesCell", for: indexPath) as! StockAttributesCell
-            cell.nameLabel.text = stock?.companyName
-            cell.priceLabel.text = "\(String(describing: stock?.price)) (\(String(describing: stock?.changePercent))%)"
-            if (stock?.isPositive)! {
+            
+            cell.nameLabel.text = stock!.companyName
+            cell.priceLabel.text = "$\(String(describing: stock!.price)) (\(String(describing: stock?.changePercent))%)"
+            
+            if (stock!.isPositive) {
                 cell.priceLabel.textColor = positiveGreen
             } else {
                 cell.priceLabel.textColor = negativeRed
             }
-            cell.logo.image = stock?.logo
+            cell.logo.image = stock!.logo
             cell.followButton.layer.borderColor = UIColor.lightGray.cgColor
             cell.followButton.setTitle("Follow", for: .normal)
             cell.followButton.setTitle("Following", for: .selected)
@@ -115,17 +132,35 @@ extension IndividualViewController: UITableViewDataSource {
             let dispathgroup = DispatchGroup()
             dispathgroup.enter()
             
-            NetworkRequest.getMonthAverages(symbol: (stock?.symbol)!) { (dict: [String : Double]) in
-                self.months = Array(dict.keys)
-                self.values = Array(dict.values)
+            cell.stock = stock
+            NetworkRequest.getMonthAverages(symbol: (stock!.symbol)) { (values: [Double]) in
+                let months: [String] = ["January", "April", "August", "December"]
                 
-                let monthsRevised: [String] = [self.months[0], self.months[3], self.months[7], self.months[11]]
-                
-                cell.setChart(dataPoints: monthsRevised, values: self.values)
+                cell.setChart(dataPoints: months, values: values)
+            
             }
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
+            cell.stock = stock
+            cell.newsArray = newsArray
+            
+            return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "StatsViewCell", for: indexPath) as! StatsViewCell
+            cell.stock = stock
+            
+            return cell
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "InfoViewCell", for: indexPath) as! InfoViewCell
+            cell.stock = stock
+            
+            return cell
+        case 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AboutViewCell", for: indexPath) as! AboutViewCell
+            
+            cell.aboutLabel.text = "ABOUT"
+            cell.descriptionLabel.text = about
             
             return cell
             
@@ -135,32 +170,8 @@ extension IndividualViewController: UITableViewDataSource {
     }
 }
 extension IndividualViewController: UITableViewDelegate {
-    
-    
-}
-extension IndividualViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return newsArray.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewsViewCell", for: indexPath) as! NewsViewCell
-        
-        let newsCollection = newsArray[indexPath.item]
-        cell.headlineLabel.text = newsCollection.headline
-        cell.newsImage.image = #imageLiteral(resourceName: "Sample Scene.png")
-        
-        return cell
-    }
-    
-}
-
-extension IndividualViewController: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "ShowNews", sender: self)
-        
     }
     
     

@@ -10,6 +10,7 @@ import UIKit
 import Charts
 
 class GraphViewCell: UITableViewCell {
+    var stock: Stock? 
 
     @IBOutlet weak var lineChartView: LineChartView!
     let positiveGreen = UIColor(red: 62.0/255.0, green: 189.0/255.0, blue: 153.0/255.0, alpha: 1.0)
@@ -64,7 +65,7 @@ class GraphViewCell: UITableViewCell {
         // Remove rightAxis labels. Comes from class ChartAxisBase.
         lineChartView.rightAxis.drawLabelsEnabled = false
         
-//        lineChartView.animate(xAxisDuration: 2.5, YAxisDuration: 2.5, ChartEasingOption: .easeInSine)
+        lineChartView.animate(xAxisDuration: 2.5, yAxisDuration: 2.5, easingOption: .easeInSine)
         
         
         // Change the position of the x-axis labels
@@ -72,12 +73,6 @@ class GraphViewCell: UITableViewCell {
         
         // Remove the chart's gray background color
         lineChartView.drawGridBackgroundEnabled = false
-        
-        let gradientColors = [UIColor.green.cgColor, UIColor.clear.cgColor] as CFArray // Colors of the gradient
-        let colorLocations:[CGFloat] = [1.0, 0.0] // Positioning of the gradient
-        let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations) // Gradient Object
-        //        lineChartDataSet1.fill = Fill.fillWithLinearGradient(gradient!, angle: 90.0) // Set the Gradient
-        //        set.drawFilledEnabled = true // Draw the Gradient
         
         
         lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dataPoints)

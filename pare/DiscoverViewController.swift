@@ -22,38 +22,17 @@ import SwiftyJSON
 class DiscoverViewController: UIViewController {
     let currentUser = Auth.auth().currentUser!
     
-    @IBOutlet weak var newsLabel: UILabel!
-    @IBOutlet weak var recLabel: UILabel!
-    
-    
-    @IBOutlet weak var newsCollectionView: UICollectionView!
-    @IBOutlet weak var basedOnCollectionView: UICollectionView!
-    @IBOutlet weak var recommendationsCollectionView: UICollectionView!
-    @IBOutlet weak var sectorsCollectionView: UICollectionView!
-    
-    let sectors = ["Consumer Discretionary", "Energy", "Consumer Staples", "Financials", "Health Care", "Industrials", "Information Technology", "Materials", "Real Estate", "Telecommunications Services", "Utilities"]
-    
-    let sectorImages = [UIImage(named: "Consumer Discretionary")!, UIImage(named: "Energy")!, UIImage(named: "Consumer Staples"), UIImage(named: "Financials"), UIImage(named: "Health Care"), UIImage(named: "Industrials"), UIImage(named: "Information Technology"), UIImage(named: "Materials"), UIImage(named: "Real Estate"), UIImage(named: "Telecommunications"), UIImage(named: "Utilities")]
-    
+    @IBOutlet weak var discoverView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        newsCollectionView.delegate = self as UICollectionViewDelegate
-        newsCollectionView.dataSource = self
-        
-        basedOnCollectionView.delegate = self as UICollectionViewDelegate
-        basedOnCollectionView.dataSource = self
-        
-        recommendationsCollectionView.dataSource = self
-        recommendationsCollectionView.delegate = self as UICollectionViewDelegate
-        
-        
+    
     }
     var newsArray = [NewsItem]()
-    var basedOnArray = [RecommendedStock]()
-    var basedOnArray2 = [RecommendedStock]()
-    var topRecArray = [RecommendedStock]()
+    var basedOnArray = [Stock]()
+    var basedOnArray2 = [Stock]()
+    var topRecArray = [Stock]()
     var following = ["AAPL", "MSFT", "TSLA", "AMZN"]
     
     override func didReceiveMemoryWarning() {
@@ -66,169 +45,132 @@ class DiscoverViewController: UIViewController {
         })
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "ShowNews" {
+                let indexPath = discoverView.indexPathForSelectedRow?.first
                 
-                let indexPath = newsCollectionView.indexPathsForSelectedItems?.first
-                
-                let news = newsArray[indexPath!.item]
+                let news = newsArray[indexPath!]
                 let newsViewController = segue.destination as! NewsViewController
                 newsViewController.url = news.url
-            } else if identifier == "ShowStock" {
-                let indexPath = basedOnCollectionView.indexPathsForSelectedItems?.first
+            } else if identifier == "ShowStockRec" {
+                let indexPath = discoverView.indexPathForSelectedRow
                 
                 let individualStockViewController = segue.destination as! IndividualViewController
-                let symbol = basedOnArray[(indexPath?.row)!].symbol
-                
-                NetworkRequest.instantiateStock(symbol: symbol, completion: { (Stock) in
-                    individualStockViewController.stock = Stock
-                })
-            } else if identifier == "ShowRecommendedStock" {
-                let indexPath = recommendationsCollectionView.indexPathsForSelectedItems?.first
+                let stock = topRecArray[(indexPath?.row)!]
+                individualStockViewController.stock = stock
+//                NetworkRequest.instantiateStock(symbol: symbol, completion: { (Stock) in
+//                    individualStockViewController.stock = Stock
+//                })
+            } else if identifier == "ShowStockBased" {
+                let indexPath = discoverView.indexPathForSelectedRow
                 
                 let individualStockViewController = segue.destination as! IndividualViewController
-                let symbol = topRecArray[(indexPath?.row)!].symbol
+                let stock = basedOnArray[(indexPath?.row)!]
+                individualStockViewController.stock = stock
+//                NetworkRequest.instantiateStock(symbol: symbol, completion: { (Stock) in
+//                    individualStockViewController.stock = Stock
+//                })
+            } else {
+                let indexPath = discoverView.indexPathForSelectedRow
                 
-                NetworkRequest.instantiateStock(symbol: symbol, completion: { (Stock) in
-                    individualStockViewController.stock = Stock
-                })
-            } else if identifier == "ShowSector" {
-                let indexPath = sectorsCollectionView.indexPathsForSelectedItems?.first
-                
-                let sectorView = segue.destination as! SectorViewController
-                let sector = sectors[(indexPath?.row)!]
-                
-                sectorView.sector = sector
+                let individualStockViewController = segue.destination as! IndividualViewController
+                let stock = basedOnArray2[(indexPath?.row)!]
+                individualStockViewController.stock = stock
+//                NetworkRequest.instantiateStock(symbol: symbol, completion: { (Stock) in
+//                    individualStockViewController.stock = Stock
+//                })
             }
         }
     }
+}
+extension DiscoverViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return 1
+        case 2:
+            return 1
+        case 3:
+            return 1
+        case 4:
+            return 2
+        default:
+            fatalError("Error: unexpected section.")
+        }
+        
+    }
     
-    override func viewDidAppear(_ animated: Bool) {
-        let random = Int(arc4random_uniform(UInt32(following.count)))
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 5
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        NetworkRequest.filterSectors(symbol: following[random]) { (tests: [String]) in
-            for test in tests {
-                NetworkRequest.instantiateRecommendedStock(symbol: test, completion: { (recommend: RecommendedStock?) in
-                    self.basedOnArray.append(recommend!)
-                })
-            }
-        }
-        NetworkRequest.filterSectors(symbol: following[random]) { (tests: [String]) in
-            for test in tests {
-                NetworkRequest.instantiateRecommendedStock(symbol: test, completion: { (recommend: RecommendedStock?) in
-                    self.basedOnArray2.append(recommend!)
-                })
-            }
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTVCell", for: indexPath) as! NewsTVCell
+            
+            cell.controller = self
+            cell.newsArray = newsArray
+            
+            return cell
+            
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RecTVCell", for: indexPath) as! RecTVCell
+            
+            cell.controller = self
+            cell.topRecArray = topRecArray
+            cell.following = following
+            
+            return cell
+            
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BasedOnTVCell", for: indexPath) as! BasedOnTVCell
+            cell.basedOnArray = basedOnArray
+            cell.following = following
+            let random = Int(arc4random_uniform(UInt32(following.count)))
+            cell.random = random
+            
+            cell.controller = self
+            cell.titleLabel.text = "Because you follow \(following[random])"
+            
+            return cell
+            
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BasedOnTwoTVCell", for: indexPath) as! BasedOnTwoTVCell
+            cell.basedOnArray = basedOnArray2
+            cell.following = following
+            let random = Int(arc4random_uniform(UInt32(following.count)))
+            cell.random = random
+            
+            cell.controller = self
+            cell.titleLabel.text = "Because you follow \(following[random])"
+            
+            
+            return cell
+            
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SectorsTVCell", for: indexPath) as! SectorsTVCell
+            cell.controller = self
+            
+            return cell
+            
+        default:
+            fatalError("Error: unexpected indexPath.")
         }
         
-        NetworkRequest.topRecommendations(symbols: following) { (tops: [String]) in
-            for top in tops {
-                NetworkRequest.instantiateRecommendedStock(symbol: top, completion: { (topRec: RecommendedStock?) in
-                    self.topRecArray.append(topRec!)
-                })
-                
-            }
-        }
+        
     }
 }
 
-extension DiscoverViewController: UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if collectionView == self.sectorsCollectionView { return 2 }
-        else { return newsArray.count }
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if collectionView == self.newsCollectionView {
-            let cell: DiscoverNewsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewsCell", for: indexPath) as! DiscoverNewsCell
-            
-            let newsCollection = newsArray[indexPath.item]
-            cell.title.text = newsCollection.headline
-            //            cell.newsImage.image = newsCollection.url
-            
-            return cell
-        } else if collectionView == self.recommendationsCollectionView {
-            let cell: DiscoverNewsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationsCell", for: indexPath) as! DiscoverNewsCell
-            
-            let recommendations = topRecArray[indexPath.item]
-            cell.title.text = recommendations.symbol
-            cell.image.image = recommendations.logo
-            
-            return cell
-        } else if collectionView == self.basedOnCollectionView {
-            let cell: DiscoverNewsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BasedOnCell", for: indexPath) as! DiscoverNewsCell
-            //                let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SectionHeader", for: indexPath) as! HeaderCollectionReusableView
-            
-            let based = basedOnArray[indexPath.item]
-            cell.title.text = based.symbol
-            cell.image.image = based.logo
-            //            header.headerLabel.text = "Because You Follow \()"
-            
-            return cell
-        } else if collectionView == self.sectorsCollectionView {
-            let cell: DiscoverNewsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorCell", for: indexPath) as! DiscoverNewsCell
-            
-            let sector = sectors[indexPath.item]
-            cell.title.text = sector
-            let sectorImage = sectorImages[indexPath.item]
-            cell.image.image = sectorImage
-            
-            return cell
-        } else {
-            let cell: DiscoverNewsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BasedOn2Cell", for: indexPath) as! DiscoverNewsCell
-            
-            let based = basedOnArray[indexPath.item]
-            cell.title.text = based.symbol
-            cell.image.image = based.logo
-            
-            return cell
 
-        }
-    }
-}
-
-extension DiscoverViewController: UICollectionViewDelegate{
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ShowNews", sender: self)
-        
-    }
-    
-}
-extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == self.sectorsCollectionView {
-            let size = CGSize(width: 135, height: 135)
-            
-            return size
-        } else {
-            let size = CGSize(width: 140, height: 155)
-            
-            return size
-        }
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        if collectionView == self.sectorsCollectionView {
-            return 9
-        } else {
-            return 6
-        }
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        if collectionView == self.sectorsCollectionView {
-            return 4
-        } else {
-            
-            return 1.5
-        }
-    }
-    
-    
-}
 
 
 

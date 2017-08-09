@@ -307,47 +307,46 @@ struct NetworkRequest {
         
     }
     
-    //    static func getAverages (symbol: String, completion: @escaping ([String: Double]) -> Void) {
-    //        let stockDataEndpoint = "\(Constants.IEX.IEXBase)\(symbol)\(Constants.IEXParameters.chartOneDay)"
-    //
-    //        let time = Date()
-    //        let formatter = DateFormatter()
-    //        formatter.dateFormat = "HH:mm"
-    //        formatter.timeZone = TimeZone(abbreviation: "EST")
-    //        let resultTime = formatter.string(from: time)
-    //
-    //        let dayMinute = stringToTime(string: resultTime)
-    //        var averages: [String:Double] = [:]
-    //
-    //        Alamofire.request(stockDataEndpoint).validate().responseJSON() { response in
-    //            switch response.result {
-    //            case .success:
-    //                if let value = response.result.value {
-    //                    let json = JSON(value)
-    //                    let allTimeData = json.arrayValue
-    //
-    //                    for data in allTimeData {
-    //                        let time = data["minute"].stringValue
-    //                        let average = data["average"].doubleValue
-    //
-    //                        averages[time] = average
-    //
-    //                    }
-    //                    completion(averages)
-    //                }
-    //            case .failure(let error):
-    //                print(error)
-    //            }
-    //
-    //
-    //        }
-    //
-    //    }
+        static func getAverages (symbol: String, completion: @escaping ([Double]) -> Void) {
+            let stockDataEndpoint = "\(Constants.IEX.IEXBase)\(symbol)\(Constants.IEXParameters.chartOneDay)"
     
-    static func getMonthAverages(symbol: String, completion: @escaping ([String: Double]) -> Void) {
+            let time = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm"
+            formatter.timeZone = TimeZone(abbreviation: "EST")
+            let resultTime = formatter.string(from: time)
+    
+            let dayMinute = stringToTime(string: resultTime)
+            var averages: [Double] = []
+    
+            Alamofire.request(stockDataEndpoint).validate().responseJSON() { response in
+                switch response.result {
+                case .success:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        let allTimeData = json.arrayValue
+    
+                        for data in allTimeData {
+                            let average = data["average"].doubleValue
+    
+                            averages.append(average)
+    
+                        }
+                        completion(averages)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+    
+    
+            }
+    
+        }
+    
+    static func getMonthAverages(symbol: String, completion: @escaping ([Double]) -> Void) {
         let stockDataEndpoint = "\(Constants.IEX.IEXBase)\(symbol)\(Constants.IEXParameters.chartOneMonth)"
         
-        var averages: [String: Double] = [:]
+        var averages: [Double] = []
         
         Alamofire.request(stockDataEndpoint).validate().responseJSON() { response in
             switch response.result {
@@ -357,10 +356,9 @@ struct NetworkRequest {
                     let allTimeData = json.arrayValue
                     
                     for data in allTimeData {
-                        let date = data["date"].stringValue
                         let close = data["close"].doubleValue
                         
-                        averages[date] = close
+                        averages.append(close)
                     }
                     completion(averages)
                     

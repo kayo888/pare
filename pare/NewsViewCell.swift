@@ -12,5 +12,5 @@ class NewsViewCell: UICollectionViewCell {
     
     @IBOutlet weak var headlineLabel: UILabel!
     @IBOutlet weak var newsImage: UIImageView!
-
+    
 }

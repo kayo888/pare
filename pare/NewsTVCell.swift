@@ -1,17 +1,18 @@
 //
-//  NewsTableViewCell.swift
+//  NewsTVCell.swift
 //  pare
 //
-//  Created by Ehi Airewele  on 8/7/17.
+//  Created by Ehi Airewele  on 8/8/17.
 //  Copyright © 2017 Ehi Airewele . All rights reserved.
 //
 
 import UIKit
 
-class NewsTableViewCell: UITableViewCell {
-    var stock: Stock?
+class NewsTVCell: UITableViewCell {
     var newsArray = [NewsItem]()
     var controller: UIViewController!
+
+
     @IBOutlet weak var newsCollectionView: UICollectionView!
     
     override func awakeFromNib() {
@@ -21,18 +22,15 @@ class NewsTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+
         
-        
-        newsCollectionView.delegate = self
-        newsCollectionView.dataSource = self
-        
-        
+        newsCollectionView.delegate = self as UICollectionViewDelegate
+        newsCollectionView.dataSource = self as UICollectionViewDataSource
         // Configure the view for the selected state
     }
+
 }
-
-
-extension NewsTableViewCell: UICollectionViewDataSource {
+extension NewsTVCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return newsArray.count
@@ -43,14 +41,13 @@ extension NewsTableViewCell: UICollectionViewDataSource {
         
         let newsCollection = newsArray[indexPath.item]
         cell.headlineLabel.text = newsCollection.headline
-//        cell.newsImage.image = #imageLiteral(resourceName: "Sample Scene.png")
         
         return cell
     }
     
 }
 
-extension NewsTableViewCell: UICollectionViewDelegate {
+extension NewsTVCell: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         controller.performSegue(withIdentifier: "ShowNews", sender: self)
@@ -59,4 +56,15 @@ extension NewsTableViewCell: UICollectionViewDelegate {
     
     
 }
+
+
+
+
+
+
+
+
+
+
+
 
